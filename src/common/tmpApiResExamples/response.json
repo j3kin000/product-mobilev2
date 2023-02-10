@@ -1,0 +1,3306 @@
+[
+  {
+    "task_details": [
+      {
+        "label": "Client name",
+        "order": 1,
+        "show_in_table": true,
+        "value": null
+      },
+      {
+        "label": "Agent notes",
+        "order": null,
+        "show_in_table": false,
+        "value": null
+      },
+      {
+        "label": "Payment",
+        "order": 2,
+        "show_in_table": true,
+        "value": null
+      },
+      {
+        "label": "Has Paid?",
+        "order": 3,
+        "show_in_table": true,
+        "value": null
+      },
+      {
+        "label": "Payment Date",
+        "order": 4,
+        "show_in_table": true,
+        "value": null
+      },
+      {
+        "label": "Payment method",
+        "order": null,
+        "show_in_table": false,
+        "value": null
+      }
+    ],
+    "assigned_to": null,
+    "status_id": "new",
+    "type_id": "debt",
+    "is_archived": 0,
+    "created_at": 1654012800000,
+    "archived_at": null,
+    "last_updated_at": 1654012800000,
+    "last_updated_by": {
+      "user_name": "Admin 1",
+      "user_sub": "sub00-00000-00000",
+      "user_groups": ["admin"]
+    },
+    "execution_start_date": null,
+    "execution_end_date": null,
+    "forms": null
+  },
+  {
+    "task_details": [
+      {
+        "label": "Client name",
+        "order": 1,
+        "show_in_table": true,
+        "value": null
+      },
+      {
+        "label": "Agent notes",
+        "order": null,
+        "show_in_table": false,
+        "value": null
+      },
+      {
+        "label": "Payment",
+        "order": 2,
+        "show_in_table": true,
+        "value": null
+      },
+      {
+        "label": "Has Paid?",
+        "order": 3,
+        "show_in_table": true,
+        "value": null
+      },
+      {
+        "label": "Payment Date",
+        "order": 4,
+        "show_in_table": true,
+        "value": null
+      },
+      {
+        "label": "Payment method",
+        "order": null,
+        "show_in_table": false,
+        "value": null
+      }
+    ],
+    "assigned_to": null,
+    "status_id": "assigned",
+    "type_id": "debt",
+    "is_archived": 0,
+    "created_at": 1654012800000,
+    "archived_at": null,
+    "last_updated_at": 1654012800000,
+    "last_updated_by": {
+      "user_name": "Admin 1",
+      "user_sub": "sub00-00000-00000",
+      "user_groups": ["admin"]
+    },
+    "execution_start_date": null,
+    "execution_end_date": null,
+    "forms": null
+  },
+  {
+    "task_details": [
+      {
+        "label": "Client name",
+        "order": 1,
+        "show_in_table": true,
+        "value": null
+      },
+      {
+        "label": "Agent notes",
+        "order": null,
+        "show_in_table": false,
+        "value": null
+      },
+      {
+        "label": "Payment",
+        "order": 2,
+        "show_in_table": true,
+        "value": null
+      },
+      {
+        "label": "Has Paid?",
+        "order": 3,
+        "show_in_table": true,
+        "value": null
+      },
+      {
+        "label": "Payment Date",
+        "order": 4,
+        "show_in_table": true,
+        "value": null
+      },
+      {
+        "label": "Payment method",
+        "order": null,
+        "show_in_table": false,
+        "value": null
+      }
+    ],
+    "assigned_to": {
+      "agent_name": "John Lopez",
+      "agent_sub": "sub12-00000-00000",
+      "agent_groups": ["agent"]
+    },
+    "status_id": "in_progress",
+    "type_id": "debt",
+    "is_archived": 0,
+    "created_at": 1654012800000,
+    "archived_at": null,
+    "last_updated_at": 1654012800000,
+    "last_updated_by": {
+      "user_name": "Admin 1",
+      "user_sub": "sub00-00000-00000",
+      "user_groups": ["admin"]
+    },
+    "execution_start_date": null,
+    "execution_end_date": null,
+    "forms": {
+      "form1": {
+        "order": 1,
+        "fields": [
+          {
+            "input_type": "html",
+            "content": "First form"
+          },
+          {
+            "label": "Client name",
+            "key": "client_name",
+            "input_type": "text",
+            "default_value": null,
+            "enum": [],
+            "rules": {
+              "optional": false
+            }
+          }
+        ]
+      },
+      "form2": {
+        "order": 2,
+        "fields": [
+          {
+            "label": "Has Paid?",
+            "key": "paid",
+            "input_type": "boolean",
+            "default_value": false,
+            "enum": [],
+            "rules": {}
+          },
+          {
+            "label": "Payment",
+            "key": "payment",
+            "input_type": "number",
+            "default_value": false,
+            "enum": [],
+            "rules": {
+              "optional": true,
+              "accept_float": true
+            }
+          },
+          {
+            "label": "Payment method",
+            "key": "payment",
+            "input_type": "number",
+            "default_value": false,
+            "enum": ["card", "cash"],
+            "rules": {
+              "optional": true,
+              "multi_select": false
+            }
+          },
+          {
+            "label": "Payment date",
+            "key": "payment_date",
+            "input_type": "date",
+            "default_value": null,
+            "enum": [],
+            "rules": {
+              "optional": true,
+              "min_date": 1654012800000
+            }
+          }
+        ]
+      }
+    }
+  },
+  {
+    "task_details": [
+      {
+        "label": "Client name",
+        "order": 1,
+        "show_in_table": true,
+        "value": "Joe mama"
+      },
+      {
+        "label": "Agent notes",
+        "order": null,
+        "show_in_table": false,
+        "value": "Client was angry"
+      },
+      {
+        "label": "Payment",
+        "order": 2,
+        "show_in_table": true,
+        "value": 10.99
+      },
+      {
+        "label": "Has Paid?",
+        "order": 3,
+        "show_in_table": true,
+        "value": true
+      },
+      {
+        "label": "Payment Date",
+        "order": 4,
+        "show_in_table": true,
+        "value": 1654012800000
+      },
+      {
+        "label": "Payment method",
+        "order": null,
+        "show_in_table": false,
+        "value": "card"
+      }
+    ],
+    "assigned_to": {
+      "agent_name": "John Lopez",
+      "agent_sub": "sub12-00000-00000",
+      "agent_groups": ["agent"]
+    },
+    "status_id": "done",
+    "type_id": "debt",
+    "is_archived": 0,
+    "created_at": 1654012800000,
+    "archived_at": null,
+    "last_updated_at": 1654012800000,
+    "last_updated_by": {
+      "user_name": "Admin 1",
+      "user_sub": "sub00-00000-00000",
+      "user_groups": ["admin"]
+    },
+    "execution_start_date": null,
+    "execution_end_date": null,
+    "forms": {
+      "form1": {
+        "order": 1,
+        "fields": [
+          {
+            "input_type": "html",
+            "content": "First form"
+          },
+          {
+            "label": "Client name",
+            "key": "client_name",
+            "input_type": "text",
+            "default_value": null,
+            "enum": [],
+            "rules": {
+              "optional": false
+            }
+          }
+        ]
+      },
+      "form2": {
+        "order": 2,
+        "fields": [
+          {
+            "label": "Has Paid?",
+            "key": "paid",
+            "input_type": "boolean",
+            "default_value": false,
+            "enum": [],
+            "rules": {}
+          },
+          {
+            "label": "Payment",
+            "key": "payment",
+            "input_type": "number",
+            "default_value": false,
+            "enum": [],
+            "rules": {
+              "optional": true,
+              "accept_float": true
+            }
+          },
+          {
+            "label": "Payment method",
+            "key": "payment",
+            "input_type": "number",
+            "default_value": false,
+            "enum": ["card", "cash"],
+            "rules": {
+              "optional": true,
+              "multi_select": false
+            }
+          },
+          {
+            "label": "Payment date",
+            "key": "payment_date",
+            "input_type": "date",
+            "default_value": null,
+            "enum": [],
+            "rules": {
+              "optional": true,
+              "min_date": 1654012800000
+            }
+          }
+        ]
+      }
+    }
+  },
+  {
+    "task_details": [
+      {
+        "label": "Client name",
+        "order": 1,
+        "show_in_table": true,
+        "value": null
+      },
+      {
+        "label": "Location",
+        "order": null,
+        "show_in_table": false,
+        "value": null
+      },
+      {
+        "label": "Start time",
+        "order": 2,
+        "show_in_table": true,
+        "value": null
+      },
+      {
+        "label": "End time",
+        "order": 3,
+        "show_in_table": true,
+        "value": null
+      },
+      {
+        "label": "Sample picture",
+        "order": 4,
+        "show_in_table": true,
+        "value": null
+      },
+      {
+        "label": "Sample file",
+        "order": null,
+        "show_in_table": false,
+        "value": null
+      }
+    ],
+    "assigned_to": null,
+    "status_id": "new",
+    "type_id": "measurement",
+    "is_archived": 0,
+    "created_at": 1654012800000,
+    "archived_at": null,
+    "last_updated_at": 1654012800000,
+    "last_updated_by": {
+      "user_name": "Admin 2",
+      "user_sub": "sub00-00000-00002",
+      "user_groups": ["admin"]
+    },
+    "execution_start_date": null,
+    "execution_end_date": null,
+    "forms": {}
+  },
+  {
+    "task_details": [
+      {
+        "label": "Client name",
+        "order": 1,
+        "show_in_table": true,
+        "value": null
+      },
+      {
+        "label": "Location",
+        "order": null,
+        "show_in_table": false,
+        "value": null
+      },
+      {
+        "label": "Start time",
+        "order": 2,
+        "show_in_table": true,
+        "value": null
+      },
+      {
+        "label": "End time",
+        "order": 3,
+        "show_in_table": true,
+        "value": null
+      },
+      {
+        "label": "Sample picture",
+        "order": 4,
+        "show_in_table": true,
+        "value": null
+      },
+      {
+        "label": "Sample file",
+        "order": null,
+        "show_in_table": false,
+        "value": null
+      }
+    ],
+    "assigned_to": null,
+    "status_id": "in_progress",
+    "type_id": "measurement",
+    "is_archived": 0,
+    "created_at": 1654012800000,
+    "archived_at": null,
+    "last_updated_at": 1654012800000,
+    "last_updated_by": {
+      "user_name": "Admin 2",
+      "user_sub": "sub00-00000-00002",
+      "user_groups": ["admin"]
+    },
+    "execution_start_date": null,
+    "execution_end_date": null,
+    "forms": {}
+  },
+  {
+    "task_details": [
+      {
+        "label": "Client name",
+        "order": 1,
+        "show_in_table": true,
+        "value": null
+      },
+      {
+        "label": "Location",
+        "order": null,
+        "show_in_table": false,
+        "value": null
+      },
+      {
+        "label": "Start time",
+        "order": 2,
+        "show_in_table": true,
+        "value": null
+      },
+      {
+        "label": "End time",
+        "order": 3,
+        "show_in_table": true,
+        "value": null
+      },
+      {
+        "label": "Sample picture",
+        "order": 4,
+        "show_in_table": true,
+        "value": null
+      },
+      {
+        "label": "Sample file",
+        "order": null,
+        "show_in_table": false,
+        "value": null
+      }
+    ],
+    "assigned_to": {
+      "agent_name": "Person 2",
+      "agent_sub": "sub12-00000-00002",
+      "agent_groups": ["agent"]
+    },
+    "status_id": "assigned",
+    "type_id": "measurement",
+    "is_archived": 0,
+    "created_at": 1654012800000,
+    "archived_at": null,
+    "last_updated_at": 1654012800000,
+    "last_updated_by": {
+      "user_name": "Admin 2",
+      "user_sub": "sub00-00000-00002",
+      "user_groups": ["admin"]
+    },
+    "execution_start_date": null,
+    "execution_end_date": null,
+    "forms": {
+      "form1": {
+        "order": 1,
+        "fields": [
+          {
+            "input_type": "html",
+            "content": "First form"
+          },
+          {
+            "label": "Client name",
+            "key": "client_name",
+            "input_type": "text",
+            "default_value": null,
+            "enum": [],
+            "rules": {
+              "optional": false
+            }
+          },
+          {
+            "label": "Location",
+            "key": "location",
+            "input_type": "text",
+            "default_value": null,
+            "enum": [],
+            "rules": {
+              "optional": true
+            }
+          }
+        ]
+      },
+      "form2": {
+        "order": 2,
+        "fields": [
+          {
+            "label": "Start date",
+            "key": "start_date",
+            "input_type": "datetime",
+            "default_value": null,
+            "enum": [],
+            "rules": {
+              "optional": false,
+              "min_date": 1655086103798
+            }
+          },
+          {
+            "label": "End date",
+            "key": "end_date",
+            "input_type": "datetime",
+            "default_value": null,
+            "enum": [],
+            "rules": {
+              "optional": false,
+              "min_date": 1655086103798,
+              "max_date": 1655222400000
+            }
+          },
+          {
+            "label": "Sample picture",
+            "key": "picture",
+            "input_type": "image",
+            "default_value": null,
+            "enum": ["card", "cash"],
+            "rules": {
+              "optional": true,
+              "min_image": 0,
+              "max_image": 5
+            }
+          },
+          {
+            "label": "Sample file",
+            "key": "file",
+            "input_type": "file",
+            "default_value": null,
+            "enum": [],
+            "rules": {
+              "optional": true,
+              "min_image": 0,
+              "max_image": 2
+            }
+          }
+        ]
+      }
+    }
+  },
+  {
+    "task_details": [
+      {
+        "label": "Client name",
+        "order": 1,
+        "show_in_table": true,
+        "value": "Random client"
+      },
+      {
+        "label": "Location",
+        "order": 2,
+        "show_in_table": true,
+        "value": "City 1, Country"
+      },
+      {
+        "label": "Start time",
+        "order": 2,
+        "show_in_table": true,
+        "value": 1655096400000
+      },
+      {
+        "label": "End time",
+        "order": 3,
+        "show_in_table": true,
+        "value": 1655103600000
+      },
+      {
+        "label": "Sample picture",
+        "order": null,
+        "show_in_table": false,
+        "value": "url_to_file"
+      },
+      {
+        "label": "Sample file",
+        "order": null,
+        "show_in_table": false,
+        "value": "url_to_file"
+      }
+    ],
+    "assigned_to": {
+      "agent_name": "Person 2",
+      "agent_sub": "sub12-00000-00002",
+      "agent_groups": ["agent"]
+    },
+    "status_id": "done",
+    "type_id": "measurement",
+    "is_archived": 0,
+    "created_at": 1654012800000,
+    "archived_at": null,
+    "last_updated_at": 1654012800000,
+    "last_updated_by": {
+      "user_name": "Admin 2",
+      "user_sub": "sub00-00000-00002",
+      "user_groups": ["admin"]
+    },
+    "execution_start_date": null,
+    "execution_end_date": null,
+    "forms": {
+      "form1": {
+        "order": 1,
+        "fields": [
+          {
+            "input_type": "html",
+            "content": "First form"
+          },
+          {
+            "label": "Client name",
+            "key": "client_name",
+            "input_type": "text",
+            "default_value": null,
+            "enum": [],
+            "rules": {
+              "optional": false
+            }
+          },
+          {
+            "label": "Location",
+            "key": "location",
+            "input_type": "text",
+            "default_value": null,
+            "enum": [],
+            "rules": {
+              "optional": true
+            }
+          }
+        ]
+      },
+      "form2": {
+        "order": 2,
+        "fields": [
+          {
+            "label": "Start date",
+            "key": "start_date",
+            "input_type": "datetime",
+            "default_value": null,
+            "enum": [],
+            "rules": {
+              "optional": false,
+              "min_date": 1655086103798
+            }
+          },
+          {
+            "label": "End date",
+            "key": "end_date",
+            "input_type": "datetime",
+            "default_value": null,
+            "enum": [],
+            "rules": {
+              "optional": false,
+              "min_date": 1655086103798,
+              "max_date": 1655222400000
+            }
+          },
+          {
+            "label": "Sample picture",
+            "key": "picture",
+            "input_type": "image",
+            "default_value": null,
+            "enum": ["card", "cash"],
+            "rules": {
+              "optional": true,
+              "min_image": 0,
+              "max_image": 5
+            }
+          },
+          {
+            "label": "Sample file",
+            "key": "file",
+            "input_type": "file",
+            "default_value": null,
+            "enum": [],
+            "rules": {
+              "optional": true,
+              "min_image": 0,
+              "max_image": 2
+            }
+          }
+        ]
+      }
+    }
+  },
+  {
+    "task_details": [
+      {
+        "label": "Client name",
+        "order": 1,
+        "show_in_table": true,
+        "value": null
+      },
+      {
+        "label": "Agent notes",
+        "order": null,
+        "show_in_table": false,
+        "value": null
+      },
+      {
+        "label": "Payment",
+        "order": 2,
+        "show_in_table": true,
+        "value": null
+      },
+      {
+        "label": "Has Paid?",
+        "order": 3,
+        "show_in_table": true,
+        "value": null
+      },
+      {
+        "label": "Payment Date",
+        "order": 4,
+        "show_in_table": true,
+        "value": null
+      },
+      {
+        "label": "Payment method",
+        "order": null,
+        "show_in_table": false,
+        "value": null
+      }
+    ],
+    "assigned_to": null,
+    "status_id": "new",
+    "type_id": "debt",
+    "is_archived": 0,
+    "created_at": 1654012800000,
+    "archived_at": null,
+    "last_updated_at": 1654012800000,
+    "last_updated_by": {
+      "user_name": "Admin 1",
+      "user_sub": "sub00-00000-00000",
+      "user_groups": ["admin"]
+    },
+    "execution_start_date": null,
+    "execution_end_date": null,
+    "forms": null
+  },
+  {
+    "task_details": [
+      {
+        "label": "Client name",
+        "order": 1,
+        "show_in_table": true,
+        "value": null
+      },
+      {
+        "label": "Agent notes",
+        "order": null,
+        "show_in_table": false,
+        "value": null
+      },
+      {
+        "label": "Payment",
+        "order": 2,
+        "show_in_table": true,
+        "value": null
+      },
+      {
+        "label": "Has Paid?",
+        "order": 3,
+        "show_in_table": true,
+        "value": null
+      },
+      {
+        "label": "Payment Date",
+        "order": 4,
+        "show_in_table": true,
+        "value": null
+      },
+      {
+        "label": "Payment method",
+        "order": null,
+        "show_in_table": false,
+        "value": null
+      }
+    ],
+    "assigned_to": null,
+    "status_id": "assigned",
+    "type_id": "debt",
+    "is_archived": 0,
+    "created_at": 1654012800000,
+    "archived_at": null,
+    "last_updated_at": 1654012800000,
+    "last_updated_by": {
+      "user_name": "Admin 1",
+      "user_sub": "sub00-00000-00000",
+      "user_groups": ["admin"]
+    },
+    "execution_start_date": null,
+    "execution_end_date": null,
+    "forms": null
+  },
+  {
+    "task_details": [
+      {
+        "label": "Client name",
+        "order": 1,
+        "show_in_table": true,
+        "value": null
+      },
+      {
+        "label": "Agent notes",
+        "order": null,
+        "show_in_table": false,
+        "value": null
+      },
+      {
+        "label": "Payment",
+        "order": 2,
+        "show_in_table": true,
+        "value": null
+      },
+      {
+        "label": "Has Paid?",
+        "order": 3,
+        "show_in_table": true,
+        "value": null
+      },
+      {
+        "label": "Payment Date",
+        "order": 4,
+        "show_in_table": true,
+        "value": null
+      },
+      {
+        "label": "Payment method",
+        "order": null,
+        "show_in_table": false,
+        "value": null
+      }
+    ],
+    "assigned_to": {
+      "agent_name": "John Lopez",
+      "agent_sub": "sub12-00000-00000",
+      "agent_groups": ["agent"]
+    },
+    "status_id": "in_progress",
+    "type_id": "debt",
+    "is_archived": 0,
+    "created_at": 1654012800000,
+    "archived_at": null,
+    "last_updated_at": 1654012800000,
+    "last_updated_by": {
+      "user_name": "Admin 1",
+      "user_sub": "sub00-00000-00000",
+      "user_groups": ["admin"]
+    },
+    "execution_start_date": null,
+    "execution_end_date": null,
+    "forms": {
+      "form1": {
+        "order": 1,
+        "fields": [
+          {
+            "input_type": "html",
+            "content": "First form"
+          },
+          {
+            "label": "Client name",
+            "key": "client_name",
+            "input_type": "text",
+            "default_value": null,
+            "enum": [],
+            "rules": {
+              "optional": false
+            }
+          }
+        ]
+      },
+      "form2": {
+        "order": 2,
+        "fields": [
+          {
+            "label": "Has Paid?",
+            "key": "paid",
+            "input_type": "boolean",
+            "default_value": false,
+            "enum": [],
+            "rules": {}
+          },
+          {
+            "label": "Payment",
+            "key": "payment",
+            "input_type": "number",
+            "default_value": false,
+            "enum": [],
+            "rules": {
+              "optional": true,
+              "accept_float": true
+            }
+          },
+          {
+            "label": "Payment method",
+            "key": "payment",
+            "input_type": "number",
+            "default_value": false,
+            "enum": ["card", "cash"],
+            "rules": {
+              "optional": true,
+              "multi_select": false
+            }
+          },
+          {
+            "label": "Payment date",
+            "key": "payment_date",
+            "input_type": "date",
+            "default_value": null,
+            "enum": [],
+            "rules": {
+              "optional": true,
+              "min_date": 1654012800000
+            }
+          }
+        ]
+      }
+    }
+  },
+  {
+    "task_details": [
+      {
+        "label": "Client name",
+        "order": 1,
+        "show_in_table": true,
+        "value": "Joe mama"
+      },
+      {
+        "label": "Agent notes",
+        "order": null,
+        "show_in_table": false,
+        "value": "Client was angry"
+      },
+      {
+        "label": "Payment",
+        "order": 2,
+        "show_in_table": true,
+        "value": 10.99
+      },
+      {
+        "label": "Has Paid?",
+        "order": 3,
+        "show_in_table": true,
+        "value": true
+      },
+      {
+        "label": "Payment Date",
+        "order": 4,
+        "show_in_table": true,
+        "value": 1654012800000
+      },
+      {
+        "label": "Payment method",
+        "order": null,
+        "show_in_table": false,
+        "value": "card"
+      }
+    ],
+    "assigned_to": {
+      "agent_name": "John Lopez",
+      "agent_sub": "sub12-00000-00000",
+      "agent_groups": ["agent"]
+    },
+    "status_id": "done",
+    "type_id": "debt",
+    "is_archived": 0,
+    "created_at": 1654012800000,
+    "archived_at": null,
+    "last_updated_at": 1654012800000,
+    "last_updated_by": {
+      "user_name": "Admin 1",
+      "user_sub": "sub00-00000-00000",
+      "user_groups": ["admin"]
+    },
+    "execution_start_date": null,
+    "execution_end_date": null,
+    "forms": {
+      "form1": {
+        "order": 1,
+        "fields": [
+          {
+            "input_type": "html",
+            "content": "First form"
+          },
+          {
+            "label": "Client name",
+            "key": "client_name",
+            "input_type": "text",
+            "default_value": null,
+            "enum": [],
+            "rules": {
+              "optional": false
+            }
+          }
+        ]
+      },
+      "form2": {
+        "order": 2,
+        "fields": [
+          {
+            "label": "Has Paid?",
+            "key": "paid",
+            "input_type": "boolean",
+            "default_value": false,
+            "enum": [],
+            "rules": {}
+          },
+          {
+            "label": "Payment",
+            "key": "payment",
+            "input_type": "number",
+            "default_value": false,
+            "enum": [],
+            "rules": {
+              "optional": true,
+              "accept_float": true
+            }
+          },
+          {
+            "label": "Payment method",
+            "key": "payment",
+            "input_type": "number",
+            "default_value": false,
+            "enum": ["card", "cash"],
+            "rules": {
+              "optional": true,
+              "multi_select": false
+            }
+          },
+          {
+            "label": "Payment date",
+            "key": "payment_date",
+            "input_type": "date",
+            "default_value": null,
+            "enum": [],
+            "rules": {
+              "optional": true,
+              "min_date": 1654012800000
+            }
+          }
+        ]
+      }
+    }
+  },
+  {
+    "task_details": [
+      {
+        "label": "Client name",
+        "order": 1,
+        "show_in_table": true,
+        "value": null
+      },
+      {
+        "label": "Location",
+        "order": null,
+        "show_in_table": false,
+        "value": null
+      },
+      {
+        "label": "Start time",
+        "order": 2,
+        "show_in_table": true,
+        "value": null
+      },
+      {
+        "label": "End time",
+        "order": 3,
+        "show_in_table": true,
+        "value": null
+      },
+      {
+        "label": "Sample picture",
+        "order": 4,
+        "show_in_table": true,
+        "value": null
+      },
+      {
+        "label": "Sample file",
+        "order": null,
+        "show_in_table": false,
+        "value": null
+      }
+    ],
+    "assigned_to": null,
+    "status_id": "new",
+    "type_id": "measurement",
+    "is_archived": 0,
+    "created_at": 1654012800000,
+    "archived_at": null,
+    "last_updated_at": 1654012800000,
+    "last_updated_by": {
+      "user_name": "Admin 2",
+      "user_sub": "sub00-00000-00002",
+      "user_groups": ["admin"]
+    },
+    "execution_start_date": null,
+    "execution_end_date": null,
+    "forms": {}
+  },
+  {
+    "task_details": [
+      {
+        "label": "Client name",
+        "order": 1,
+        "show_in_table": true,
+        "value": null
+      },
+      {
+        "label": "Location",
+        "order": null,
+        "show_in_table": false,
+        "value": null
+      },
+      {
+        "label": "Start time",
+        "order": 2,
+        "show_in_table": true,
+        "value": null
+      },
+      {
+        "label": "End time",
+        "order": 3,
+        "show_in_table": true,
+        "value": null
+      },
+      {
+        "label": "Sample picture",
+        "order": 4,
+        "show_in_table": true,
+        "value": null
+      },
+      {
+        "label": "Sample file",
+        "order": null,
+        "show_in_table": false,
+        "value": null
+      }
+    ],
+    "assigned_to": null,
+    "status_id": "in_progress",
+    "type_id": "measurement",
+    "is_archived": 0,
+    "created_at": 1654012800000,
+    "archived_at": null,
+    "last_updated_at": 1654012800000,
+    "last_updated_by": {
+      "user_name": "Admin 2",
+      "user_sub": "sub00-00000-00002",
+      "user_groups": ["admin"]
+    },
+    "execution_start_date": null,
+    "execution_end_date": null,
+    "forms": {}
+  },
+  {
+    "task_details": [
+      {
+        "label": "Client name",
+        "order": 1,
+        "show_in_table": true,
+        "value": null
+      },
+      {
+        "label": "Location",
+        "order": null,
+        "show_in_table": false,
+        "value": null
+      },
+      {
+        "label": "Start time",
+        "order": 2,
+        "show_in_table": true,
+        "value": null
+      },
+      {
+        "label": "End time",
+        "order": 3,
+        "show_in_table": true,
+        "value": null
+      },
+      {
+        "label": "Sample picture",
+        "order": 4,
+        "show_in_table": true,
+        "value": null
+      },
+      {
+        "label": "Sample file",
+        "order": null,
+        "show_in_table": false,
+        "value": null
+      }
+    ],
+    "assigned_to": {
+      "agent_name": "Person 2",
+      "agent_sub": "sub12-00000-00002",
+      "agent_groups": ["agent"]
+    },
+    "status_id": "assigned",
+    "type_id": "measurement",
+    "is_archived": 0,
+    "created_at": 1654012800000,
+    "archived_at": null,
+    "last_updated_at": 1654012800000,
+    "last_updated_by": {
+      "user_name": "Admin 2",
+      "user_sub": "sub00-00000-00002",
+      "user_groups": ["admin"]
+    },
+    "execution_start_date": null,
+    "execution_end_date": null,
+    "forms": {
+      "form1": {
+        "order": 1,
+        "fields": [
+          {
+            "input_type": "html",
+            "content": "First form"
+          },
+          {
+            "label": "Client name",
+            "key": "client_name",
+            "input_type": "text",
+            "default_value": null,
+            "enum": [],
+            "rules": {
+              "optional": false
+            }
+          },
+          {
+            "label": "Location",
+            "key": "location",
+            "input_type": "text",
+            "default_value": null,
+            "enum": [],
+            "rules": {
+              "optional": true
+            }
+          }
+        ]
+      },
+      "form2": {
+        "order": 2,
+        "fields": [
+          {
+            "label": "Start date",
+            "key": "start_date",
+            "input_type": "datetime",
+            "default_value": null,
+            "enum": [],
+            "rules": {
+              "optional": false,
+              "min_date": 1655086103798
+            }
+          },
+          {
+            "label": "End date",
+            "key": "end_date",
+            "input_type": "datetime",
+            "default_value": null,
+            "enum": [],
+            "rules": {
+              "optional": false,
+              "min_date": 1655086103798,
+              "max_date": 1655222400000
+            }
+          },
+          {
+            "label": "Sample picture",
+            "key": "picture",
+            "input_type": "image",
+            "default_value": null,
+            "enum": ["card", "cash"],
+            "rules": {
+              "optional": true,
+              "min_image": 0,
+              "max_image": 5
+            }
+          },
+          {
+            "label": "Sample file",
+            "key": "file",
+            "input_type": "file",
+            "default_value": null,
+            "enum": [],
+            "rules": {
+              "optional": true,
+              "min_image": 0,
+              "max_image": 2
+            }
+          }
+        ]
+      }
+    }
+  },
+  {
+    "task_details": [
+      {
+        "label": "Client name",
+        "order": 1,
+        "show_in_table": true,
+        "value": "Random client 2"
+      },
+      {
+        "label": "Location",
+        "order": 2,
+        "show_in_table": true,
+        "value": "city 2, Country"
+      },
+      {
+        "label": "Start time",
+        "order": 2,
+        "show_in_table": true,
+        "value": 1655096400000
+      },
+      {
+        "label": "End time",
+        "order": 3,
+        "show_in_table": true,
+        "value": 1655103600000
+      },
+      {
+        "label": "Sample picture",
+        "order": null,
+        "show_in_table": false,
+        "value": "url_to_file"
+      },
+      {
+        "label": "Sample file",
+        "order": null,
+        "show_in_table": false,
+        "value": "url_to_file"
+      }
+    ],
+    "assigned_to": {
+      "agent_name": "Person 2",
+      "agent_sub": "sub12-00000-00002",
+      "agent_groups": ["agent"]
+    },
+    "status_id": "assigned",
+    "type_id": "measurement",
+    "is_archived": 0,
+    "created_at": 1654012800000,
+    "archived_at": null,
+    "last_updated_at": 1654012800000,
+    "last_updated_by": {
+      "user_name": "Admin 2",
+      "user_sub": "sub00-00000-00002",
+      "user_groups": ["admin"]
+    },
+    "execution_start_date": null,
+    "execution_end_date": null,
+    "forms": {
+      "form1": {
+        "order": 1,
+        "fields": [
+          {
+            "input_type": "html",
+            "content": "First form"
+          },
+          {
+            "label": "Client name",
+            "key": "client_name",
+            "input_type": "text",
+            "default_value": null,
+            "enum": [],
+            "rules": {
+              "optional": false
+            }
+          },
+          {
+            "label": "Location",
+            "key": "location",
+            "input_type": "text",
+            "default_value": null,
+            "enum": [],
+            "rules": {
+              "optional": true
+            }
+          }
+        ]
+      },
+      "form2": {
+        "order": 2,
+        "fields": [
+          {
+            "label": "Start date",
+            "key": "start_date",
+            "input_type": "datetime",
+            "default_value": null,
+            "enum": [],
+            "rules": {
+              "optional": false,
+              "min_date": 1655086103798
+            }
+          },
+          {
+            "label": "End date",
+            "key": "end_date",
+            "input_type": "datetime",
+            "default_value": null,
+            "enum": [],
+            "rules": {
+              "optional": false,
+              "min_date": 1655086103798,
+              "max_date": 1655222400000
+            }
+          },
+          {
+            "label": "Sample picture",
+            "key": "picture",
+            "input_type": "image",
+            "default_value": null,
+            "enum": ["card", "cash"],
+            "rules": {
+              "optional": true,
+              "min_image": 0,
+              "max_image": 5
+            }
+          },
+          {
+            "label": "Sample file",
+            "key": "file",
+            "input_type": "file",
+            "default_value": null,
+            "enum": [],
+            "rules": {
+              "optional": true,
+              "min_image": 0,
+              "max_image": 2
+            }
+          }
+        ]
+      }
+    }
+  },
+  {
+    "task_details": [
+      {
+        "label": "Client name",
+        "order": 1,
+        "show_in_table": true,
+        "value": null
+      },
+      {
+        "label": "Location",
+        "order": null,
+        "show_in_table": false,
+        "value": null
+      },
+      {
+        "label": "Start time",
+        "order": 2,
+        "show_in_table": true,
+        "value": null
+      },
+      {
+        "label": "End time",
+        "order": 3,
+        "show_in_table": true,
+        "value": null
+      },
+      {
+        "label": "Sample picture",
+        "order": 4,
+        "show_in_table": true,
+        "value": null
+      },
+      {
+        "label": "Sample file",
+        "order": null,
+        "show_in_table": false,
+        "value": null
+      }
+    ],
+    "assigned_to": null,
+    "status_id": "new",
+    "type_id": "measurement",
+    "is_archived": 0,
+    "created_at": 1654012800000,
+    "archived_at": null,
+    "last_updated_at": 1654012800000,
+    "last_updated_by": {
+      "user_name": "Admin 2",
+      "user_sub": "sub00-00000-00002",
+      "user_groups": ["admin"]
+    },
+    "execution_start_date": null,
+    "execution_end_date": null,
+    "forms": {}
+  },
+  {
+    "task_details": [
+      {
+        "label": "Client name",
+        "order": 1,
+        "show_in_table": true,
+        "value": null
+      },
+      {
+        "label": "Location",
+        "order": null,
+        "show_in_table": false,
+        "value": null
+      },
+      {
+        "label": "Start time",
+        "order": 2,
+        "show_in_table": true,
+        "value": null
+      },
+      {
+        "label": "End time",
+        "order": 3,
+        "show_in_table": true,
+        "value": null
+      },
+      {
+        "label": "Sample picture",
+        "order": 4,
+        "show_in_table": true,
+        "value": null
+      },
+      {
+        "label": "Sample file",
+        "order": null,
+        "show_in_table": false,
+        "value": null
+      }
+    ],
+    "assigned_to": null,
+    "status_id": "in_progress",
+    "type_id": "measurement",
+    "is_archived": 0,
+    "created_at": 1654012800000,
+    "archived_at": null,
+    "last_updated_at": 1654012800000,
+    "last_updated_by": {
+      "user_name": "Admin 2",
+      "user_sub": "sub00-00000-00002",
+      "user_groups": ["admin"]
+    },
+    "execution_start_date": null,
+    "execution_end_date": null,
+    "forms": {}
+  },
+  {
+    "task_details": [
+      {
+        "label": "Client name",
+        "order": 1,
+        "show_in_table": true,
+        "value": null
+      },
+      {
+        "label": "Location",
+        "order": null,
+        "show_in_table": false,
+        "value": null
+      },
+      {
+        "label": "Start time",
+        "order": 2,
+        "show_in_table": true,
+        "value": null
+      },
+      {
+        "label": "End time",
+        "order": 3,
+        "show_in_table": true,
+        "value": null
+      },
+      {
+        "label": "Sample picture",
+        "order": 4,
+        "show_in_table": true,
+        "value": null
+      },
+      {
+        "label": "Sample file",
+        "order": null,
+        "show_in_table": false,
+        "value": null
+      }
+    ],
+    "assigned_to": {
+      "agent_name": "Person 2",
+      "agent_sub": "sub12-00000-00002",
+      "agent_groups": ["agent"]
+    },
+    "status_id": "assigned",
+    "type_id": "measurement",
+    "is_archived": 0,
+    "created_at": 1654012800000,
+    "archived_at": null,
+    "last_updated_at": 1654012800000,
+    "last_updated_by": {
+      "user_name": "Admin 2",
+      "user_sub": "sub00-00000-00002",
+      "user_groups": ["admin"]
+    },
+    "execution_start_date": null,
+    "execution_end_date": null,
+    "forms": {
+      "form1": {
+        "order": 1,
+        "fields": [
+          {
+            "input_type": "html",
+            "content": "First form"
+          },
+          {
+            "label": "Client name",
+            "key": "client_name",
+            "input_type": "text",
+            "default_value": null,
+            "enum": [],
+            "rules": {
+              "optional": false
+            }
+          },
+          {
+            "label": "Location",
+            "key": "location",
+            "input_type": "text",
+            "default_value": null,
+            "enum": [],
+            "rules": {
+              "optional": true
+            }
+          }
+        ]
+      },
+      "form2": {
+        "order": 2,
+        "fields": [
+          {
+            "label": "Start date",
+            "key": "start_date",
+            "input_type": "datetime",
+            "default_value": null,
+            "enum": [],
+            "rules": {
+              "optional": false,
+              "min_date": 1655086103798
+            }
+          },
+          {
+            "label": "End date",
+            "key": "end_date",
+            "input_type": "datetime",
+            "default_value": null,
+            "enum": [],
+            "rules": {
+              "optional": false,
+              "min_date": 1655086103798,
+              "max_date": 1655222400000
+            }
+          },
+          {
+            "label": "Sample picture",
+            "key": "picture",
+            "input_type": "image",
+            "default_value": null,
+            "enum": ["card", "cash"],
+            "rules": {
+              "optional": true,
+              "min_image": 0,
+              "max_image": 5
+            }
+          },
+          {
+            "label": "Sample file",
+            "key": "file",
+            "input_type": "file",
+            "default_value": null,
+            "enum": [],
+            "rules": {
+              "optional": true,
+              "min_image": 0,
+              "max_image": 2
+            }
+          }
+        ]
+      }
+    }
+  },
+  {
+    "task_details": [
+      {
+        "label": "Client name",
+        "order": 1,
+        "show_in_table": true,
+        "value": "Random person"
+      },
+      {
+        "label": "Location",
+        "order": 2,
+        "show_in_table": true,
+        "value": "City 3, Country"
+      },
+      {
+        "label": "Start time",
+        "order": 2,
+        "show_in_table": true,
+        "value": 1655096400000
+      },
+      {
+        "label": "End time",
+        "order": 3,
+        "show_in_table": true,
+        "value": 1655103600000
+      },
+      {
+        "label": "Sample picture",
+        "order": null,
+        "show_in_table": false,
+        "value": "url_to_file"
+      },
+      {
+        "label": "Sample file",
+        "order": null,
+        "show_in_table": false,
+        "value": "url_to_file"
+      }
+    ],
+    "assigned_to": {
+      "agent_name": "Person 2",
+      "agent_sub": "sub12-00000-00002",
+      "agent_groups": ["agent"]
+    },
+    "status_id": "assigned",
+    "type_id": "measurement",
+    "is_archived": 0,
+    "created_at": 1654012800000,
+    "archived_at": null,
+    "last_updated_at": 1654012800000,
+    "last_updated_by": {
+      "user_name": "Admin 2",
+      "user_sub": "sub00-00000-00002",
+      "user_groups": ["admin"]
+    },
+    "execution_start_date": null,
+    "execution_end_date": null,
+    "forms": {
+      "form1": {
+        "order": 1,
+        "fields": [
+          {
+            "input_type": "html",
+            "content": "First form"
+          },
+          {
+            "label": "Client name",
+            "key": "client_name",
+            "input_type": "text",
+            "default_value": null,
+            "enum": [],
+            "rules": {
+              "optional": false
+            }
+          },
+          {
+            "label": "Location",
+            "key": "location",
+            "input_type": "text",
+            "default_value": null,
+            "enum": [],
+            "rules": {
+              "optional": true
+            }
+          }
+        ]
+      },
+      "form2": {
+        "order": 2,
+        "fields": [
+          {
+            "label": "Start date",
+            "key": "start_date",
+            "input_type": "datetime",
+            "default_value": null,
+            "enum": [],
+            "rules": {
+              "optional": false,
+              "min_date": 1655086103798
+            }
+          },
+          {
+            "label": "End date",
+            "key": "end_date",
+            "input_type": "datetime",
+            "default_value": null,
+            "enum": [],
+            "rules": {
+              "optional": false,
+              "min_date": 1655086103798,
+              "max_date": 1655222400000
+            }
+          },
+          {
+            "label": "Sample picture",
+            "key": "picture",
+            "input_type": "image",
+            "default_value": null,
+            "enum": ["card", "cash"],
+            "rules": {
+              "optional": true,
+              "min_image": 0,
+              "max_image": 5
+            }
+          },
+          {
+            "label": "Sample file",
+            "key": "file",
+            "input_type": "file",
+            "default_value": null,
+            "enum": [],
+            "rules": {
+              "optional": true,
+              "min_image": 0,
+              "max_image": 2
+            }
+          }
+        ]
+      }
+    }
+  },
+  {
+    "task_details": [
+      {
+        "label": "Client name",
+        "order": 1,
+        "show_in_table": true,
+        "value": null
+      },
+      {
+        "label": "Location",
+        "order": null,
+        "show_in_table": false,
+        "value": null
+      },
+      {
+        "label": "Reading",
+        "order": 2,
+        "show_in_table": true,
+        "value": null
+      },
+      {
+        "label": "Anomaly types",
+        "order": 3,
+        "show_in_table": true,
+        "value": null
+      },
+      {
+        "label": "Reading date",
+        "order": 4,
+        "show_in_table": true,
+        "value": null
+      }
+    ],
+    "assigned_to": null,
+    "status_id": "new",
+    "type_id": "water_reading",
+    "is_archived": 0,
+    "created_at": 1654012800000,
+    "archived_at": null,
+    "last_updated_at": 1654012800000,
+    "last_updated_by": {
+      "user_name": "Admin 3",
+      "user_sub": "sub00-00000-00003",
+      "user_groups": ["admin"]
+    },
+    "execution_start_date": null,
+    "execution_end_date": null,
+    "forms": null
+  },
+  {
+    "task_details": [
+      {
+        "label": "Client name",
+        "order": 1,
+        "show_in_table": true,
+        "value": null
+      },
+      {
+        "label": "Location",
+        "order": null,
+        "show_in_table": false,
+        "value": null
+      },
+      {
+        "label": "Reading",
+        "order": 2,
+        "show_in_table": true,
+        "value": null
+      },
+      {
+        "label": "Anomaly types",
+        "order": 3,
+        "show_in_table": true,
+        "value": null
+      },
+      {
+        "label": "Reading date",
+        "order": 4,
+        "show_in_table": true,
+        "value": null
+      }
+    ],
+    "assigned_to": {
+      "agent_name": "Person 3",
+      "agent_sub": "sub12-00000-00003",
+      "agent_groups": ["agent"]
+    },
+    "status_id": "assigned",
+    "type_id": "water_reading",
+    "is_archived": 0,
+    "created_at": 1654012800000,
+    "archived_at": null,
+    "last_updated_at": 1654012800000,
+    "last_updated_by": {
+      "user_name": "Admin 3",
+      "user_sub": "sub00-00000-00003",
+      "user_groups": ["admin"]
+    },
+    "execution_start_date": null,
+    "execution_end_date": null,
+    "forms": null
+  },
+  {
+    "task_details": [
+      {
+        "label": "Client name",
+        "order": 1,
+        "show_in_table": true,
+        "value": null
+      },
+      {
+        "label": "Location",
+        "order": null,
+        "show_in_table": false,
+        "value": null
+      },
+      {
+        "label": "Location",
+        "order": 2,
+        "show_in_table": false,
+        "value": null
+      },
+      {
+        "label": "Anomaly types",
+        "order": 3,
+        "show_in_table": true,
+        "value": null
+      },
+      {
+        "label": "Reading date",
+        "order": 4,
+        "show_in_table": true,
+        "value": null
+      }
+    ],
+    "assigned_to": {
+      "agent_name": "Person 3",
+      "agent_sub": "sub12-00000-00003",
+      "agent_groups": ["agent"]
+    },
+    "status_id": "in_progress",
+    "type_id": "water_reading",
+    "is_archived": 0,
+    "created_at": 1654012800000,
+    "archived_at": null,
+    "last_updated_at": 1654012800000,
+    "last_updated_by": {
+      "user_name": "Admin 3",
+      "user_sub": "sub00-00000-00003",
+      "user_groups": ["admin"]
+    },
+    "execution_start_date": null,
+    "execution_end_date": null,
+    "forms": {
+      "form1": {
+        "order": 1,
+        "fields": [
+          {
+            "input_type": "html",
+            "content": "First form"
+          },
+          {
+            "label": "Client name",
+            "key": "client_name",
+            "input_type": "text",
+            "default_value": null,
+            "enum": [],
+            "rules": {
+              "optional": false
+            }
+          },
+          {
+            "label": "Location",
+            "key": "location",
+            "input_type": "text",
+            "default_value": null,
+            "enum": [],
+            "rules": {
+              "optional": true
+            }
+          },
+          {
+            "label": "Reading value",
+            "key": "reading_value",
+            "input_type": "number",
+            "default_value": 0,
+            "enum": [],
+            "rules": {
+              "optional": false
+            }
+          },
+          {
+            "label": "Anomaly types",
+            "key": "anomaly",
+            "input_type": "enum",
+            "default_value": null,
+            "enum": ["bad_reading", "low_reading", "high_reading", "broken_meter"],
+            "rules": {
+              "optional": true,
+              "multi_select": true,
+              "min_select": 1,
+              "max_select": 2
+            }
+          },
+          {
+            "label": "Reading date",
+            "key": "reading_date",
+            "input_type": "date",
+            "default_value": null,
+            "enum": [],
+            "rules": {
+              "optional": false
+            }
+          }
+        ]
+      }
+    }
+  },
+  {
+    "task_details": [
+      {
+        "label": "Client name",
+        "order": 1,
+        "show_in_table": true,
+        "value": "Cat"
+      },
+      {
+        "label": "Location",
+        "order": null,
+        "show_in_table": false,
+        "value": "City 1, Country"
+      },
+      {
+        "label": "Anomaly types",
+        "order": 2,
+        "show_in_table": true,
+        "value": ["bad_reading", "low_reading"]
+      },
+      {
+        "label": "Reading date",
+        "order": 3,
+        "show_in_table": true,
+        "value": 1655087935558
+      }
+    ],
+    "assigned_to": {
+      "agent_name": "Person 3",
+      "agent_sub": "sub12-00000-00003",
+      "agent_groups": ["agent"]
+    },
+    "status_id": "done",
+    "type_id": "water_reading",
+    "is_archived": 0,
+    "created_at": 1654012800000,
+    "archived_at": null,
+    "last_updated_at": 1654012800000,
+    "last_updated_by": {
+      "user_name": "Admin 3",
+      "user_sub": "sub00-00000-00003",
+      "user_groups": ["admin"]
+    },
+    "execution_start_date": null,
+    "execution_end_date": null,
+    "forms": {
+      "form1": {
+        "order": 1,
+        "fields": [
+          {
+            "input_type": "html",
+            "content": "First form"
+          },
+          {
+            "label": "Client name",
+            "key": "client_name",
+            "input_type": "text",
+            "default_value": null,
+            "enum": [],
+            "rules": {
+              "optional": false
+            }
+          },
+          {
+            "label": "Location",
+            "key": "location",
+            "input_type": "text",
+            "default_value": null,
+            "enum": [],
+            "rules": {
+              "optional": true
+            }
+          },
+          {
+            "label": "Reading value",
+            "key": "reading_value",
+            "input_type": "number",
+            "default_value": 0,
+            "enum": [],
+            "rules": {
+              "optional": false
+            }
+          },
+          {
+            "label": "Anomaly types",
+            "key": "anomaly",
+            "input_type": "enum",
+            "default_value": null,
+            "enum": ["bad_reading", "low_reading", "high_reading", "broken_meter"],
+            "rules": {
+              "optional": true,
+              "multi_select": true,
+              "min_select": 1,
+              "max_select": 2
+            }
+          },
+          {
+            "label": "Reading date",
+            "key": "reading_date",
+            "input_type": "date",
+            "default_value": null,
+            "enum": [],
+            "rules": {
+              "optional": false
+            }
+          }
+        ]
+      }
+    }
+  },
+  {
+    "task_details": [
+      {
+        "label": "Client name",
+        "order": 1,
+        "show_in_table": true,
+        "value": null
+      },
+      {
+        "label": "Location",
+        "order": null,
+        "show_in_table": false,
+        "value": null
+      },
+      {
+        "label": "Reading",
+        "order": 2,
+        "show_in_table": true,
+        "value": null
+      },
+      {
+        "label": "Anomaly types",
+        "order": 3,
+        "show_in_table": true,
+        "value": null
+      },
+      {
+        "label": "Reading date",
+        "order": 4,
+        "show_in_table": true,
+        "value": null
+      }
+    ],
+    "assigned_to": null,
+    "status_id": "new",
+    "type_id": "water_reading",
+    "is_archived": 0,
+    "created_at": 1654012800000,
+    "archived_at": null,
+    "last_updated_at": 1654012800000,
+    "last_updated_by": {
+      "user_name": "Admin 3",
+      "user_sub": "sub00-00000-00003",
+      "user_groups": ["admin"]
+    },
+    "execution_start_date": null,
+    "execution_end_date": null,
+    "forms": null
+  },
+  {
+    "task_details": [
+      {
+        "label": "Client name",
+        "order": 1,
+        "show_in_table": true,
+        "value": null
+      },
+      {
+        "label": "Location",
+        "order": null,
+        "show_in_table": false,
+        "value": null
+      },
+      {
+        "label": "Reading",
+        "order": 2,
+        "show_in_table": true,
+        "value": null
+      },
+      {
+        "label": "Anomaly types",
+        "order": 3,
+        "show_in_table": true,
+        "value": null
+      },
+      {
+        "label": "Reading date",
+        "order": 4,
+        "show_in_table": true,
+        "value": null
+      }
+    ],
+    "assigned_to": {
+      "agent_name": "Person 3",
+      "agent_sub": "sub12-00000-00003",
+      "agent_groups": ["agent"]
+    },
+    "status_id": "assigned",
+    "type_id": "water_reading",
+    "is_archived": 0,
+    "created_at": 1654012800000,
+    "archived_at": null,
+    "last_updated_at": 1654012800000,
+    "last_updated_by": {
+      "user_name": "Admin 3",
+      "user_sub": "sub00-00000-00003",
+      "user_groups": ["admin"]
+    },
+    "execution_start_date": null,
+    "execution_end_date": null,
+    "forms": null
+  },
+  {
+    "task_details": [
+      {
+        "label": "Client name",
+        "order": 1,
+        "show_in_table": true,
+        "value": null
+      },
+      {
+        "label": "Location",
+        "order": null,
+        "show_in_table": false,
+        "value": null
+      },
+      {
+        "label": "Location",
+        "order": 2,
+        "show_in_table": false,
+        "value": null
+      },
+      {
+        "label": "Anomaly types",
+        "order": 3,
+        "show_in_table": true,
+        "value": null
+      },
+      {
+        "label": "Reading date",
+        "order": 4,
+        "show_in_table": true,
+        "value": null
+      }
+    ],
+    "assigned_to": {
+      "agent_name": "Person 3",
+      "agent_sub": "sub12-00000-00003",
+      "agent_groups": ["agent"]
+    },
+    "status_id": "in_progress",
+    "type_id": "water_reading",
+    "is_archived": 0,
+    "created_at": 1654012800000,
+    "archived_at": null,
+    "last_updated_at": 1654012800000,
+    "last_updated_by": {
+      "user_name": "Admin 3",
+      "user_sub": "sub00-00000-00003",
+      "user_groups": ["admin"]
+    },
+    "execution_start_date": null,
+    "execution_end_date": null,
+    "forms": {
+      "form1": {
+        "order": 1,
+        "fields": [
+          {
+            "input_type": "html",
+            "content": "First form"
+          },
+          {
+            "label": "Client name",
+            "key": "client_name",
+            "input_type": "text",
+            "default_value": null,
+            "enum": [],
+            "rules": {
+              "optional": false
+            }
+          },
+          {
+            "label": "Location",
+            "key": "location",
+            "input_type": "text",
+            "default_value": null,
+            "enum": [],
+            "rules": {
+              "optional": true
+            }
+          },
+          {
+            "label": "Reading value",
+            "key": "reading_value",
+            "input_type": "number",
+            "default_value": 0,
+            "enum": [],
+            "rules": {
+              "optional": false
+            }
+          },
+          {
+            "label": "Anomaly types",
+            "key": "anomaly",
+            "input_type": "enum",
+            "default_value": null,
+            "enum": ["bad_reading", "low_reading", "high_reading", "broken_meter"],
+            "rules": {
+              "optional": true,
+              "multi_select": true,
+              "min_select": 1,
+              "max_select": 2
+            }
+          },
+          {
+            "label": "Reading date",
+            "key": "reading_date",
+            "input_type": "date",
+            "default_value": null,
+            "enum": [],
+            "rules": {
+              "optional": false
+            }
+          }
+        ]
+      }
+    }
+  },
+  {
+    "task_details": [
+      {
+        "label": "Client name",
+        "order": 1,
+        "show_in_table": true,
+        "value": "Cat"
+      },
+      {
+        "label": "Location",
+        "order": null,
+        "show_in_table": false,
+        "value": "City 1, Country"
+      },
+      {
+        "label": "Anomaly types",
+        "order": 2,
+        "show_in_table": true,
+        "value": ["bad_reading", "low_reading"]
+      },
+      {
+        "label": "Reading date",
+        "order": 3,
+        "show_in_table": true,
+        "value": 1655087935558
+      }
+    ],
+    "assigned_to": {
+      "agent_name": "Person 3",
+      "agent_sub": "sub12-00000-00003",
+      "agent_groups": ["agent"]
+    },
+    "status_id": "done",
+    "type_id": "water_reading",
+    "is_archived": 0,
+    "created_at": 1654012800000,
+    "archived_at": null,
+    "last_updated_at": 1654012800000,
+    "last_updated_by": {
+      "user_name": "Admin 3",
+      "user_sub": "sub00-00000-00003",
+      "user_groups": ["admin"]
+    },
+    "execution_start_date": null,
+    "execution_end_date": null,
+    "forms": {
+      "form1": {
+        "order": 1,
+        "fields": [
+          {
+            "input_type": "html",
+            "content": "First form"
+          },
+          {
+            "label": "Client name",
+            "key": "client_name",
+            "input_type": "text",
+            "default_value": null,
+            "enum": [],
+            "rules": {
+              "optional": false
+            }
+          },
+          {
+            "label": "Location",
+            "key": "location",
+            "input_type": "text",
+            "default_value": null,
+            "enum": [],
+            "rules": {
+              "optional": true
+            }
+          },
+          {
+            "label": "Reading value",
+            "key": "reading_value",
+            "input_type": "number",
+            "default_value": 0,
+            "enum": [],
+            "rules": {
+              "optional": false
+            }
+          },
+          {
+            "label": "Anomaly types",
+            "key": "anomaly",
+            "input_type": "enum",
+            "default_value": null,
+            "enum": ["bad_reading", "low_reading", "high_reading", "broken_meter"],
+            "rules": {
+              "optional": true,
+              "multi_select": true,
+              "min_select": 1,
+              "max_select": 2
+            }
+          },
+          {
+            "label": "Reading date",
+            "key": "reading_date",
+            "input_type": "date",
+            "default_value": null,
+            "enum": [],
+            "rules": {
+              "optional": false
+            }
+          }
+        ]
+      }
+    }
+  },
+  {
+    "task_details": [
+      {
+        "label": "Client name",
+        "order": 1,
+        "show_in_table": true,
+        "value": null
+      },
+      {
+        "label": "Agent notes",
+        "order": null,
+        "show_in_table": false,
+        "value": null
+      },
+      {
+        "label": "Payment",
+        "order": 2,
+        "show_in_table": true,
+        "value": null
+      },
+      {
+        "label": "Has Paid?",
+        "order": 3,
+        "show_in_table": true,
+        "value": null
+      },
+      {
+        "label": "Payment Date",
+        "order": 4,
+        "show_in_table": true,
+        "value": null
+      },
+      {
+        "label": "Payment method",
+        "order": null,
+        "show_in_table": false,
+        "value": null
+      }
+    ],
+    "assigned_to": null,
+    "status_id": "new",
+    "type_id": "debt",
+    "is_archived": 0,
+    "created_at": 1654012800000,
+    "archived_at": null,
+    "last_updated_at": 1654012800000,
+    "last_updated_by": {
+      "user_name": "Admin 1",
+      "user_sub": "sub00-00000-00000",
+      "user_groups": ["admin"]
+    },
+    "execution_start_date": null,
+    "execution_end_date": null,
+    "forms": null
+  },
+  {
+    "task_details": [
+      {
+        "label": "Client name",
+        "order": 1,
+        "show_in_table": true,
+        "value": null
+      },
+      {
+        "label": "Agent notes",
+        "order": null,
+        "show_in_table": false,
+        "value": null
+      },
+      {
+        "label": "Payment",
+        "order": 2,
+        "show_in_table": true,
+        "value": null
+      },
+      {
+        "label": "Has Paid?",
+        "order": 3,
+        "show_in_table": true,
+        "value": null
+      },
+      {
+        "label": "Payment Date",
+        "order": 4,
+        "show_in_table": true,
+        "value": null
+      },
+      {
+        "label": "Payment method",
+        "order": null,
+        "show_in_table": false,
+        "value": null
+      }
+    ],
+    "assigned_to": null,
+    "status_id": "assigned",
+    "type_id": "debt",
+    "is_archived": 0,
+    "created_at": 1654012800000,
+    "archived_at": null,
+    "last_updated_at": 1654012800000,
+    "last_updated_by": {
+      "user_name": "Admin 1",
+      "user_sub": "sub00-00000-00000",
+      "user_groups": ["admin"]
+    },
+    "execution_start_date": null,
+    "execution_end_date": null,
+    "forms": null
+  },
+  {
+    "task_details": [
+      {
+        "label": "Client name",
+        "order": 1,
+        "show_in_table": true,
+        "value": null
+      },
+      {
+        "label": "Agent notes",
+        "order": null,
+        "show_in_table": false,
+        "value": null
+      },
+      {
+        "label": "Payment",
+        "order": 2,
+        "show_in_table": true,
+        "value": null
+      },
+      {
+        "label": "Has Paid?",
+        "order": 3,
+        "show_in_table": true,
+        "value": null
+      },
+      {
+        "label": "Payment Date",
+        "order": 4,
+        "show_in_table": true,
+        "value": null
+      },
+      {
+        "label": "Payment method",
+        "order": null,
+        "show_in_table": false,
+        "value": null
+      }
+    ],
+    "assigned_to": {
+      "agent_name": "John Lopez",
+      "agent_sub": "sub12-00000-00000",
+      "agent_groups": ["agent"]
+    },
+    "status_id": "in_progress",
+    "type_id": "debt",
+    "is_archived": 0,
+    "created_at": 1654012800000,
+    "archived_at": null,
+    "last_updated_at": 1654012800000,
+    "last_updated_by": {
+      "user_name": "Admin 1",
+      "user_sub": "sub00-00000-00000",
+      "user_groups": ["admin"]
+    },
+    "execution_start_date": null,
+    "execution_end_date": null,
+    "forms": {
+      "form1": {
+        "order": 1,
+        "fields": [
+          {
+            "input_type": "html",
+            "content": "First form"
+          },
+          {
+            "label": "Client name",
+            "key": "client_name",
+            "input_type": "text",
+            "default_value": null,
+            "enum": [],
+            "rules": {
+              "optional": false
+            }
+          }
+        ]
+      },
+      "form2": {
+        "order": 2,
+        "fields": [
+          {
+            "label": "Has Paid?",
+            "key": "paid",
+            "input_type": "boolean",
+            "default_value": false,
+            "enum": [],
+            "rules": {}
+          },
+          {
+            "label": "Payment",
+            "key": "payment",
+            "input_type": "number",
+            "default_value": false,
+            "enum": [],
+            "rules": {
+              "optional": true,
+              "accept_float": true
+            }
+          },
+          {
+            "label": "Payment method",
+            "key": "payment",
+            "input_type": "number",
+            "default_value": false,
+            "enum": ["card", "cash"],
+            "rules": {
+              "optional": true,
+              "multi_select": false
+            }
+          },
+          {
+            "label": "Payment date",
+            "key": "payment_date",
+            "input_type": "date",
+            "default_value": null,
+            "enum": [],
+            "rules": {
+              "optional": true,
+              "min_date": 1654012800000
+            }
+          }
+        ]
+      }
+    }
+  },
+  {
+    "task_details": [
+      {
+        "label": "Client name",
+        "order": 1,
+        "show_in_table": true,
+        "value": "Joe mama"
+      },
+      {
+        "label": "Agent notes",
+        "order": null,
+        "show_in_table": false,
+        "value": "Client was angry"
+      },
+      {
+        "label": "Payment",
+        "order": 2,
+        "show_in_table": true,
+        "value": 10.99
+      },
+      {
+        "label": "Has Paid?",
+        "order": 3,
+        "show_in_table": true,
+        "value": true
+      },
+      {
+        "label": "Payment Date",
+        "order": 4,
+        "show_in_table": true,
+        "value": 1654012800000
+      },
+      {
+        "label": "Payment method",
+        "order": null,
+        "show_in_table": false,
+        "value": "card"
+      }
+    ],
+    "assigned_to": {
+      "agent_name": "John Lopez",
+      "agent_sub": "sub12-00000-00000",
+      "agent_groups": ["agent"]
+    },
+    "status_id": "done",
+    "type_id": "debt",
+    "is_archived": 0,
+    "created_at": 1654012800000,
+    "archived_at": null,
+    "last_updated_at": 1654012800000,
+    "last_updated_by": {
+      "user_name": "Admin 1",
+      "user_sub": "sub00-00000-00000",
+      "user_groups": ["admin"]
+    },
+    "execution_start_date": null,
+    "execution_end_date": null,
+    "forms": {
+      "form1": {
+        "order": 1,
+        "fields": [
+          {
+            "input_type": "html",
+            "content": "First form"
+          },
+          {
+            "label": "Client name",
+            "key": "client_name",
+            "input_type": "text",
+            "default_value": null,
+            "enum": [],
+            "rules": {
+              "optional": false
+            }
+          }
+        ]
+      },
+      "form2": {
+        "order": 2,
+        "fields": [
+          {
+            "label": "Has Paid?",
+            "key": "paid",
+            "input_type": "boolean",
+            "default_value": false,
+            "enum": [],
+            "rules": {}
+          },
+          {
+            "label": "Payment",
+            "key": "payment",
+            "input_type": "number",
+            "default_value": false,
+            "enum": [],
+            "rules": {
+              "optional": true,
+              "accept_float": true
+            }
+          },
+          {
+            "label": "Payment method",
+            "key": "payment",
+            "input_type": "number",
+            "default_value": false,
+            "enum": ["card", "cash"],
+            "rules": {
+              "optional": true,
+              "multi_select": false
+            }
+          },
+          {
+            "label": "Payment date",
+            "key": "payment_date",
+            "input_type": "date",
+            "default_value": null,
+            "enum": [],
+            "rules": {
+              "optional": true,
+              "min_date": 1654012800000
+            }
+          }
+        ]
+      }
+    }
+  },
+  {
+    "task_details": [
+      {
+        "label": "Client name",
+        "order": 1,
+        "show_in_table": true,
+        "value": null
+      },
+      {
+        "label": "Location",
+        "order": null,
+        "show_in_table": false,
+        "value": null
+      },
+      {
+        "label": "Start time",
+        "order": 2,
+        "show_in_table": true,
+        "value": null
+      },
+      {
+        "label": "End time",
+        "order": 3,
+        "show_in_table": true,
+        "value": null
+      },
+      {
+        "label": "Sample picture",
+        "order": 4,
+        "show_in_table": true,
+        "value": null
+      },
+      {
+        "label": "Sample file",
+        "order": null,
+        "show_in_table": false,
+        "value": null
+      }
+    ],
+    "assigned_to": null,
+    "status_id": "new",
+    "type_id": "measurement",
+    "is_archived": 0,
+    "created_at": 1654012800000,
+    "archived_at": null,
+    "last_updated_at": 1654012800000,
+    "last_updated_by": {
+      "user_name": "Admin 2",
+      "user_sub": "sub00-00000-00002",
+      "user_groups": ["admin"]
+    },
+    "execution_start_date": null,
+    "execution_end_date": null,
+    "forms": {}
+  },
+  {
+    "task_details": [
+      {
+        "label": "Client name",
+        "order": 1,
+        "show_in_table": true,
+        "value": null
+      },
+      {
+        "label": "Location",
+        "order": null,
+        "show_in_table": false,
+        "value": null
+      },
+      {
+        "label": "Start time",
+        "order": 2,
+        "show_in_table": true,
+        "value": null
+      },
+      {
+        "label": "End time",
+        "order": 3,
+        "show_in_table": true,
+        "value": null
+      },
+      {
+        "label": "Sample picture",
+        "order": 4,
+        "show_in_table": true,
+        "value": null
+      },
+      {
+        "label": "Sample file",
+        "order": null,
+        "show_in_table": false,
+        "value": null
+      }
+    ],
+    "assigned_to": null,
+    "status_id": "in_progress",
+    "type_id": "measurement",
+    "is_archived": 0,
+    "created_at": 1654012800000,
+    "archived_at": null,
+    "last_updated_at": 1654012800000,
+    "last_updated_by": {
+      "user_name": "Admin 2",
+      "user_sub": "sub00-00000-00002",
+      "user_groups": ["admin"]
+    },
+    "execution_start_date": null,
+    "execution_end_date": null,
+    "forms": {}
+  },
+  {
+    "task_details": [
+      {
+        "label": "Client name",
+        "order": 1,
+        "show_in_table": true,
+        "value": null
+      },
+      {
+        "label": "Location",
+        "order": null,
+        "show_in_table": false,
+        "value": null
+      },
+      {
+        "label": "Start time",
+        "order": 2,
+        "show_in_table": true,
+        "value": null
+      },
+      {
+        "label": "End time",
+        "order": 3,
+        "show_in_table": true,
+        "value": null
+      },
+      {
+        "label": "Sample picture",
+        "order": 4,
+        "show_in_table": true,
+        "value": null
+      },
+      {
+        "label": "Sample file",
+        "order": null,
+        "show_in_table": false,
+        "value": null
+      }
+    ],
+    "assigned_to": {
+      "agent_name": "Person 2",
+      "agent_sub": "sub12-00000-00002",
+      "agent_groups": ["agent"]
+    },
+    "status_id": "assigned",
+    "type_id": "measurement",
+    "is_archived": 0,
+    "created_at": 1654012800000,
+    "archived_at": null,
+    "last_updated_at": 1654012800000,
+    "last_updated_by": {
+      "user_name": "Admin 2",
+      "user_sub": "sub00-00000-00002",
+      "user_groups": ["admin"]
+    },
+    "execution_start_date": null,
+    "execution_end_date": null,
+    "forms": {
+      "form1": {
+        "order": 1,
+        "fields": [
+          {
+            "input_type": "html",
+            "content": "First form"
+          },
+          {
+            "label": "Client name",
+            "key": "client_name",
+            "input_type": "text",
+            "default_value": null,
+            "enum": [],
+            "rules": {
+              "optional": false
+            }
+          },
+          {
+            "label": "Location",
+            "key": "location",
+            "input_type": "text",
+            "default_value": null,
+            "enum": [],
+            "rules": {
+              "optional": true
+            }
+          }
+        ]
+      },
+      "form2": {
+        "order": 2,
+        "fields": [
+          {
+            "label": "Start date",
+            "key": "start_date",
+            "input_type": "datetime",
+            "default_value": null,
+            "enum": [],
+            "rules": {
+              "optional": false,
+              "min_date": 1655086103798
+            }
+          },
+          {
+            "label": "End date",
+            "key": "end_date",
+            "input_type": "datetime",
+            "default_value": null,
+            "enum": [],
+            "rules": {
+              "optional": false,
+              "min_date": 1655086103798,
+              "max_date": 1655222400000
+            }
+          },
+          {
+            "label": "Sample picture",
+            "key": "picture",
+            "input_type": "image",
+            "default_value": null,
+            "enum": ["card", "cash"],
+            "rules": {
+              "optional": true,
+              "min_image": 0,
+              "max_image": 5
+            }
+          },
+          {
+            "label": "Sample file",
+            "key": "file",
+            "input_type": "file",
+            "default_value": null,
+            "enum": [],
+            "rules": {
+              "optional": true,
+              "min_image": 0,
+              "max_image": 2
+            }
+          }
+        ]
+      }
+    }
+  },
+  {
+    "task_details": [
+      {
+        "label": "Client name",
+        "order": 1,
+        "show_in_table": true,
+        "value": "Random client"
+      },
+      {
+        "label": "Location",
+        "order": 2,
+        "show_in_table": true,
+        "value": "City 1, Country"
+      },
+      {
+        "label": "Start time",
+        "order": 2,
+        "show_in_table": true,
+        "value": 1655096400000
+      },
+      {
+        "label": "End time",
+        "order": 3,
+        "show_in_table": true,
+        "value": 1655103600000
+      },
+      {
+        "label": "Sample picture",
+        "order": null,
+        "show_in_table": false,
+        "value": "url_to_file"
+      },
+      {
+        "label": "Sample file",
+        "order": null,
+        "show_in_table": false,
+        "value": "url_to_file"
+      }
+    ],
+    "assigned_to": {
+      "agent_name": "Person 2",
+      "agent_sub": "sub12-00000-00002",
+      "agent_groups": ["agent"]
+    },
+    "status_id": "done",
+    "type_id": "measurement",
+    "is_archived": 0,
+    "created_at": 1654012800000,
+    "archived_at": null,
+    "last_updated_at": 1654012800000,
+    "last_updated_by": {
+      "user_name": "Admin 2",
+      "user_sub": "sub00-00000-00002",
+      "user_groups": ["admin"]
+    },
+    "execution_start_date": null,
+    "execution_end_date": null,
+    "forms": {
+      "form1": {
+        "order": 1,
+        "fields": [
+          {
+            "input_type": "html",
+            "content": "First form"
+          },
+          {
+            "label": "Client name",
+            "key": "client_name",
+            "input_type": "text",
+            "default_value": null,
+            "enum": [],
+            "rules": {
+              "optional": false
+            }
+          },
+          {
+            "label": "Location",
+            "key": "location",
+            "input_type": "text",
+            "default_value": null,
+            "enum": [],
+            "rules": {
+              "optional": true
+            }
+          }
+        ]
+      },
+      "form2": {
+        "order": 2,
+        "fields": [
+          {
+            "label": "Start date",
+            "key": "start_date",
+            "input_type": "datetime",
+            "default_value": null,
+            "enum": [],
+            "rules": {
+              "optional": false,
+              "min_date": 1655086103798
+            }
+          },
+          {
+            "label": "End date",
+            "key": "end_date",
+            "input_type": "datetime",
+            "default_value": null,
+            "enum": [],
+            "rules": {
+              "optional": false,
+              "min_date": 1655086103798,
+              "max_date": 1655222400000
+            }
+          },
+          {
+            "label": "Sample picture",
+            "key": "picture",
+            "input_type": "image",
+            "default_value": null,
+            "enum": ["card", "cash"],
+            "rules": {
+              "optional": true,
+              "min_image": 0,
+              "max_image": 5
+            }
+          },
+          {
+            "label": "Sample file",
+            "key": "file",
+            "input_type": "file",
+            "default_value": null,
+            "enum": [],
+            "rules": {
+              "optional": true,
+              "min_image": 0,
+              "max_image": 2
+            }
+          }
+        ]
+      }
+    }
+  }
+]

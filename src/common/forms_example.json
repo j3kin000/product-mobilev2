@@ -1,0 +1,117 @@
+{
+  "form1":{
+    "order": 1,
+    "conditions":{},
+    "fields":[
+      {
+        "label": "Type",
+        "inputType": "markup",
+        "defaultValue": ""
+      },
+      {
+        "label": "Start Task",
+        "key": "startTaskTime",
+        "inputType": "dateTimeButton",
+        "defaultValue": null,
+        "rules": { "required": true }
+      },
+      {
+        "label": "Arrived at Address",
+        "key": "arrivedAtAddressTime",
+        "inputType": "dateTimeButton",
+        "defaultValue": null,
+        "rules": { "required": true  }
+      },
+      {
+        "label": "Address Picture",
+        "key": "addressPicture",
+        "inputType": "takePictureButton",
+        "defaultValue": null,
+        "rules": { "required": true  }
+      },
+      {
+        "label": "On Property",
+        "key": "onProperty",
+        "inputType": "checkbox",
+        "defaultValue": null,
+        "enum": [ "YES", "NO" ],
+        "rules": { "required": true  }
+      }
+    ]
+  },
+  "form2":{
+    "order": 2,
+    "newPage": true,
+    "conditions":{
+      "form1.onProperty": ["YES"]
+    },
+    "fields":[
+      {
+        "label": "Identity of Person on Property",
+        "key": "identityOfPersonOnProperty",
+        "inputType": "dropdown",
+        "defaultValue": null,
+        "options": {
+          "minor": "Minor",
+          "adultOnBehalfOfDebtor": "Audul on behalf of debtor",
+          "debtor": "The debtor",
+          "other": "Other"
+        },
+        "rules": { "required": true  }
+      },
+      {
+        "label": "Reschedual Task",
+        "key": "reschedualTimeButton",
+        "inputType": "dateTime",
+        "defaultValue": null,
+        "rules": { "required": false  },
+        "conditions": {
+          "form2.identityOfPersonOnProperty": ["minor"]
+        }
+      },
+      {
+        "label": "Relation Type",
+        "key": "adultRelationTypeToDebtor",
+        "inputType": "dropdown",
+        "defaultValue": null,
+        "options": {
+          "soneOf": "Son of debtor",
+          "doughterOf": "Doughter of debtor",
+          "brotherOf": "Brother of debtor",
+          "sisterOf": "Sister of debtor",
+          "fatherOf": "Father of debtor",
+          "motherOf": "Mother of debtor",
+          "grandfatherOf": "Grandfather of debtor",
+          "grandmotherOf": "Grandmother of debtor",
+          "spouseOf": "Spouse of debtor",
+          "other": "Other"
+        },
+        "rules": { "required": true  },
+        "conditions": {
+          "form2.identityOfPersonOnProperty": ["adultOnBehalfOfDebtor"]
+        }
+      },
+      {
+        "label": "Familiar with debtor",
+        "key": "familiarWithDebtor",
+        "inputType": "checkbox",
+        "defaultValue": null,
+        "enum": [ "YES", "NO" ],
+        "rules": { "required": true  },
+        "conditions": {
+          "form2.identityOfPersonOnProperty": ["other"]
+        }
+      },
+      {
+        "label": "Name",
+        "key": "onAddressPersonName",
+        "inputType": "text",
+        "defaultValue": null,
+        "rules": { "required": true  },
+        "conditions": {
+          "form2.identityOfPersonOnProperty": ["adultOnBehalfOfDebtor", "other"]
+        }
+      }
+    ]
+  }
+}
