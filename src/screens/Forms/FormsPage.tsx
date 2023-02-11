@@ -9,42 +9,42 @@ import {
   I18nManager,
 } from 'react-native';
 
-import React, { useState, useEffect, useMemo, useRef, useContext } from 'react';
-import { scale } from '../../common/common';
-import { BottomMenu } from '../../components/BottomMenu';
-import { useNavigation } from '@react-navigation/native';
+import React, {useState, useEffect, useMemo, useRef, useContext} from 'react';
+import {scale} from '../../common/common';
+import {BottomMenu} from '../../components/BottomMenu';
+import {useNavigation} from '@react-navigation/native';
 import Lottie from 'lottie-react-native';
 import AsyncStorage from '@react-native-async-storage/async-storage';
-import { Dropdown } from './FormElements/Dropdown';
-import { DateTime } from './FormElements/DateTime';
-import { TextForm } from './FormElements/TextForm';
-import { SingleText } from './FormElements/SingleText';
-import { DateTimeButton } from './FormElements/DateTimeButton';
-import { TakePictureButton } from './FormElements/TakePictureButton';
-import { RadioButton } from './FormElements/RadioButton';
-import { PrinterButton } from './FormElements/PrinterButton';
-import { Sign } from '../Forms/FormElements/Sign';
-import { Geo } from '../Forms/FormElements/Geo';
-import { Button } from '../Forms/FormElements/Button';
-import { AttachImage } from '../Forms/FormElements/AttachImage';
-import { DateTimePicker } from './FormElements/DateTimePicker';
-import { FormContext, FormProvider } from './FormContext';
-import { useTranslation } from 'react-i18next';
-import { Checkbox } from './FormElements/Checkbox';
-import { useGlobal } from '../../global/index';
-import { DatePicker } from './FormElements/DatePicker';
-import { cloneDeep } from 'lodash';
-import { SurveyButton } from './FormElements/SurveyButton';
-import { Markup } from './FormElements/Markup';
+import {Dropdown} from './FormElements/Dropdown';
+import {DateTime} from './FormElements/DateTime';
+import {TextForm} from './FormElements/TextForm';
+import {SingleText} from './FormElements/SingleText';
+import {DateTimeButton} from './FormElements/DateTimeButton';
+import {TakePictureButton} from './FormElements/TakePictureButton';
+import {RadioButton} from './FormElements/RadioButton';
+import {PrinterButton} from './FormElements/PrinterButton';
+import {Sign} from '../Forms/FormElements/Sign';
+import {Geo} from '../Forms/FormElements/Geo';
+import {Button} from '../Forms/FormElements/Button';
+import {AttachImage} from '../Forms/FormElements/AttachImage';
+import {DateTimePicker} from './FormElements/DateTimePicker';
+import {FormContext, FormProvider} from './FormContext';
+import {useTranslation} from 'react-i18next';
+import {Checkbox} from './FormElements/Checkbox';
+import {useGlobal} from '../../global/index';
+import {DatePicker} from './FormElements/DatePicker';
+import {cloneDeep} from 'lodash';
+import {SurveyButton} from './FormElements/SurveyButton';
+import {Markup} from './FormElements/Markup';
 
 const FormsPageBasic = (props: any) => {
-  const { taskType, taskId, statusId, _id } = props.route.params.itemData;
+  const {taskType, taskId, statusId, _id} = props.route.params.itemData;
 
   const data = props.route.params.itemData;
   const id = data._id;
   const getGroupData = props.route.params.getUserGroup;
 
-  const [statuses] = useGlobal<{ statuses: any[] }>('statuses');
+  const [statuses] = useGlobal<{statuses: any[]}>('statuses');
 
   const [showAlert, setShowAlert] = useState(false);
   const [changeStatusResponse, setChangeStatusResponse] = useState(null);
@@ -54,11 +54,12 @@ const FormsPageBasic = (props: any) => {
   const formReference = useRef();
   const reference = useRef([]);
 
-  const { t } = useTranslation();
+  const {t} = useTranslation();
 
   const navigation = useNavigation();
 
-  const { requiredButEmptyFields, setRequiredButEmptyFields } = useContext(FormContext);
+  const {requiredButEmptyFields, setRequiredButEmptyFields} =
+    useContext(FormContext);
 
   const restoreProgress = async () => {
     const test = await AsyncStorage.getItem(id);
@@ -76,13 +77,16 @@ const FormsPageBasic = (props: any) => {
 
   useEffect(() => {
     const res = data.form?.reduce((acc, item) => {
-      const { key, inputType } = item;
+      const {key, inputType} = item;
 
       const arrayTypes = ['checkboxes', 'cameraButton'];
       const isArrayType = arrayTypes.includes(inputType);
 
-      if (isArrayType) acc[key] = [];
-      else acc[key] = '';
+      if (isArrayType) {
+        acc[key] = [];
+      } else {
+        acc[key] = '';
+      }
 
       return acc;
     }, {});
@@ -91,34 +95,46 @@ const FormsPageBasic = (props: any) => {
   }, [data]);
 
   const checkConditions = (currentValues, field) => {
-    const { conditions } = field;
+    const {conditions} = field;
 
-    if (!conditions || Object.keys(conditions).length < 1) return true;
+    if (!conditions || Object.keys(conditions).length < 1) {
+      return true;
+    }
 
-    return Object.entries<string[]>(conditions).every(([key, value]: [string, string[]]) => {
-      const formValue: string | string[] = currentValues[key];
+    return Object.entries<string[]>(conditions).every(
+      ([key, value]: [string, string[]]) => {
+        const formValue: string | string[] = currentValues[key];
 
-      return value.some(item => {
-        if (item === '!null') {
-          return Array.isArray(formValue) ? formValue.length : formValue;
-        } else {
-          if (Array.isArray(formValue)) return formValue.includes(item);
-          return formValue == item;
-        }
-      });
-    });
+        return value.some(item => {
+          if (item === '!null') {
+            return Array.isArray(formValue) ? formValue.length : formValue;
+          } else {
+            if (Array.isArray(formValue)) {
+              return formValue.includes(item);
+            }
+            return formValue == item;
+          }
+        });
+      },
+    );
   };
 
   // recursively setting up default values for the next fields to show
   const recursiveDisplay = (fields: any[], valueContainer) => {
-    const allShownFields = fields.filter(item => checkConditions(valueContainer, item));
+    const allShownFields = fields.filter(item =>
+      checkConditions(valueContainer, item),
+    );
 
-    const newFieldsToShow = allShownFields.filter(item => !(item.key in valueContainer));
+    const newFieldsToShow = allShownFields.filter(
+      item => !(item.key in valueContainer),
+    );
 
-    if (newFieldsToShow.length == 0) return valueContainer;
+    if (newFieldsToShow.length == 0) {
+      return valueContainer;
+    }
 
     for (const newField of newFieldsToShow) {
-      const { defaultValue, key, inputType } = newField;
+      const {defaultValue, key, inputType} = newField;
 
       let fallbackValue = inputType === 'checkboxes' ? [] : '';
 
@@ -128,7 +144,9 @@ const FormsPageBasic = (props: any) => {
         let resetValue = defaultValue;
 
         if (inputType === 'checkboxes') {
-          if (!Array.isArray(defaultValue)) resetValue = [defaultValue];
+          if (!Array.isArray(defaultValue)) {
+            resetValue = [defaultValue];
+          }
         }
 
         valueContainer[key] = resetValue;
@@ -140,16 +158,20 @@ const FormsPageBasic = (props: any) => {
 
   // recursively resets one value, its children, and so on and forth
   const recursiveReset = (fields: any[], valueContainer) => {
-    const invalidFields = fields.filter(item => !checkConditions(valueContainer, item));
+    const invalidFields = fields.filter(
+      item => !checkConditions(valueContainer, item),
+    );
     const invalidFieldKeys = invalidFields.map(item => item.key);
 
     const valuesToReset = Object.keys(valueContainer).filter(item =>
-      invalidFieldKeys.includes(item)
+      invalidFieldKeys.includes(item),
     );
 
     const noInvalid = valuesToReset.length < 1;
 
-    if (noInvalid) return valueContainer;
+    if (noInvalid) {
+      return valueContainer;
+    }
 
     for (const toRemove of invalidFields) {
       delete valueContainer[toRemove.key];
@@ -164,21 +186,29 @@ const FormsPageBasic = (props: any) => {
     const res = cloneDeep(values);
 
     if (Array.isArray(values[key])) {
-      if (Array.isArray(value)) res[key] = value;
-      else res[key].push(value);
-    } else res[key] = value;
+      if (Array.isArray(value)) {
+        res[key] = value;
+      } else {
+        res[key].push(value);
+      }
+    } else {
+      res[key] = value;
+    }
 
     const cleanedValues = recursiveReset(data.form, cloneDeep(res));
-    const currentAndFutureValues = recursiveDisplay(data.form, cloneDeep(cleanedValues));
+    const currentAndFutureValues = recursiveDisplay(
+      data.form,
+      cloneDeep(cleanedValues),
+    );
 
     // if value is truthy, remove required error
     if (value) {
       const removedKeys = Object.keys(res).filter(
-        item => !Object.keys(currentAndFutureValues).includes(item)
+        item => !Object.keys(currentAndFutureValues).includes(item),
       );
 
       const resetRemovedKeys = requiredButEmptyFields.filter(
-        item => item !== key && !removedKeys.includes(item)
+        item => item !== key && !removedKeys.includes(item),
       );
 
       setRequiredButEmptyFields(resetRemovedKeys);
@@ -212,13 +242,23 @@ const FormsPageBasic = (props: any) => {
   };
 
   const currentStatusLabel = useMemo(() => {
-    if (!statuses) return statusId;
+    if (!statuses) {
+      return statusId;
+    }
 
     const statusObject = statuses.find(item => item.Key === statusId);
     return statusObject?.label ?? statusId;
   }, [statusId, statuses]);
 
-  const scrollTo = ({ index, top, key }: { index?: number; top?: boolean; key?: string }) => {
+  const scrollTo = ({
+    index,
+    top,
+    key,
+  }: {
+    index?: number;
+    top?: boolean;
+    key?: string;
+  }) => {
     if (top) {
       formReference.current?.scrollTo({
         x: 0,
@@ -241,7 +281,9 @@ const FormsPageBasic = (props: any) => {
     } else if (key) {
       const elementIndex = dataSourceCords.findIndex(item => item.key === key);
 
-      if (elementIndex != null && elementIndex > -1) scrollTo({ index: elementIndex });
+      if (elementIndex != null && elementIndex > -1) {
+        scrollTo({index: elementIndex});
+      }
     }
   };
 
@@ -253,7 +295,9 @@ const FormsPageBasic = (props: any) => {
   }, [values, data]);
 
   useEffect(() => {
-    if (shownFields?.length < 1) return;
+    if (shownFields?.length < 1) {
+      return;
+    }
 
     reference.current = [];
 
@@ -263,7 +307,7 @@ const FormsPageBasic = (props: any) => {
   }, []);
 
   const createComponent = (item, index) => {
-    const { inputType } = item;
+    const {inputType} = item;
     let actions = [];
     if (item?.rules?.actions) {
       for (let action in item.rules.actions) {
@@ -282,11 +326,10 @@ const FormsPageBasic = (props: any) => {
                 key: item.key,
               };
               setDataSourceCords(dataSourceCords);
-            }}
-          >
+            }}>
             <Dropdown
               focusComponent={() => {
-                scrollTo({ index });
+                scrollTo({index});
               }}
               ref={reference.current[index]}
               itemData={item}
@@ -296,7 +339,11 @@ const FormsPageBasic = (props: any) => {
               availableActions={actions}
               wholeTask={data}
               value={item.value}
-              defaultValue={statusId === 'escalate' ? item.value ?? '' : values[item.key] ?? ''}
+              defaultValue={
+                statusId === 'escalate'
+                  ? item.value ?? ''
+                  : values[item.key] ?? ''
+              }
             />
             {requiredButEmptyFields.includes(item.key) ? (
               <Text style={styles.errorText}>{t('required')}</Text>
@@ -314,12 +361,11 @@ const FormsPageBasic = (props: any) => {
                 key: item.key,
               };
               setDataSourceCords(dataSourceCords);
-            }}
-          >
+            }}>
             <DateTime
               focusComponent={() => {
                 focusComponent(index + 1);
-                scrollTo({ index });
+                scrollTo({index});
               }}
               ref={reference.current[index]}
               itemData={item}
@@ -328,7 +374,9 @@ const FormsPageBasic = (props: any) => {
               availableActions={actions}
               wholeTask={data}
               defaultValue={
-                statusId === 'escalate' ? item.value ?? '' : defaultValues[item.key] ?? ''
+                statusId === 'escalate'
+                  ? item.value ?? ''
+                  : defaultValues[item.key] ?? ''
               }
             />
             {requiredButEmptyFields.includes(item.key) ? (
@@ -347,8 +395,7 @@ const FormsPageBasic = (props: any) => {
                 key: item.key,
               };
               setDataSourceCords(dataSourceCords);
-            }}
-          >
+            }}>
             <Checkbox
               focusComponent={() => {
                 focusComponent(index + 1);
@@ -359,7 +406,11 @@ const FormsPageBasic = (props: any) => {
               handleElementField={handleElementField}
               availableActions={actions}
               wholeTask={data}
-              defaultValue={statusId === 'escalate' ? item.value ?? '' : values[item.key] ?? ''}
+              defaultValue={
+                statusId === 'escalate'
+                  ? item.value ?? ''
+                  : values[item.key] ?? ''
+              }
             />
             {requiredButEmptyFields.includes(item.key) ? (
               <Text style={styles.errorText}>{t('required')}</Text>
@@ -377,12 +428,11 @@ const FormsPageBasic = (props: any) => {
                 key: item.key,
               };
               setDataSourceCords(dataSourceCords);
-            }}
-          >
+            }}>
             <SingleText
               focusComponent={() => {
                 focusComponent(index + 1);
-                scrollTo({ index });
+                scrollTo({index});
               }}
               ref={reference.current[index]}
               itemData={item}
@@ -391,7 +441,9 @@ const FormsPageBasic = (props: any) => {
               availableActions={actions}
               wholeTask={data}
               defaultValue={
-                statusId === 'escalate' ? item.value ?? '' : defaultValues[item.key] ?? ''
+                statusId === 'escalate'
+                  ? item.value ?? ''
+                  : defaultValues[item.key] ?? ''
               }
             />
             {requiredButEmptyFields.includes(item.key) ? (
@@ -410,11 +462,10 @@ const FormsPageBasic = (props: any) => {
                 key: item.key,
               };
               setDataSourceCords(dataSourceCords);
-            }}
-          >
+            }}>
             <TextForm
               focusComponent={() => {
-                scrollTo({ index: index + 1 });
+                scrollTo({index: index + 1});
               }}
               ref={reference.current[index]}
               itemData={item}
@@ -423,7 +474,9 @@ const FormsPageBasic = (props: any) => {
               availableActions={actions}
               wholeTask={data}
               defaultValue={
-                statusId === 'escalate' ? item.value ?? '' : defaultValues[item.key] ?? ''
+                statusId === 'escalate'
+                  ? item.value ?? ''
+                  : defaultValues[item.key] ?? ''
               }
             />
             {requiredButEmptyFields.includes(item.key) ? (
@@ -461,11 +514,10 @@ const FormsPageBasic = (props: any) => {
                 key: item.key,
               };
               setDataSourceCords(dataSourceCords);
-            }}
-          >
+            }}>
             <DateTimeButton
               focusComponent={() => {
-                scrollTo({ index });
+                scrollTo({index});
               }}
               ref={reference.current[index]}
               itemData={item}
@@ -498,11 +550,10 @@ const FormsPageBasic = (props: any) => {
               };
               setDataSourceCords(dataSourceCords);
             }}
-            style={styles.rowGap}
-          >
+            style={styles.rowGap}>
             <TakePictureButton
               focusComponent={() => {
-                scrollTo({ index });
+                scrollTo({index});
               }}
               ref={reference.current[index]}
               itemData={item}
@@ -513,7 +564,9 @@ const FormsPageBasic = (props: any) => {
               taskId={taskId}
               values={values}
               defaultValue={
-                statusId === 'escalate' ? item.value ?? '' : defaultValues[item.key] ?? ''
+                statusId === 'escalate'
+                  ? item.value ?? ''
+                  : defaultValues[item.key] ?? ''
               }
             />
             {requiredButEmptyFields.includes(item.key) ? (
@@ -532,11 +585,10 @@ const FormsPageBasic = (props: any) => {
                 key: item.key,
               };
               setDataSourceCords(dataSourceCords);
-            }}
-          >
+            }}>
             <RadioButton
               focusComponent={() => {
-                scrollTo({ index });
+                scrollTo({index});
               }}
               ref={reference.current[index]}
               itemData={item}
@@ -544,7 +596,11 @@ const FormsPageBasic = (props: any) => {
               handleElementField={handleElementField}
               availableActions={actions}
               wholeTask={data}
-              defaultValue={statusId === 'escalate' ? item.value ?? '' : values[item.key] ?? ''}
+              defaultValue={
+                statusId === 'escalate'
+                  ? item.value ?? ''
+                  : values[item.key] ?? ''
+              }
             />
             {requiredButEmptyFields.includes(item.key) ? (
               <Text style={styles.errorText}>{t('required')}</Text>
@@ -562,11 +618,10 @@ const FormsPageBasic = (props: any) => {
                 key: item.key,
               };
               setDataSourceCords(dataSourceCords);
-            }}
-          >
+            }}>
             <SurveyButton
               focusComponent={() => {
-                scrollTo({ index });
+                scrollTo({index});
               }}
               ref={reference.current[index]}
               itemData={item}
@@ -574,7 +629,11 @@ const FormsPageBasic = (props: any) => {
               handleElementField={handleElementField}
               availableActions={actions}
               wholeTask={data}
-              defaultValue={statusId === 'escalate' ? item.value ?? '' : values[item.key] ?? ''}
+              defaultValue={
+                statusId === 'escalate'
+                  ? item.value ?? ''
+                  : values[item.key] ?? ''
+              }
             />
             {requiredButEmptyFields.includes(item.key) ? (
               <Text style={styles.errorText}>{t('required')}</Text>
@@ -593,11 +652,10 @@ const FormsPageBasic = (props: any) => {
                   key: item.key,
                 };
                 setDataSourceCords(dataSourceCords);
-              }}
-            >
+              }}>
               <PrinterButton
                 focusComponent={() => {
-                  scrollTo({ index });
+                  scrollTo({index});
                 }}
                 ref={reference.current[index]}
                 itemData={item}
@@ -622,7 +680,7 @@ const FormsPageBasic = (props: any) => {
                 };
                 setDataSourceCords(dataSourceCords);
               }}
-            ></View>
+            />
           </>
         );
       case 'signature':
@@ -636,8 +694,7 @@ const FormsPageBasic = (props: any) => {
                 key: item.key,
               };
               setDataSourceCords(dataSourceCords);
-            }}
-          >
+            }}>
             <Sign
               ref={reference.current[index]}
               itemData={item}
@@ -657,7 +714,7 @@ const FormsPageBasic = (props: any) => {
         return (
           <Button
             focusComponent={() => {
-              scrollTo({ index });
+              scrollTo({index});
             }}
             ref={reference.current[index]}
             _id={_id}
@@ -675,7 +732,11 @@ const FormsPageBasic = (props: any) => {
             answersData={values}
             availableActions={actions}
             wholeTask={data}
-            defaultValue={defaultValues[item.key] === undefined ? '' : defaultValues[item.key]}
+            defaultValue={
+              defaultValues[item.key] === undefined
+                ? ''
+                : defaultValues[item.key]
+            }
           />
         );
       case 'attachButton':
@@ -689,8 +750,7 @@ const FormsPageBasic = (props: any) => {
                 key: item.key,
               };
               setDataSourceCords(dataSourceCords);
-            }}
-          >
+            }}>
             <AttachImage
               focusComponent={() => {
                 focusComponent(index + 1);
@@ -702,7 +762,11 @@ const FormsPageBasic = (props: any) => {
               availableActions={actions}
               wholeTask={data}
               taskId={taskId}
-              defaultValue={defaultValues[item.key] === undefined ? '' : defaultValues[item.key]}
+              defaultValue={
+                defaultValues[item.key] === undefined
+                  ? ''
+                  : defaultValues[item.key]
+              }
             />
             {requiredButEmptyFields.includes(item.key) ? (
               <Text style={styles.errorText}>{t('required')}</Text>
@@ -721,12 +785,11 @@ const FormsPageBasic = (props: any) => {
                 key: item.key,
               };
               setDataSourceCords(dataSourceCords);
-            }}
-          >
+            }}>
             <DatePicker
               focusComponent={() => {
                 focusComponent(index + 1);
-                scrollTo({ index });
+                scrollTo({index});
               }}
               ref={reference.current[index]}
               itemData={item}
@@ -735,7 +798,9 @@ const FormsPageBasic = (props: any) => {
               availableActions={actions}
               wholeTask={data}
               defaultValue={
-                statusId === 'escalate' ? item.value ?? '' : defaultValues[item.key] ?? ''
+                statusId === 'escalate'
+                  ? item.value ?? ''
+                  : defaultValues[item.key] ?? ''
               }
             />
           </View>
@@ -750,9 +815,17 @@ const FormsPageBasic = (props: any) => {
       {showAlert && (
         <View style={styles.lottieWrapper}>
           {changeStatusResponse == 200 ? (
-            <Lottie source={require('../../assets/lottie/lottie-checked.json')} autoPlay loop />
+            <Lottie
+              source={require('../../assets/lottie/lottie-checked.json')}
+              autoPlay
+              loop
+            />
           ) : (
-            <Lottie source={require('../../assets/lottie/cross.json')} autoPlay loop />
+            <Lottie
+              source={require('../../assets/lottie/cross.json')}
+              autoPlay
+              loop
+            />
           )}
         </View>
       )}
@@ -762,9 +835,11 @@ const FormsPageBasic = (props: any) => {
           style={styles.arrowBackWrapper}
           onPress={() => {
             navigation.goBack();
-          }}
-        >
-          <Image style={styles.arrowBack} source={require('../../assets/arrow-back-white.png')} />
+          }}>
+          <Image
+            style={styles.arrowBack}
+            source={require('../../assets/arrow-back-white.png')}
+          />
         </TouchableOpacity>
 
         <View style={styles.headerSigns}>
@@ -784,9 +859,11 @@ const FormsPageBasic = (props: any) => {
               setRequiredButEmptyFields([]);
               setShowRequiredError(false);
               await AsyncStorage.removeItem(id);
-            }}
-          >
-            <Image style={styles.undoIcon} source={require('../../assets/undo.png')} />
+            }}>
+            <Image
+              style={styles.undoIcon}
+              source={require('../../assets/undo.png')}
+            />
           </TouchableOpacity>
         </View>
       </View>
@@ -795,15 +872,18 @@ const FormsPageBasic = (props: any) => {
         overScrollMode="never"
         style={styles.scrollingArea}
         scrollEnabled={listScrolling}
-        ref={formReference}
-      >
-        <SafeAreaView style={styles.offsetTop}></SafeAreaView>
+        ref={formReference}>
+        <SafeAreaView style={styles.offsetTop} />
         {showRequiredError ? (
           <Text style={styles.errorSubmitText}>{t('submitRequiredError')}</Text>
         ) : null}
-        {data.form ? components : <Text style={styles.noForm}>{t('noFormElements')}</Text>}
+        {data.form ? (
+          components
+        ) : (
+          <Text style={styles.noForm}>{t('noFormElements')}</Text>
+        )}
       </ScrollView>
-      <SafeAreaView style={styles.offset}></SafeAreaView>
+      <SafeAreaView style={styles.offset} />
       <DateTimePicker onSelect={e => console.log(e)} />
 
       <BottomMenu fromWhere={'list'} />

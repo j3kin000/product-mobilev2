@@ -1,15 +1,22 @@
-import { StyleSheet, Text, View, Image, I18nManager, TouchableOpacity } from 'react-native';
-import React, { useState, useContext, useEffect, useMemo } from 'react';
-import { scale } from '../../../common/common';
-import { doAction } from '../FormActions';
-import { FormContext } from '../FormContext';
+import {
+  StyleSheet,
+  Text,
+  View,
+  Image,
+  I18nManager,
+  TouchableOpacity,
+} from 'react-native';
+import React, {useState, useContext, useEffect, useMemo} from 'react';
+import {scale} from '../../../common/common';
+import {doAction} from '../FormActions';
+import {FormContext} from '../FormContext';
 
 export const SurveyButton = React.forwardRef((props: any, ref) => {
-  const { handleElementField, availableActions, wholeTask } = props;
+  const {handleElementField, availableActions, wholeTask} = props;
 
-  const { label, key } = props.itemData;
+  const {label, key} = props.itemData;
 
-  const { setOpen, actionsQ, setActionsQ } = useContext(FormContext);
+  const {setOpen, actionsQ, setActionsQ} = useContext(FormContext);
 
   const isRtl = I18nManager.isRTL;
 
@@ -19,7 +26,7 @@ export const SurveyButton = React.forwardRef((props: any, ref) => {
 
   for (let option in props.itemData.options) {
     let text = props.itemData.options[option];
-    options.push({ option, text });
+    options.push({option, text});
   }
 
   useEffect(() => {
@@ -35,10 +42,12 @@ export const SurveyButton = React.forwardRef((props: any, ref) => {
             const callback = () => {
               return date;
             };
-            doAction({ type: availableActions[actions], wholeTask, callback });
+            doAction({type: availableActions[actions], wholeTask, callback});
           };
           setActionsQ([...actionsQ, res]);
-        } else doAction({ type: availableActions[actions], wholeTask });
+        } else {
+          doAction({type: availableActions[actions], wholeTask});
+        }
       }
       props.focusComponent();
     }
@@ -52,7 +61,9 @@ export const SurveyButton = React.forwardRef((props: any, ref) => {
         <>
           {i == 1 && (
             <Text style={styles.preWord}>
-              {props.itemData.options.preWord ? props.itemData.options.preWord : 'very bad'}
+              {props.itemData.options.preWord
+                ? props.itemData.options.preWord
+                : 'very bad'}
             </Text>
           )}
           <View style={styles.column} key={i}>
@@ -64,21 +75,25 @@ export const SurveyButton = React.forwardRef((props: any, ref) => {
                 setRadioState(i.toString());
                 handleElementField(key, i.toString(), true);
                 setIndex();
-              }}
-            >
+              }}>
               {radioState == i.toString() ? (
                 <Image
                   style={styles.image}
                   source={require('../../../assets/radio-button-checked.png')}
                 />
               ) : (
-                <Image style={styles.image} source={require('../../../assets/radio-button.png')} />
+                <Image
+                  style={styles.image}
+                  source={require('../../../assets/radio-button.png')}
+                />
               )}
             </TouchableOpacity>
           </View>
           {i == steps && (
             <Text style={styles.postWord}>
-              {props.itemData.options.postWord ? props.itemData.options.postWord : 'excellent'}
+              {props.itemData.options.postWord
+                ? props.itemData.options.postWord
+                : 'excellent'}
             </Text>
           )}
         </>
@@ -91,7 +106,9 @@ export const SurveyButton = React.forwardRef((props: any, ref) => {
 
   return (
     <View style={styles.container} ref={ref}>
-      <Text style={isRtl ? styles.labelRtl : styles.label}>{label ? label : null}</Text>
+      <Text style={isRtl ? styles.labelRtl : styles.label}>
+        {label ? label : null}
+      </Text>
       <View style={styles.row}>{shownSurvey}</View>
     </View>
   );

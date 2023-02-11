@@ -1,9 +1,16 @@
-import { StyleSheet, Text, View, Image, TouchableOpacity, I18nManager } from 'react-native';
-import React, { useMemo, useContext } from 'react';
-import { scale } from '../../common/common';
-import { useNavigation } from '@react-navigation/native';
+import {
+  StyleSheet,
+  Text,
+  View,
+  Image,
+  TouchableOpacity,
+  I18nManager,
+} from 'react-native';
+import React, {useMemo, useContext} from 'react';
+import {scale} from '../../common/common';
+import {useNavigation} from '@react-navigation/native';
 import Icon from 'react-native-vector-icons/MaterialCommunityIcons';
-import { LibContext } from '../../common/context/lib';
+import {LibContext} from '../../common/context/lib';
 
 // check what the table headers are
 // check how the table headers are displayed one by one in list item
@@ -11,22 +18,26 @@ import { LibContext } from '../../common/context/lib';
 export const ListItem = (props: any) => {
   const isRtl = I18nManager.isRTL;
 
-  const { backgroundColor, statusLabels, tableHeaders } = props;
+  const {backgroundColor, statusLabels, tableHeaders} = props;
 
-  const { statusId } = props?.itemData;
+  const {statusId} = props?.itemData;
 
   const fromListItemTab = [];
 
   const navigation = useNavigation();
 
-  const { parseValueForRender } = useContext(LibContext);
+  const {parseValueForRender} = useContext(LibContext);
 
   const detailMap = useMemo(() => {
-    if (!props.itemData) return {};
+    if (!props.itemData) {
+      return {};
+    }
 
-    const { taskDetails } = props.itemData;
+    const {taskDetails} = props.itemData;
 
-    if (!taskDetails) return {};
+    if (!taskDetails) {
+      return {};
+    }
 
     return taskDetails.reduce((acc, item) => {
       // TODO might need parsing
@@ -45,16 +56,15 @@ export const ListItem = (props: any) => {
             fromListItemTab: fromListItemTab,
           });
         }
-      }}
-    >
-      <View style={[styles.itemInfoWrapper, { backgroundColor: backgroundColor }]}>
+      }}>
+      <View
+        style={[styles.itemInfoWrapper, {backgroundColor: backgroundColor}]}>
         <View
           style={{
             flexDirection: 'row',
             justifyContent: 'space-around',
             width: '100%',
-          }}
-        >
+          }}>
           {tableHeaders.map(key => {
             let value = detailMap[key];
 
@@ -70,7 +80,9 @@ export const ListItem = (props: any) => {
               <View style={styles.cell}>
                 <Text style={styles.description}>
                   {key === 'urgentTask'
-                    ? value == true && <Icon name="exclamation" size={20} color="red" />
+                    ? value == true && (
+                        <Icon name="exclamation" size={20} color="red" />
+                      )
                     : parsedValue}
                 </Text>
               </View>

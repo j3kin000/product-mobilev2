@@ -8,20 +8,20 @@ import {
   SafeAreaView,
   ScrollView,
 } from 'react-native';
-import React, { useState, useEffect } from 'react';
-import { BottomMenu } from '../../components/BottomMenu';
-import { scale } from '../../common/common';
-import { useNavigation } from '@react-navigation/native';
+import React, {useState, useEffect} from 'react';
+import {BottomMenu} from '../../components/BottomMenu';
+import {scale} from '../../common/common';
+import {useNavigation} from '@react-navigation/native';
 import AsyncStorage from '@react-native-async-storage/async-storage';
-import { useTranslation } from 'react-i18next';
+import {useTranslation} from 'react-i18next';
 import RNRestart from 'react-native-restart';
-import { useGlobal, setGlobal } from '../../global/index';
+import {useGlobal, setGlobal} from '../../global/index';
 import moment from 'moment';
 
 export const Settings = () => {
   const isRtl = I18nManager.isRTL;
   const navigation = useNavigation();
-  const { t, i18n } = useTranslation();
+  const {t, i18n} = useTranslation();
   const [logo, setLogo] = useState('');
   const singOut = async () => {
     await AsyncStorage.removeItem('usernameRestore');
@@ -50,7 +50,7 @@ export const Settings = () => {
 
   const [userInfo] = useGlobal('userData');
   const [env, setEnv] = useState('');
-  const { auth_time, family_name, name, phone_number, email } = userInfo;
+  const {auth_time, family_name, name, phone_number, email} = userInfo;
   const formatedTime = moment(auth_time).format('HH:MM DD:MM:YYYY');
 
   const getEnv = async () => {
@@ -68,17 +68,16 @@ export const Settings = () => {
             position: 'absolute',
             top: scale(30),
             left: scale(20),
-          }}
-        >
+          }}>
           {env}
         </Text>
         <View style={styles.whitePanel} />
-        <View style={{ flexDirection: 'row' }}>
+        <View style={{flexDirection: 'row'}}>
           {logo != 'no_logo' ? (
             <View style={styles.headerLogoWrapper}>
               <Image
                 style={styles.headerLogo}
-                source={{ uri: logo }}
+                source={{uri: logo}}
                 resizeMode={'contain'}
               />
             </View>
@@ -86,9 +85,8 @@ export const Settings = () => {
           <Text
             style={[
               styles.switchText,
-              { alignSelf: logo == 'no_logo' ? 'center' : 'auto' },
-            ]}
-          >
+              {alignSelf: logo == 'no_logo' ? 'center' : 'auto'},
+            ]}>
             {t('switchLanguageHere')}
           </Text>
         </View>
@@ -97,7 +95,7 @@ export const Settings = () => {
 
         <View style={styles.languagesWrapper}>
           <TouchableOpacity
-            style={[styles.langBtn, { marginRight: scale(10) }]}
+            style={[styles.langBtn, {marginRight: scale(10)}]}
             onPress={() => {
               i18n
                 .changeLanguage(i18n.language === 'he' ? 'en' : 'he')
@@ -105,12 +103,11 @@ export const Settings = () => {
                   I18nManager.forceRTL(false);
                   RNRestart.Restart();
                 });
-            }}
-          >
+            }}>
             <Text style={styles.logoutText}>{t('english')}</Text>
           </TouchableOpacity>
           <TouchableOpacity
-            style={[styles.langBtn, { marginLeft: scale(10) }]}
+            style={[styles.langBtn, {marginLeft: scale(10)}]}
             onPress={() => {
               i18n
                 .changeLanguage(i18n.language === 'en' ? 'he' : 'en')
@@ -118,8 +115,7 @@ export const Settings = () => {
                   I18nManager.forceRTL(i18n.language === 'he');
                   RNRestart.Restart();
                 });
-            }}
-          >
+            }}>
             <Text style={styles.logoutText}>{t('hebrew')}</Text>
           </TouchableOpacity>
         </View>
@@ -159,7 +155,7 @@ export const Settings = () => {
           <Text style={styles.logoutText}>{t('logout')}</Text>
         </TouchableOpacity>
       </ScrollView>
-      <SafeAreaView style={styles.offset}></SafeAreaView>
+      <SafeAreaView style={styles.offset} />
       <BottomMenu fromWhere={'settings'} />
     </View>
   );

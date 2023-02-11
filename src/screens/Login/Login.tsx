@@ -21,11 +21,10 @@ import {useNavigation} from '@react-navigation/native';
 import AsyncStorage from '@react-native-async-storage/async-storage';
 import {Checkbox} from '../../components/Checkbox';
 import {useTranslation} from 'react-i18next';
-import {MessagingService} from '../../common/messaging';
 
 export const Login = () => {
   const navigation = useNavigation();
-  const {t} = useTranslation();
+  const {t, i18n} = useTranslation();
 
   const isRtl = I18nManager.isRTL;
 
@@ -63,7 +62,6 @@ export const Login = () => {
     const userData = await getProfileInfo(IdToken);
 
     if (IdToken && stayLoggedIn == 'true' && userData.name) {
-      await MessagingService.registerDeviceForNotification(IdToken);
       navigation.replace('Home');
     }
   };
@@ -77,7 +75,6 @@ export const Login = () => {
       if (loginResponse?.data?.AuthenticationResult) {
         const IdToken = loginResponse.data.AuthenticationResult.IdToken;
 
-        await MessagingService.registerDeviceForNotification(IdToken);
         await AsyncStorage.setItem('usernameRestore', username);
         // await AsyncStorage.setItem("passwordRestore", password)
         await AsyncStorage.setItem('IdToken', IdToken);

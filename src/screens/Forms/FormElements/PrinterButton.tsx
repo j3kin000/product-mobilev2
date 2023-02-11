@@ -1,34 +1,42 @@
-import { StyleSheet, Text, View, Image, TouchableOpacity } from 'react-native';
-import React, { useContext, useState, useEffect } from 'react';
-import { scale } from '../../../common/common';
-import { doAction } from '../FormActions';
-import { FormContext } from '../FormContext';
+import {StyleSheet, Text, View, Image, TouchableOpacity} from 'react-native';
+import React, {useContext, useState, useEffect} from 'react';
+import {scale} from '../../../common/common';
+import {doAction} from '../FormActions';
+import {FormContext} from '../FormContext';
 import RNHTMLtoPDF from 'react-native-html-to-pdf';
 import RNPrint from 'react-native-print';
-import { useTranslation } from 'react-i18next';
+import {useTranslation} from 'react-i18next';
 import _ from 'lodash';
 import moment from 'moment';
 import AsyncStorage from '@react-native-async-storage/async-storage';
-import { getImageFromAmazon } from '../../../api/index';
+import {getImageFromAmazon} from '../../../api/index';
 
 export const PrinterButton = React.forwardRef((props: any, ref) => {
   const [getString, setString] = useState('');
 
-  const { label, key } = props?.itemData;
-  let { displayValue } = props?.itemData;
-  const { taskId } = props;
+  const {label, key} = props?.itemData;
+  let {displayValue} = props?.itemData;
+  const {taskId} = props;
   console.log(props.itemData);
 
-  const { t } = useTranslation();
+  const {t} = useTranslation();
 
-  const { handleElementField, availableActions, wholeTask, getUserGroup, values } = props;
+  const {
+    handleElementField,
+    availableActions,
+    wholeTask,
+    getUserGroup,
+    values,
+  } = props;
 
   displayValue = displayValue ? displayValue : '';
   var getFromBetween = {
     results: [],
     string: '',
     getFromBetween: function (sub1, sub2) {
-      if (this.string.indexOf(sub1) < 0 || this.string.indexOf(sub2) < 0) return false;
+      if (this.string.indexOf(sub1) < 0 || this.string.indexOf(sub2) < 0) {
+        return false;
+      }
       var SP = this.string.indexOf(sub1) + sub1.length;
       var string1 = this.string.substr(0, SP);
       var string2 = this.string.substr(SP);
@@ -36,18 +44,24 @@ export const PrinterButton = React.forwardRef((props: any, ref) => {
       return this.string.substring(SP, TP);
     },
     removeFromBetween: function (sub1, sub2) {
-      if (this.string.indexOf(sub1) < 0 || this.string.indexOf(sub2) < 0) return false;
+      if (this.string.indexOf(sub1) < 0 || this.string.indexOf(sub2) < 0) {
+        return false;
+      }
       var removal = sub1 + this.getFromBetween(sub1, sub2) + sub2;
       this.string = this.string.replace(removal, '');
     },
     getAllResults: function (sub1, sub2) {
-      if (this.string.indexOf(sub1) < 0 || this.string.indexOf(sub2) < 0) return;
+      if (this.string.indexOf(sub1) < 0 || this.string.indexOf(sub2) < 0) {
+        return;
+      }
       var result = this.getFromBetween(sub1, sub2);
       this.results.push(result);
       this.removeFromBetween(sub1, sub2);
       if (this.string.indexOf(sub1) > -1 && this.string.indexOf(sub2) > -1) {
         this.getAllResults(sub1, sub2);
-      } else return;
+      } else {
+        return;
+      }
     },
     get: function (string, sub1, sub2) {
       this.results = [];
@@ -87,17 +101,25 @@ export const PrinterButton = React.forwardRef((props: any, ref) => {
 
     const matchGroup = groupData.find(group => group.GroupName === taskGroup);
 
-    if (matchGroup == null) return cleanedText;
+    if (matchGroup == null) {
+      return cleanedText;
+    }
 
-    const matchAttribute = matchGroup.Attributes.find(attr => attr.key === attrKey);
+    const matchAttribute = matchGroup.Attributes.find(
+      attr => attr.key === attrKey,
+    );
 
-    if (matchAttribute == null) return cleanedText;
+    if (matchAttribute == null) {
+      return cleanedText;
+    }
 
     const valueToPlace = matchAttribute.value;
 
     const isValueImage = valueToPlace.toLowerCase().includes('data:image');
 
-    if (isValueImage) return text.replace(expression, `<img src='${valueToPlace}'/>`);
+    if (isValueImage) {
+      return text.replace(expression, `<img src='${valueToPlace}'/>`);
+    }
 
     return text.replace(expression, valueToPlace);
   };
@@ -115,24 +137,32 @@ export const PrinterButton = React.forwardRef((props: any, ref) => {
   }) => {
     const expression = new RegExp(`{{data:${detailKey}}}`, 'g');
 
-    if (detailValue != null) return text.replace(expression, detailValue);
+    if (detailValue != null) {
+      return text.replace(expression, detailValue);
+    }
 
     const cleanedText = text.replace(expression, '');
 
     const matchDetail = taskDetails.find(item => item.key === detailKey);
 
-    if (matchDetail == null) return cleanedText;
+    if (matchDetail == null) {
+      return cleanedText;
+    }
 
     const matchValue = matchDetail.value;
 
-    if (matchValue == null) return cleanedText;
+    if (matchValue == null) {
+      return cleanedText;
+    }
 
     if (Array.isArray(matchValue)) {
       const joined = matchValue.join(', ');
       return text.replace(expression, joined);
     }
 
-    if (matchValue.value) return text.replace(expression, matchValue.value ?? '');
+    if (matchValue.value) {
+      return text.replace(expression, matchValue.value ?? '');
+    }
 
     return text.replace(expression, matchValue);
   };
@@ -158,15 +188,22 @@ export const PrinterButton = React.forwardRef((props: any, ref) => {
 
     const cleanedText = text.replace(expression, '');
 
-    if (formValue == null) return cleanedText;
+    if (formValue == null) {
+      return cleanedText;
+    }
 
     const isValueBoolean = typeof formValue === 'boolean';
-    const isValueNum = typeof formValue === 'number' || !Number.isNaN(Number(formValue));
+    const isValueNum =
+      typeof formValue === 'number' || !Number.isNaN(Number(formValue));
     const isValueArray = Array.isArray(formValue);
 
-    if (isValueBoolean) return text.replace(expression, t(formValue.toString()));
+    if (isValueBoolean) {
+      return text.replace(expression, t(formValue.toString()));
+    }
 
-    const isCameraButton = formValue.toString().includes('rn_image_picker_lib_temp');
+    const isCameraButton = formValue
+      .toString()
+      .includes('rn_image_picker_lib_temp');
     if (isCameraButton) {
       const image = await imgState(formValue);
       const res = image.map(e => {
@@ -210,10 +247,12 @@ export const PrinterButton = React.forwardRef((props: any, ref) => {
         moment.HTML5_FMT.DATETIME_LOCAL_MS,
         moment.HTML5_FMT.DATETIME_LOCAL_SECONDS,
       ],
-      true
+      true,
     );
 
-    if (valueAsDate.isValid()) return text.replace(expression, valueAsDate.format('DD/MM/YYYY'));
+    if (valueAsDate.isValid()) {
+      return text.replace(expression, valueAsDate.format('DD/MM/YYYY'));
+    }
 
     return text.replace(expression, formValue);
   };
@@ -231,7 +270,9 @@ export const PrinterButton = React.forwardRef((props: any, ref) => {
   }) => {
     const expression = new RegExp(`{{task:${key}}}`, 'g');
 
-    if (value != null) return text.replace(expression, value);
+    if (value != null) {
+      return text.replace(expression, value);
+    }
 
     console.log('key', key);
     const taskValue = _.get(taskData, key);
@@ -275,7 +316,11 @@ export const PrinterButton = React.forwardRef((props: any, ref) => {
           fieldKey,
         });
       } else if (toAddTaskProps) {
-        resultString = injectTaskProps({ text: resultString, taskData: wholeTask, key: fieldKey });
+        resultString = injectTaskProps({
+          text: resultString,
+          taskData: wholeTask,
+          key: fieldKey,
+        });
       } else {
         const expression = new RegExp(`{{${template}}}`, 'g');
         resultString = resultString.replace(expression, '');
@@ -329,7 +374,7 @@ export const PrinterButton = React.forwardRef((props: any, ref) => {
     setData();
   }, [values]);
 
-  const { setOpen, actionsQ, setActionsQ } = useContext(FormContext);
+  const {setOpen, actionsQ, setActionsQ} = useContext(FormContext);
 
   const print = async () => {
     for (let actions in availableActions) {
@@ -339,26 +384,34 @@ export const PrinterButton = React.forwardRef((props: any, ref) => {
           const callback = () => {
             return date;
           };
-          doAction({ type: availableActions[actions], wholeTask, callback });
+          doAction({type: availableActions[actions], wholeTask, callback});
         };
         setActionsQ([...actionsQ, res]);
-      } else doAction({ type: availableActions[actions], wholeTask });
+      } else {
+        doAction({type: availableActions[actions], wholeTask});
+      }
     }
     const replace = getString.replace(/\n/g, '<br/>');
     const results = await RNHTMLtoPDF.convert({
-      html: '<html><div style="font-size:60px; direction:rtl">' + replace + '</div></html>',
+      html:
+        '<html><div style="font-size:60px; direction:rtl">' +
+        replace +
+        '</div></html>',
       fileName: 'test',
       base64: true,
     });
     handleElementField(key, true);
-    await RNPrint.print({ filePath: results.filePath });
+    await RNPrint.print({filePath: results.filePath});
     props.focusComponent();
   };
 
   return (
     <View style={styles.container} ref={ref}>
       <TouchableOpacity style={styles.btn} onPress={print}>
-        <Image style={styles.ico} source={require('../../../assets/printer.png')} />
+        <Image
+          style={styles.ico}
+          source={require('../../../assets/printer.png')}
+        />
         <Text style={styles.text}>{label}</Text>
       </TouchableOpacity>
     </View>

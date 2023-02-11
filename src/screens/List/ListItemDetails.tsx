@@ -7,20 +7,22 @@ import {
   SafeAreaView,
   ScrollView,
 } from 'react-native';
-import React, { useEffect, useState } from 'react';
-import { scale } from '../../common/common';
-import { BottomMenu } from '../../components/BottomMenu';
-import { useNavigation } from '@react-navigation/native';
+import React, {useEffect, useState} from 'react';
+import {scale} from '../../common/common';
+import {BottomMenu} from '../../components/BottomMenu';
+import {useNavigation} from '@react-navigation/native';
 import moment from 'moment';
 import AsyncStorage from '@react-native-async-storage/async-storage';
-import { getPhotoFromAmazon, getGroupsUser } from '../../api/index';
+import {getPhotoFromAmazon, getGroupsUser} from '../../api/index';
 import RNFS from 'react-native-fs';
 import FileViewer from 'react-native-file-viewer';
-import { useTranslation } from 'react-i18next';
-import { PermissionsAndroid } from 'react-native';
+import {useTranslation} from 'react-i18next';
+import {PermissionsAndroid} from 'react-native';
 
 const onClickViewButton = async imageUrl => {
-  if (!imageUrl) return;
+  if (!imageUrl) {
+    return;
+  }
   const IdToken = await AsyncStorage.getItem('IdToken');
   const url = await getPhotoFromAmazon(IdToken, imageUrl);
 
@@ -47,14 +49,20 @@ const onClickViewButton = async imageUrl => {
 
 export const ListItemDetails = (props: any) => {
   const navigation = useNavigation();
-  const { t } = useTranslation();
+  const {t} = useTranslation();
 
-  let { taskDetails, taskType, statusId, taskId, groupName } = props.route.params.itemData;
+  let {taskDetails, taskType, statusId, taskId, groupName} =
+    props.route.params.itemData;
 
   let fromListItemTab = [];
   fromListItemTab = props.route.params.fromListItemTab;
 
-  taskDetails = fromListItemTab.length === 0 ? (taskDetails ? taskDetails : []) : fromListItemTab;
+  taskDetails =
+    fromListItemTab.length === 0
+      ? taskDetails
+        ? taskDetails
+        : []
+      : fromListItemTab;
 
   const [getFormData, setFormData] = useState([]);
   const [getUserGroup, setUserGroup] = useState([]);
@@ -67,7 +75,7 @@ export const ListItemDetails = (props: any) => {
         {
           title: 'Milgam',
           message: 'Milgam wants to get access to your location ',
-        }
+        },
       );
       if (granted === PermissionsAndroid.RESULTS.GRANTED) {
         console.log('You can use the location');
@@ -102,16 +110,23 @@ export const ListItemDetails = (props: any) => {
   const parseValueForRender = value => {
     const valueIsNull = value == null;
     const valueIsArray = Array.isArray(value);
-    const valueIsObject = !valueIsNull && !valueIsArray && typeof value === 'object';
+    const valueIsObject =
+      !valueIsNull && !valueIsArray && typeof value === 'object';
     const valueIsBoolean = typeof value === 'boolean';
 
-    if (valueIsNull) return '';
-    if (valueIsArray) return value.join(', ');
+    if (valueIsNull) {
+      return '';
+    }
+    if (valueIsArray) {
+      return value.join(', ');
+    }
     if (valueIsObject) {
       return parseValueForRender(value.value);
     }
 
-    if (valueIsBoolean) return t(value.toString().toLowerCase());
+    if (valueIsBoolean) {
+      return t(value.toString().toLowerCase());
+    }
 
     return value.toString();
   };
@@ -119,14 +134,16 @@ export const ListItemDetails = (props: any) => {
   return (
     <SafeAreaView style={styles.container}>
       <View style={styles.header}>
-        <View style={{ flexDirection: 'row' }}>
+        <View style={{flexDirection: 'row'}}>
           <TouchableOpacity
             style={styles.arrowBackWrapper}
             onPress={() => {
               navigation.goBack();
-            }}
-          >
-            <Image style={styles.arrowBack} source={require('../../assets/arrow-back-white.png')} />
+            }}>
+            <Image
+              style={styles.arrowBack}
+              source={require('../../assets/arrow-back-white.png')}
+            />
           </TouchableOpacity>
           <View style={styles.headerSigns}>
             <Text style={styles.itemName}>{taskType}</Text>
@@ -139,8 +156,10 @@ export const ListItemDetails = (props: any) => {
         </View>
       </View>
       <ScrollView
-        style={[styles.scrollView, { marginBottom: statusId != 'done' ? scale(100) : scale(190) }]}
-      >
+        style={[
+          styles.scrollView,
+          {marginBottom: statusId != 'done' ? scale(100) : scale(190)},
+        ]}>
         <View style={styles.mainText}>
           {taskDetails.map((item, index) => {
             const isDate = item.inputType === 'date';
@@ -149,7 +168,9 @@ export const ListItemDetails = (props: any) => {
             let displayValue = parseValueForRender(item.value);
 
             if (isGroup && getUserGroup.length) {
-              const matchGroup = getUserGroup.find(group => group.GroupName === item.value);
+              const matchGroup = getUserGroup.find(
+                group => group.GroupName === item.value,
+              );
               displayValue = matchGroup?.Description ?? displayValue;
             }
 
@@ -168,10 +189,14 @@ export const ListItemDetails = (props: any) => {
                   marginBottom: scale(13),
                   height: 'auto',
                   backgroundColor: index % 2 == 0 ? '#F1FCFF' : 'white',
-                }}
-              >
+                }}>
                 <View>
-                  <Text style={{ color: 'black', marginLeft: scale(50), marginTop: scale(12) }}>
+                  <Text
+                    style={{
+                      color: 'black',
+                      marginLeft: scale(50),
+                      marginTop: scale(12),
+                    }}>
                     {item.label}
                   </Text>
                 </View>
@@ -182,13 +207,13 @@ export const ListItemDetails = (props: any) => {
                     flexShrink: 1,
                     marginBottom: scale(15),
                     paddingRight: scale(30),
-                  }}
-                >
+                  }}>
                   {item.key.startsWith('doc') && item.value ? (
                     <TouchableOpacity
                       style={styles.showButton}
-                      onPress={() => onClickViewButton(item.value.value ?? item.value)}
-                    >
+                      onPress={() =>
+                        onClickViewButton(item.value.value ?? item.value)
+                      }>
                       <Text style={styles.showBtnText}>{t('show')}</Text>
                     </TouchableOpacity>
                   ) : (
@@ -207,8 +232,7 @@ export const ListItemDetails = (props: any) => {
                 itemData: props.route.params.itemData,
                 getUserGroup: getUserGroup,
               });
-            }}
-          >
+            }}>
             <Text style={styles.btnText}>{t('start')}</Text>
           </TouchableOpacity>
         ) : (
@@ -220,8 +244,7 @@ export const ListItemDetails = (props: any) => {
                 getFormData: getFormData,
                 getUserGroup: getUserGroup,
               });
-            }}
-          >
+            }}>
             <Text style={styles.btnText}>{t('formView')}</Text>
           </TouchableOpacity>
         )}

@@ -6,10 +6,10 @@ import {
   I18nManager,
   TouchableOpacity,
 } from 'react-native';
-import React, { useState, useContext, useEffect } from 'react';
-import { scale } from '../../../common/common';
-import { doAction } from '../FormActions';
-import { FormContext } from '../FormContext';
+import React, {useState, useContext, useEffect} from 'react';
+import {scale} from '../../../common/common';
+import {doAction} from '../FormActions';
+import {FormContext} from '../FormContext';
 
 const optionsMapper = options => {
   const dropDownItems = [];
@@ -23,7 +23,7 @@ const optionsMapper = options => {
 };
 
 export const Dropdown = React.forwardRef((props: any, ref) => {
-  const { setOpen, actionsQ, setActionsQ } = useContext(FormContext);
+  const {setOpen, actionsQ, setActionsQ} = useContext(FormContext);
 
   const [selectedItem, setSelectedItem] = useState('');
 
@@ -33,13 +33,9 @@ export const Dropdown = React.forwardRef((props: any, ref) => {
 
   const isRtl = I18nManager.isRTL;
 
-  const { label, options, key } = props.itemData;
+  const {label, options, key} = props.itemData;
 
-  const {
-    handleElementField,
-    availableActions,
-    wholeTask,
-  } = props;
+  const {handleElementField, availableActions, wholeTask} = props;
 
   const [items, setItems] = useState(optionsMapper(options));
 
@@ -54,10 +50,12 @@ export const Dropdown = React.forwardRef((props: any, ref) => {
             const callback = () => {
               return date;
             };
-            doAction({ type: availableActions[actions], wholeTask, callback });
+            doAction({type: availableActions[actions], wholeTask, callback});
           };
           setActionsQ([...actionsQ, res]);
-        } else doAction({ type: availableActions[actions], wholeTask });
+        } else {
+          doAction({type: availableActions[actions], wholeTask});
+        }
       }
       props.focusComponent();
     }
@@ -79,8 +77,7 @@ export const Dropdown = React.forwardRef((props: any, ref) => {
                   handleElementField(key, item.key, true);
                   setExpand(false);
                   setIndex();
-                }}
-              >
+                }}>
                 <Text style={isRtl ? styles.textOptionRtl : styles.textOption}>
                   {item.value}
                 </Text>
@@ -98,8 +95,7 @@ export const Dropdown = React.forwardRef((props: any, ref) => {
             style={styles.notExpanded}
             onPress={() => {
               setExpand(true);
-            }}
-          >
+            }}>
             <Text style={isRtl ? styles.textOptionRtl : styles.textOption}>
               {
                 items.find(option => {

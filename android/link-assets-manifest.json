@@ -1,0 +1,257 @@
+{
+  "migIndex": 1,
+  "data": [
+    {
+      "path": "src/assets/arrow-back-white.png",
+      "sha1": "2b145df01ad32f112bdd12c217900efd4600730e"
+    },
+    {
+      "path": "src/assets/arrow-back.png",
+      "sha1": "9ded10f2046478b6013b6016e1362c3f65725f8e"
+    },
+    {
+      "path": "src/assets/arrow-forward.png",
+      "sha1": "ea4cbb14edea5b4d76ae3dfd41e676866014fab6"
+    },
+    {
+      "path": "src/assets/attach-image.png",
+      "sha1": "7322cd7137851c7f34c41575705016b61a4ae9da"
+    },
+    {
+      "path": "src/assets/attach.png",
+      "sha1": "3ee2319424287e53df92da26819648793face5a7"
+    },
+    {
+      "path": "src/assets/bottomMenuIcons/calendar-selected.png",
+      "sha1": "f0aee21f99e3642e3c5d6c9b7ac29f0d2413d1e9"
+    },
+    {
+      "path": "src/assets/bottomMenuIcons/calendar.png",
+      "sha1": "2448b3ec31f3d4e2dd81eeb62a1088856d17ba85"
+    },
+    {
+      "path": "src/assets/bottomMenuIcons/home-selected.png",
+      "sha1": "97abcea078cd1ae29ee49685ad5c06102853aa7d"
+    },
+    {
+      "path": "src/assets/bottomMenuIcons/home.png",
+      "sha1": "763acaacbf560dbda0e0e98860f1dd074105ca8f"
+    },
+    {
+      "path": "src/assets/bottomMenuIcons/list-selected.png",
+      "sha1": "c59d8839b00a03eafd37bb22b5580a5af1f2a2e4"
+    },
+    {
+      "path": "src/assets/bottomMenuIcons/list.png",
+      "sha1": "1cebaedf9b6b253d81e4f1983300c0bc23963081"
+    },
+    {
+      "path": "src/assets/bottomMenuIcons/settings-selected.png",
+      "sha1": "0fe8c285cf4b256cd3e31d6b60d2b3ac26ff1651"
+    },
+    {
+      "path": "src/assets/bottomMenuIcons/settings.png",
+      "sha1": "8389e82960594dcd17ac93fef8eeea03c28164e7"
+    },
+    {
+      "path": "src/assets/calendar-blue.png",
+      "sha1": "22e95f9e2f6f39256740d5fea6fe19476b1cb4ad"
+    },
+    {
+      "path": "src/assets/calendar-forms.png",
+      "sha1": "acd57b839d13d83fdea19a2e11d7be4b009c3ede"
+    },
+    {
+      "path": "src/assets/calendar-ico.png",
+      "sha1": "c04244ab811dbbe60e46d3c2debb8decd131db81"
+    },
+    {
+      "path": "src/assets/calendar.png",
+      "sha1": "d82d8266e38b7b5d254c582d64a59d54432770b0"
+    },
+    {
+      "path": "src/assets/camera-blue.png",
+      "sha1": "f356517fb960999dffebc600462e39f6ec13aab0"
+    },
+    {
+      "path": "src/assets/camera-ico.png",
+      "sha1": "87e3fe4bccf800b86ec356ca0f168d3aef538bda"
+    },
+    {
+      "path": "src/assets/caret-down.png",
+      "sha1": "5ccb523105427f1617e340bd7b68ac1772f1f857"
+    },
+    {
+      "path": "src/assets/cells.png",
+      "sha1": "ba035a969d207a52590f1fbf77a386e982d781f5"
+    },
+    {
+      "path": "src/assets/checkbox-checked.png",
+      "sha1": "018dc9d2518853e15bc8e1009c12db819d4bea9d"
+    },
+    {
+      "path": "src/assets/checkbox.png",
+      "sha1": "2c6fab03cf30b22f8a21c46bb8df991507d2a85b"
+    },
+    {
+      "path": "src/assets/date-clear-ico.png",
+      "sha1": "3d4cbc9332ab18549d0d781ea22bdd565b517f69"
+    },
+    {
+      "path": "src/assets/defImage.png",
+      "sha1": "62d99806a198d834e4039f76b80e698de6df1d4b"
+    },
+    {
+      "path": "src/assets/down-arrow.png",
+      "sha1": "bcedc4b2b7d51499b885be3cbd4a2cfde3b64ad1"
+    },
+    {
+      "path": "src/assets/FormElements/checkbox-empty.png",
+      "sha1": "0f2ae89e7f9c616d0650e08eab35614d4cfa96c5"
+    },
+    {
+      "path": "src/assets/FormElements/checked.png",
+      "sha1": "e8f2902e70a8dc99c8049a83ba4786261dd0087d"
+    },
+    {
+      "path": "src/assets/home-header-bg.png",
+      "sha1": "3bf9d81cad5345e4271a16551fa9d8d0e4b07ffe"
+    },
+    {
+      "path": "src/assets/home-header-bg2.png",
+      "sha1": "9447c6c92326cb07ab1f645678c99111f7f80fcd"
+    },
+    {
+      "path": "src/assets/home-header.png",
+      "sha1": "ff19ed5b9f1208981b2eba34dd6e5d9fbbb946dd"
+    },
+    {
+      "path": "src/assets/image1.png",
+      "sha1": "75627cfc2fd2eeb77f4c30ff5dd5f3b22b2812d4"
+    },
+    {
+      "path": "src/assets/image2.png",
+      "sha1": "c09e070255491d1a690aefd4794429a54005cf4c"
+    },
+    {
+      "path": "src/assets/image3.png",
+      "sha1": "4fe1e9b673769d4e31f687db9b34724b450a506b"
+    },
+    {
+      "path": "src/assets/img_lights.jpeg",
+      "sha1": "3a5d8df62915021760f1bdf0ca1993910ebbaaca"
+    },
+    {
+      "path": "src/assets/list.png",
+      "sha1": "adcc0cf47c4114e4bfba5f652ddb6f01f5636544"
+    },
+    {
+      "path": "src/assets/listIcons/calendar.png",
+      "sha1": "80e6323555081361ba9c8ad3e6fed062f4d8aa69"
+    },
+    {
+      "path": "src/assets/listIcons/check.png",
+      "sha1": "f33c4dda55860f962add726b810c4ed7cae91834"
+    },
+    {
+      "path": "src/assets/listIcons/pencil.png",
+      "sha1": "4017bf72b6bac9bfd170a6d4fa3239226cd0394b"
+    },
+    {
+      "path": "src/assets/listIcons/seat.png",
+      "sha1": "d77a4dffe6cd7229303e864967c5b156c9c895c0"
+    },
+    {
+      "path": "src/assets/listIcons/task-checked.png",
+      "sha1": "22ea592f317726a6e9a165115de12529ddc9639a"
+    },
+    {
+      "path": "src/assets/listIcons/task.png",
+      "sha1": "e609844f5fb71a2fb1db3d9a6c3a9ab75a4bc251"
+    },
+    {
+      "path": "src/assets/login-bg-img.png",
+      "sha1": "a44e4a9e7b1b9ae476f7213291f0e8182ca03c80"
+    },
+    {
+      "path": "src/assets/logo.png",
+      "sha1": "b2ce138d83d67a3bf49752032baf1119b6466e62"
+    },
+    {
+      "path": "src/assets/lottie/cross.json",
+      "sha1": "8d84f42745a7056a28bae548f546adf5fb8349a7"
+    },
+    {
+      "path": "src/assets/lottie/loader.json",
+      "sha1": "5d819a45e1d13b1bdbb56eea54ff4cd925a0ca35"
+    },
+    {
+      "path": "src/assets/lottie/lottie-checked.json",
+      "sha1": "18b88613da31bad03e411736bf055c2da3dc5695"
+    },
+    {
+      "path": "src/assets/new-logo-black.png",
+      "sha1": "b5b1b43af4ad3c3004afb353848545097a652178"
+    },
+    {
+      "path": "src/assets/new-logo.png",
+      "sha1": "9f34257ec7fe0d8ddd0b49bd1b211d5bf394c8fc"
+    },
+    {
+      "path": "src/assets/phone-ico.png",
+      "sha1": "6de8be4a90e8fc80175c49d90fa4ec9bc535d4f5"
+    },
+    {
+      "path": "src/assets/plus.png",
+      "sha1": "8cbcd08d78de5d43dee917346592ba3d0f8cf215"
+    },
+    {
+      "path": "src/assets/printer.png",
+      "sha1": "b98dc76a0e46cdf0db551cdf9e69ea721488117a"
+    },
+    {
+      "path": "src/assets/radio-button-checked.png",
+      "sha1": "e008a8ea9a68a428062c810ef2dc03d4a868b664"
+    },
+    {
+      "path": "src/assets/radio-button.png",
+      "sha1": "6201e74039b628ddafd19527279cb62abb0fbdd0"
+    },
+    {
+      "path": "src/assets/remove.png",
+      "sha1": "bebe5d7a6629cbce560b770564db489cf593f778"
+    },
+    {
+      "path": "src/assets/splash-shapes.png",
+      "sha1": "7c289dcde3be9290b612bf008928de5efa50ecd1"
+    },
+    {
+      "path": "src/assets/switcher-off.png",
+      "sha1": "93278569bf542ff77c793c7f3a50f4c4ec20e040"
+    },
+    {
+      "path": "src/assets/switcher-on.png",
+      "sha1": "b4fc3b67b83b05e502c62063099b2e37aa864ba1"
+    },
+    {
+      "path": "src/assets/tmp/user.png",
+      "sha1": "eef114b825a36c049e60ab89f31e93fac14cbfb2"
+    },
+    {
+      "path": "src/assets/undo.png",
+      "sha1": "16af1cf953685f76a80655aa51319f0c4cd69a0f"
+    },
+    {
+      "path": "src/assets/up-arrow.png",
+      "sha1": "545404dc246d05c3dd3a3b8cbefcc9a0a4292bee"
+    },
+    {
+      "path": "src/assets/ver-dots.png",
+      "sha1": "fd58b7317b7edc2d74cd6f3d57b4bff2c1dded99"
+    },
+    {
+      "path": "src/assets/wall-clock.png",
+      "sha1": "7fe336a46d686f576b5e298f927de3997246cbec"
+    }
+  ]
+}

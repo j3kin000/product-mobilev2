@@ -1,19 +1,19 @@
-import { StyleSheet, Text, View, TouchableOpacity, Image } from 'react-native';
-import React, { useState, useContext, useEffect } from 'react';
-import { scale } from '../../../common/common';
+import {StyleSheet, Text, View, TouchableOpacity, Image} from 'react-native';
+import React, {useState, useContext, useEffect} from 'react';
+import {scale} from '../../../common/common';
 import moment from 'moment';
-import { doAction, getGeo } from '../FormActions';
-import { FormContext } from '../FormContext';
+import {doAction, getGeo} from '../FormActions';
+import {FormContext} from '../FormContext';
 
 export const DateTimeButton = React.forwardRef((props: any, ref) => {
-  const { handleElementField, availableActions, wholeTask } = props;
+  const {handleElementField, availableActions, wholeTask} = props;
 
-  const { label, key, inputType } = props.itemData;
+  const {label, key, inputType} = props.itemData;
 
   const [timeNow, setTimeNow] = useState('');
   const [picked, setPicked] = useState(false);
 
-  const { setOpen, actionsQ, setActionsQ } = useContext(FormContext);
+  const {setOpen, actionsQ, setActionsQ} = useContext(FormContext);
 
   useEffect(() => {
     if (props.defaultValue) {
@@ -24,19 +24,25 @@ export const DateTimeButton = React.forwardRef((props: any, ref) => {
         'MM/DD/YYYY HH:mm',
       ]);
       const res = moment(format).format('YYYY/MM/DD HH:mm');
-      const setDefTime = momt.tz(res, 'Asia/Jerusalem').format('DD/MM/YYYY HH:mm');
+      const setDefTime = momt
+        .tz(res, 'Asia/Jerusalem')
+        .format('DD/MM/YYYY HH:mm');
       setTimeNow(setDefTime);
     }
   }, [props.defaultValue]);
 
   const supplyGeoToTask = async taskObject => {
-    if (taskObject == null) return;
+    if (taskObject == null) {
+      return;
+    }
 
     const geo = await getGeo();
 
     const geoFields = taskObject.form.filter(item => item.inputType === 'geo');
 
-    if (geoFields.length === 0) return;
+    if (geoFields.length === 0) {
+      return;
+    }
 
     for (const field of geoFields) {
       const isStart = availableActions.includes('startTask');
@@ -67,10 +73,12 @@ export const DateTimeButton = React.forwardRef((props: any, ref) => {
             const callback = () => {
               return date;
             };
-            doAction({ type: availableActions[actions], wholeTask, callback });
+            doAction({type: availableActions[actions], wholeTask, callback});
           };
           setActionsQ([...actionsQ, res]);
-        } else doAction({ type: availableActions[actions], wholeTask });
+        } else {
+          doAction({type: availableActions[actions], wholeTask});
+        }
       }
     }
 
@@ -78,13 +86,17 @@ export const DateTimeButton = React.forwardRef((props: any, ref) => {
     const currentDate = moment();
 
     const geoActions = ['startTask', 'transmitDone'];
-    const mustGetGeo = availableActions.some(action => geoActions.includes(action));
+    const mustGetGeo = availableActions.some(action =>
+      geoActions.includes(action),
+    );
 
     if (mustGetGeo) {
       await supplyGeoToTask(wholeTask);
     }
 
-    const setDefTime = momt.tz(currentDate, 'Asia/Jerusalem').format('DD/MM/YYYY HH:mm');
+    const setDefTime = momt
+      .tz(currentDate, 'Asia/Jerusalem')
+      .format('DD/MM/YYYY HH:mm');
     setTimeNow(setDefTime);
 
     handleElementField(key, currentDate.toISOString());
@@ -93,14 +105,17 @@ export const DateTimeButton = React.forwardRef((props: any, ref) => {
 
   return (
     <View style={styles.container} ref={ref}>
-      <View style={{ flexDirection: 'row' }}>
-        <View style={{ height: '100%', paddingTop: scale(20) }}>
+      <View style={{flexDirection: 'row'}}>
+        <View style={{height: '100%', paddingTop: scale(20)}}>
           <Text style={styles.label}>{label}</Text>
         </View>
         <View>
           <TouchableOpacity style={styles.btn} onPress={pickTime}>
             <Text style={styles.text}>{label}</Text>
-            <Image style={styles.ico} source={require('../../../assets/wall-clock.png')} />
+            <Image
+              style={styles.ico}
+              source={require('../../../assets/wall-clock.png')}
+            />
           </TouchableOpacity>
           {timeNow !== '' ? (
             <Text style={styles.timeText}>{timeNow}</Text>

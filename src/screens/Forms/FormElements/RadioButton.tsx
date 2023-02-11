@@ -6,17 +6,17 @@ import {
   I18nManager,
   TouchableOpacity,
 } from 'react-native';
-import React, { useState, useContext, useEffect } from 'react';
-import { scale } from '../../../common/common';
-import { doAction } from '../FormActions';
-import { FormContext } from '../FormContext';
+import React, {useState, useContext, useEffect} from 'react';
+import {scale} from '../../../common/common';
+import {doAction} from '../FormActions';
+import {FormContext} from '../FormContext';
 
 export const RadioButton = React.forwardRef((props: any, ref) => {
-  const { handleElementField, availableActions, wholeTask } = props;
+  const {handleElementField, availableActions, wholeTask} = props;
 
-  const { label, key } = props.itemData;
+  const {label, key} = props.itemData;
 
-  const { setOpen, actionsQ, setActionsQ } = useContext(FormContext);
+  const {setOpen, actionsQ, setActionsQ} = useContext(FormContext);
 
   const isRtl = I18nManager.isRTL;
 
@@ -26,7 +26,7 @@ export const RadioButton = React.forwardRef((props: any, ref) => {
 
   for (let option in props.itemData.options) {
     let text = props.itemData.options[option];
-    options.push({ option, text });
+    options.push({option, text});
   }
 
   useEffect(() => {
@@ -42,10 +42,12 @@ export const RadioButton = React.forwardRef((props: any, ref) => {
             const callback = () => {
               return date;
             };
-            doAction({ type: availableActions[actions], wholeTask, callback });
+            doAction({type: availableActions[actions], wholeTask, callback});
           };
           setActionsQ([...actionsQ, res]);
-        } else doAction({ type: availableActions[actions], wholeTask });
+        } else {
+          doAction({type: availableActions[actions], wholeTask});
+        }
       }
       props.focusComponent();
     }
@@ -65,8 +67,7 @@ export const RadioButton = React.forwardRef((props: any, ref) => {
                 setRadioState(item.option);
                 handleElementField(key, item.option, true);
                 setIndex();
-              }}
-            >
+              }}>
               {radioState == item.option ? (
                 <Image
                   style={styles.image}

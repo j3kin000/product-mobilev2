@@ -1,119 +1,119 @@
 [
-    {
-        "input_type": "html",
-        "content": "Lorem ipsum doler"
+  {
+    "input_type": "html",
+    "content": "Lorem ipsum doler"
+  },
+  {
+    "label": "name here",
+    "input_type": "text",
+    "rules": {
+      "optional": false,
+      "min_length": 0,
+      "max_length": 0
     },
-    {
-        "label": "name here",
-        "input_type": "text",
-        "rules": {
-            "optional": false,
-            "min_length": 0,
-            "max_length": 0
-        },
-        "default_value": null,
-        "enum": []
+    "default_value": null,
+    "enum": []
+  },
+  {
+    "label": "name here",
+    "input_type": "textarea",
+    "rules": {
+      "optional": false
     },
-    {
-        "label": "name here",
-        "input_type": "textarea",
-        "rules": {
-            "optional": false
-        },
-        "default_value": null,
-        "enum": []
+    "default_value": null,
+    "enum": []
+  },
+  {
+    "label": "name here",
+    "input_type": "number",
+    "rules": {
+      "optional": false,
+      "accept_float": false,
+      "min": 0,
+      "max": 0
     },
-    {
-        "label": "name here",
-        "input_type": "number",
-        "rules": {
-            "optional": false,
-            "accept_float": false,
-            "min": 0,
-            "max": 0
-        },
-        "default_value": null,
-        "enum": []
+    "default_value": null,
+    "enum": []
+  },
+  {
+    "label": "name here",
+    "input_type": "boolean",
+    "rules": null,
+    "default_value": null,
+    "enum": []
+  },
+  {
+    "label": "name here",
+    "input_type": "date",
+    "rules": {
+      "optional": false,
+      "min_date": 0,
+      "max_date": 0,
+      "disabled_dates": []
     },
-    {
-        "label": "name here",
-        "input_type": "boolean",
-        "rules": null,
-        "default_value": null,
-        "enum": []
+    "default_value": null,
+    "enum": []
+  },
+  {
+    "label": "name here",
+    "input_type": "datetime",
+    "rules": {
+      "optional": false,
+      "min_date": 0,
+      "max_date": 0,
+      "disabled_dates": [],
+      "min_time": 0,
+      "max_time": 0,
+      "disabled_times": []
     },
-    {
-        "label": "name here",
-        "input_type": "date",
-        "rules": {
-            "optional": false,
-            "min_date": 0,
-            "max_date": 0,
-            "disabled_dates": []
-        },
-        "default_value": null,
-        "enum": []
+    "default_value": null,
+    "enum": []
+  },
+  {
+    "label": "name here",
+    "input_type": "time",
+    "rules": {
+      "optional": false,
+      "min_time": 0,
+      "max_time": 0,
+      "disabled_times": []
     },
-    {
-        "label": "name here",
-        "input_type": "datetime",
-        "rules": {
-            "optional": false,
-            "min_date": 0,
-            "max_date": 0,
-            "disabled_dates": [],
-            "min_time": 0,
-            "max_time": 0,
-            "disabled_times": []
-        },
-        "default_value": null,
-        "enum": []
+    "default_value": null,
+    "enum": []
+  },
+  {
+    "label": "name here",
+    "input_type": "file",
+    "rules": {
+      "optional": false,
+      "min_file": 0,
+      "max_file": 0
     },
-    {
-        "label": "name here",
-        "input_type": "time",
-        "rules": {
-            "optional": false,
-            "min_time": 0,
-            "max_time": 0,
-            "disabled_times": []
-        },
-        "default_value": null,
-        "enum": []
+    "default_value": null,
+    "enum": []
+  },
+  {
+    "label": "name here",
+    "input_type": "image",
+    "rules": {
+      "optional": false,
+      "min_image": 0,
+      "max_image": 0
     },
-    {
-        "label": "name here",
-        "input_type": "file",
-        "rules": {
-            "optional": false,
-            "min_file": 0,
-            "max_file": 0
-        },
-        "default_value": null,
-        "enum": []
+    "default_value": null,
+    "enum": []
+  },
+  {
+    "label": "name here",
+    "input_type": "enum",
+    "rules": {
+      "optional": false,
+      "multi_select": true,
+      "min_select": 0,
+      "max_select": 0,
+      "disabled_selects": []
     },
-    {
-        "label": "name here",
-        "input_type": "image",
-        "rules": {
-            "optional": false,
-            "min_image": 0,
-            "max_image": 0
-        },
-        "default_value": null,
-        "enum": []
-    },
-    {
-        "label": "name here",
-        "input_type": "enum",
-        "rules": {
-            "optional": false,
-            "multi_select": true,
-            "min_select": 0,
-            "max_select": 0,
-            "disabled_selects": []
-        },
-        "default_value": null,
-        "enum": ["Option 1", "Option 2"]
-    }
+    "default_value": null,
+    "enum": ["Option 1", "Option 2"]
+  }
 ]

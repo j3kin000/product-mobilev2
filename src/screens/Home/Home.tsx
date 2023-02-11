@@ -1,8 +1,15 @@
-import { StyleSheet, Text, View, Image, SafeAreaView, FlatList } from 'react-native';
-import React, { useEffect, useState } from 'react';
-import { BottomMenu } from '../../components/BottomMenu';
-import { scale } from '../../common/common';
-import { setGlobal, useGlobal } from '../../global/index';
+import {
+  StyleSheet,
+  Text,
+  View,
+  Image,
+  SafeAreaView,
+  FlatList,
+} from 'react-native';
+import React, {useEffect, useState} from 'react';
+import {BottomMenu} from '../../components/BottomMenu';
+import {scale} from '../../common/common';
+import {setGlobal, useGlobal} from '../../global/index';
 import {
   getProfileInfo,
   getTaskStatus,
@@ -12,11 +19,11 @@ import {
 } from '../../api/index';
 import AsyncStorage from '@react-native-async-storage/async-storage';
 import LottieView from 'lottie-react-native';
-import { ListItem } from '../List/ListItem';
-import { useTranslation } from 'react-i18next';
-import { changeTaskStatus } from '../../api/index';
-import { useIsFocused } from '@react-navigation/native';
-
+import {ListItem} from '../List/ListItem';
+import {useTranslation} from 'react-i18next';
+import {changeTaskStatus} from '../../api/index';
+import {useIsFocused} from '@react-navigation/native';
+import DeviceInfo from 'react-native-device-info';
 import moment from 'moment';
 
 export const Home = (props: any) => {
@@ -27,7 +34,7 @@ export const Home = (props: any) => {
     }
   }, [isFocused]);
 
-  const { t } = useTranslation();
+  const {t} = useTranslation();
 
   const [name, setName] = useState('');
   const [family_name, setFamily_name] = useState('');
@@ -38,7 +45,8 @@ export const Home = (props: any) => {
   const [inProgressTasks, setInProgressTasks] = useState(0);
 
   const date = new Date();
-  const fullDate = date.getFullYear() + '-' + (date.getMonth() + 1) + '-' + date.getDate();
+  const fullDate =
+    date.getFullYear() + '-' + (date.getMonth() + 1) + '-' + date.getDate();
   const userPhoto = require('../../assets/img_lights.jpeg');
   const [logoBase64, setLogoBase64] = useState('');
   const [userTasks, setUserTasks] = useGlobal('userTasks');
@@ -48,10 +56,16 @@ export const Home = (props: any) => {
     const details = await getTaskDetails(token, tenant);
 
     details.sort((a, b) => {
-      if (a.orderMobile === b.orderMobile) return a.label.localeCompare(b.label);
+      if (a.orderMobile === b.orderMobile) {
+        return a.label.localeCompare(b.label);
+      }
 
-      if (a.orderMobile == null) return 1;
-      if (b.orderMobile == null) return -1;
+      if (a.orderMobile == null) {
+        return 1;
+      }
+      if (b.orderMobile == null) {
+        return -1;
+      }
 
       return a.orderMobile - b.orderMobile;
     });
@@ -71,7 +85,8 @@ export const Home = (props: any) => {
 
     for (let task in tasks) {
       if (
-        todayDate == moment(tasks[task].executionEndDate).format('YYYY/MM/DD') &&
+        todayDate ==
+          moment(tasks[task].executionEndDate).format('YYYY/MM/DD') &&
         tasks[task].statusId.toLowerCase().trim() !== 'done'
       ) {
         // ISO format always
@@ -105,6 +120,8 @@ export const Home = (props: any) => {
 
   const getUserInfo = async () => {
     try {
+      let uniqueId = await DeviceInfo.getUniqueId();
+      console.log('uniqueId', uniqueId);
       const IdToken = (await AsyncStorage.getItem('IdToken')) as string;
       const userData = await getProfileInfo(IdToken);
       console.log('GG', userData['cognito:groups']);
@@ -132,7 +149,7 @@ export const Home = (props: any) => {
       const statuses = await getTaskStatus(IdToken);
       const tasks = list.tasks;
 
-      const { tableHeaders, details } = await getDetails(IdToken, tenant);
+      const {tableHeaders, details} = await getDetails(IdToken, tenant);
 
       setGlobal({
         userData: userData,
@@ -163,19 +180,26 @@ export const Home = (props: any) => {
         const convertData = JSON.parse(getPending);
         convertData.forEach(async element => {
           element.statusId = 'done';
-          await changeTaskStatus(element._id, IdToken, element).then(async res => {
-            if (Object.keys(res).length !== 0) {
-              await AsyncStorage.getItem(`pending-${tenant}`).then(async items => {
-                if (items !== null) {
-                  const setItems = JSON.parse(items);
-                  const save = setItems.filter(function (e) {
-                    return e._id !== element._id;
-                  });
-                  await AsyncStorage.setItem(`pending-${tenant}`, JSON.stringify(save));
-                }
-              });
-            }
-          });
+          await changeTaskStatus(element._id, IdToken, element).then(
+            async res => {
+              if (Object.keys(res).length !== 0) {
+                await AsyncStorage.getItem(`pending-${tenant}`).then(
+                  async items => {
+                    if (items !== null) {
+                      const setItems = JSON.parse(items);
+                      const save = setItems.filter(function (e) {
+                        return e._id !== element._id;
+                      });
+                      await AsyncStorage.setItem(
+                        `pending-${tenant}`,
+                        JSON.stringify(save),
+                      );
+                    }
+                  },
+                );
+              }
+            },
+          );
         });
       }
     });
@@ -189,18 +213,29 @@ export const Home = (props: any) => {
 
   if (!name && !phone_number) {
     return (
-      <View style={{ flex: 1, justifyContent: 'center', alignItems: 'center' }}>
-        <LottieView source={require('../../assets/lottie/loader.json')} autoPlay loop />
+      <View style={{flex: 1, justifyContent: 'center', alignItems: 'center'}}>
+        <LottieView
+          source={require('../../assets/lottie/loader.json')}
+          autoPlay
+          loop
+        />
       </View>
     );
   }
   return (
     <SafeAreaView style={styles.container}>
-      <Image style={styles.headerBg} source={require('../../assets/home-header.png')} />
+      <Image
+        style={styles.headerBg}
+        source={require('../../assets/home-header.png')}
+      />
 
       {logoBase64 == 'no_logo' ? null : (
         <View style={styles.headerLogoWrapper}>
-          <Image style={styles.headerLogo} source={{ uri: logoBase64 }} resizeMode={'contain'} />
+          <Image
+            style={styles.headerLogo}
+            source={{uri: logoBase64}}
+            resizeMode={'contain'}
+          />
         </View>
       )}
 
@@ -211,13 +246,19 @@ export const Home = (props: any) => {
           <Text style={styles.userName}>
             {name} {family_name}
           </Text>
-          <View style={{ flexDirection: 'row' }}>
-            <View style={{ flexDirection: 'row' }}>
-              <Image style={styles.phoneIco} source={require('../../assets/phone-ico.png')} />
+          <View style={{flexDirection: 'row'}}>
+            <View style={{flexDirection: 'row'}}>
+              <Image
+                style={styles.phoneIco}
+                source={require('../../assets/phone-ico.png')}
+              />
               <Text style={styles.phoneNumber}>{phone_number}</Text>
             </View>
-            <View style={{ flexDirection: 'row' }}>
-              <Image style={styles.phoneIco} source={require('../../assets/calendar-ico.png')} />
+            <View style={{flexDirection: 'row'}}>
+              <Image
+                style={styles.phoneIco}
+                source={require('../../assets/calendar-ico.png')}
+              />
               <Text style={styles.textOfDate}>{fullDate}</Text>
             </View>
           </View>
@@ -241,7 +282,7 @@ export const Home = (props: any) => {
         </Text>
       </View>
 
-      {/* 
+      {/*
             {tasks ?
                 <View style={styles.headerWrapperHome}>
                     <View style={styles.headersPanelHome}>

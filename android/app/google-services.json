@@ -1,0 +1,39 @@
+{
+  "project_info": {
+    "project_number": "37743632099",
+    "project_id": "sns-ex-f1f77",
+    "storage_bucket": "sns-ex-f1f77.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:37743632099:android:c8962fb5c4c34e29a6afd6",
+        "android_client_info": {
+          "package_name": "com.milgamproduct"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "37743632099-ubm39qcdsuamroj28v80o2d8mamo3art.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyAJa_at1buu8eEh5-9z9dMAkBAits3JpLs"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "37743632099-ubm39qcdsuamroj28v80o2d8mamo3art.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

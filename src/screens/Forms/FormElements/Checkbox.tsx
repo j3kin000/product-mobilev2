@@ -1,22 +1,20 @@
-import { StyleSheet, Text, View, Image, TouchableOpacity } from 'react-native';
-import React, { useState, useEffect } from 'react';
-import { scale } from '../../../common/common';
+import {StyleSheet, Text, View, Image, TouchableOpacity} from 'react-native';
+import React, {useState, useEffect} from 'react';
+import {scale} from '../../../common/common';
 
 export const Checkbox = React.forwardRef((props: any, ref) => {
   const [checkBoxState, setChecBoxState] = useState(false);
 
-  const { label, key, value, options } = props.itemData;
+  const {label, key, value, options} = props.itemData;
 
-  const {
-    handleElementField,
-  } = props;
+  const {handleElementField} = props;
 
   const [checkedElements, setCheckedElements] = useState([]);
 
   let checkboxesList = [];
 
   for (let opt in options) {
-    checkboxesList.push({ key: opt, value: options[opt] });
+    checkboxesList.push({key: opt, value: options[opt]});
   }
 
   const handleCheck = item => {
@@ -46,8 +44,7 @@ export const Checkbox = React.forwardRef((props: any, ref) => {
             style={styles.checkboxWrapper}
             onPress={() => {
               handleCheck(item);
-            }}
-          >
+            }}>
             {checkedElements?.includes(item.key) ? (
               <Image
                 style={styles.checkboxChecked}

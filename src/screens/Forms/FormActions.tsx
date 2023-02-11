@@ -1,12 +1,17 @@
-import { Geo } from '../Forms/FormElements/Geo';
-import { Button } from '../Forms/FormElements/Button';
-import { PermissionsAndroid } from 'react-native';
-import { changeTaskStatus } from '../../api/index';
+import {Geo} from '../Forms/FormElements/Geo';
+import {Button} from '../Forms/FormElements/Button';
+import {PermissionsAndroid} from 'react-native';
+import {changeTaskStatus} from '../../api/index';
 import AsyncStorage from '@react-native-async-storage/async-storage';
-import { useNavigation } from '@react-navigation/native';
+import {useNavigation} from '@react-navigation/native';
 import Geolocation from 'react-native-geolocation-service';
 
-export const doAction = async ({ type, wholeTask, navigation = null, callback }) => {
+export const doAction = async ({
+  type,
+  wholeTask,
+  navigation = null,
+  callback,
+}) => {
   const IdToken = await AsyncStorage.getItem('IdToken');
 
   switch (type) {
@@ -63,7 +68,7 @@ export const getGeo = () => {
             {
               title: 'Milgam App',
               message: 'Allow access to your location.',
-            }
+            },
           );
           if (granted === PermissionsAndroid.RESULTS.GRANTED) {
             resolve(info);
@@ -81,7 +86,7 @@ export const getGeo = () => {
         console.warn('Error getting location: ', err);
         resolve(null);
       },
-      { maximumAge: 1 }
+      {maximumAge: 1},
     );
   });
 };

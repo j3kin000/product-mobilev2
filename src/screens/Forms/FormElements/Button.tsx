@@ -1,26 +1,38 @@
-import { StyleSheet, Text, View, TouchableOpacity } from 'react-native';
-import React, { useContext } from 'react';
-import { scale } from '../../../common/common';
-import { getTasksList } from '../../../api/index';
+import {StyleSheet, Text, View, TouchableOpacity} from 'react-native';
+import React, {useContext} from 'react';
+import {scale} from '../../../common/common';
+import {getTasksList} from '../../../api/index';
 import AsyncStorage from '@react-native-async-storage/async-storage';
-import { setGlobal } from 'reactn';
-import { useIsFocused, useNavigation } from '@react-navigation/native';
-import { doAction } from '../FormActions';
-import { FormContext } from '../FormContext';
+import {setGlobal} from 'reactn';
+import {useIsFocused, useNavigation} from '@react-navigation/native';
+import {doAction} from '../FormActions';
+import {FormContext} from '../FormContext';
 import moment from 'moment';
 import Geolocation from 'react-native-geolocation-service';
-import { PermissionsAndroid } from 'react-native';
+import {PermissionsAndroid} from 'react-native';
 
 export const Button = React.forwardRef((props: any, ref) => {
   const navigation = useNavigation();
 
-  const { _id, setShowAlert, showAlert, taskData, answersData, availableActions, wholeTask } =
-    props;
+  const {
+    _id,
+    setShowAlert,
+    showAlert,
+    taskData,
+    answersData,
+    availableActions,
+    wholeTask,
+  } = props;
 
-  let { key, label, rules } = props.itemData;
+  let {key, label, rules} = props.itemData;
 
-  const { setOpen, actionsQ, setActionsQ, checkRequiredFields, setRequiredButEmptyFields } =
-    useContext(FormContext);
+  const {
+    setOpen,
+    actionsQ,
+    setActionsQ,
+    checkRequiredFields,
+    setRequiredButEmptyFields,
+  } = useContext(FormContext);
 
   const getGeo = () => {
     return new Promise((resolve, reject) => {
@@ -32,7 +44,7 @@ export const Button = React.forwardRef((props: any, ref) => {
               {
                 title: 'Milgam App',
                 message: 'Allow access to your location.',
-              }
+              },
             );
             if (granted === PermissionsAndroid.RESULTS.GRANTED) {
               resolve(info);
@@ -50,7 +62,7 @@ export const Button = React.forwardRef((props: any, ref) => {
           console.log('Error getting location: ', err);
           resolve(null);
         },
-        { maximumAge: 5000, enableHighAccuracy: true }
+        {maximumAge: 5000, enableHighAccuracy: true},
       );
     });
   };
@@ -61,7 +73,7 @@ export const Button = React.forwardRef((props: any, ref) => {
       setRequiredButEmptyFields(invalidFields);
 
       if (invalidFields.length > 0) {
-        props.scrollTo({ key: invalidFields[0] });
+        props.scrollTo({key: invalidFields[0]});
         props.setShowRequiredError(true);
         return;
       } else {
@@ -70,8 +82,12 @@ export const Button = React.forwardRef((props: any, ref) => {
 
         let answersArr = [];
         for (let key in answersData) {
-          if (answersData[key].length || typeof answersData[key] === 'boolean')
+          if (
+            answersData[key].length ||
+            typeof answersData[key] === 'boolean'
+          ) {
             answersArr.push(key);
+          }
         }
 
         if (taskData) {
@@ -94,7 +110,8 @@ export const Button = React.forwardRef((props: any, ref) => {
             if (field.inputType == 'geo') {
               const geo = await getGeo();
 
-              const arrayHasValue = Array.isArray(field.value) && field.value.length;
+              const arrayHasValue =
+                Array.isArray(field.value) && field.value.length;
 
               if (arrayHasValue) {
                 field.value = [field.value[0], geo];
@@ -104,16 +121,21 @@ export const Button = React.forwardRef((props: any, ref) => {
             }
           }
 
-          doAction({ type: 'transmitDone', wholeTask, navigation })
+          doAction({type: 'transmitDone', wholeTask, navigation})
             .then(async res => {
               if (Object.keys(res).length === 0) {
-                const getPending = await AsyncStorage.getItem(`pending-${tenant}`);
+                const getPending = await AsyncStorage.getItem(
+                  `pending-${tenant}`,
+                );
                 if (getPending === null) {
                   const temp = [];
                   wholeTask.statusId = 'Pending';
                   temp.push(wholeTask);
-                  await AsyncStorage.setItem(`pending-${tenant}`, JSON.stringify(temp)).then(() => {
-                    navigation?.navigate('List', { submitted: true });
+                  await AsyncStorage.setItem(
+                    `pending-${tenant}`,
+                    JSON.stringify(temp),
+                  ).then(() => {
+                    navigation?.navigate('List', {submitted: true});
                   });
                 } else {
                   const getParseData = JSON.parse(getPending);
@@ -121,33 +143,39 @@ export const Button = React.forwardRef((props: any, ref) => {
                   getParseData.push(wholeTask);
                   await AsyncStorage.setItem(
                     `pending-${tenant}`,
-                    JSON.stringify(getParseData)
+                    JSON.stringify(getParseData),
                   ).then(() => {
-                    navigation?.navigate('List', { submitted: true });
+                    navigation?.navigate('List', {submitted: true});
                   });
                 }
               } else {
-                navigation?.navigate('List', { submitted: true });
+                navigation?.navigate('List', {submitted: true});
               }
             })
             .finally(async () => {
-              const getPending = await AsyncStorage.getItem(`pending-${tenant}`);
+              const getPending = await AsyncStorage.getItem(
+                `pending-${tenant}`,
+              );
               if (getPending === null) {
                 const temp = [];
                 wholeTask.statusId = 'Pending';
                 temp.push(wholeTask);
-                await AsyncStorage.setItem(`pending-${tenant}`, JSON.stringify(temp)).then(() => {
-                  navigation?.navigate('List', { submitted: true });
+                await AsyncStorage.setItem(
+                  `pending-${tenant}`,
+                  JSON.stringify(temp),
+                ).then(() => {
+                  navigation?.navigate('List', {submitted: true});
                 });
               } else {
                 const getParseData = JSON.parse(getPending);
                 wholeTask.statusId = 'Pending';
                 getParseData.push(wholeTask);
-                await AsyncStorage.setItem(`pending-${tenant}`, JSON.stringify(getParseData)).then(
-                  () => {
-                    navigation?.navigate('List', { submitted: true });
-                  }
-                );
+                await AsyncStorage.setItem(
+                  `pending-${tenant}`,
+                  JSON.stringify(getParseData),
+                ).then(() => {
+                  navigation?.navigate('List', {submitted: true});
+                });
               }
             });
         }
@@ -159,7 +187,10 @@ export const Button = React.forwardRef((props: any, ref) => {
           for (let item in wholeTask.form) {
             let field = wholeTask.form[item];
 
-            if (field.inputType == 'button' && field.rules.actions?.includes('startTask')) {
+            if (
+              field.inputType == 'button' &&
+              field.rules.actions?.includes('startTask')
+            ) {
               const timeNow = moment().format('DD/MM/YYYY HH:mm');
               field.value = timeNow;
             }
@@ -191,12 +222,13 @@ export const Button = React.forwardRef((props: any, ref) => {
               });
             };
             setActionsQ([...actionsQ, res]);
-          } else
+          } else {
             doAction({
               type: availableActions[actions],
               wholeTask,
               navigation,
             });
+          }
         }
       }
     }
@@ -204,11 +236,10 @@ export const Button = React.forwardRef((props: any, ref) => {
   };
 
   return (
-    <View style={{ maxWidth: scale(720) }} ref={ref}>
+    <View style={{maxWidth: scale(720)}} ref={ref}>
       <TouchableOpacity
-        style={[styles.btn, { width: label.length > 25 ? 'auto' : scale(300) }]}
-        onPress={btnPress}
-      >
+        style={[styles.btn, {width: label.length > 25 ? 'auto' : scale(300)}]}
+        onPress={btnPress}>
         <Text style={styles.text}>{label}</Text>
       </TouchableOpacity>
     </View>

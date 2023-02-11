@@ -1,9 +1,9 @@
 import axios from 'axios';
-import { useState } from 'react';
+import {useState} from 'react';
 import RNFS from 'react-native-fs';
 import AsyncStorage from '@react-native-async-storage/async-storage';
-import { useGlobal } from '../../global/index';
-import { Image as ImageCompress } from 'react-native-compressor';
+import {useGlobal} from '../../global/index';
+import {Image as ImageCompress} from 'react-native-compressor';
 
 //old link http://ec2-18-197-240-205.eu-central-1.compute.amazonaws.com:8000/gateway/v1/
 //new link https://saas-gw-dev.milgam.co.il:433/gateway/v1/
@@ -16,7 +16,7 @@ const getEnv = async () => {
   return res;
 };
 
-export const getUrl = async () => {
+const getUrl = async () => {
   let val = await getEnv();
   return val === 'DEV'
     ? 'https://saas-gw-dev.milgam.co.il:8012/'
@@ -27,7 +27,9 @@ export const getUrl = async () => {
 };
 
 export const userSignIn = async (username, password) => {
+  console.log('userSignIn');
   const url = (await getUrl()) + 'auth/login';
+  console.log('URLS', url);
   let response = await axios({
     method: 'post',
     url: url,
@@ -36,6 +38,7 @@ export const userSignIn = async (username, password) => {
       password: password,
     },
   });
+  console.log('Response', response);
   return response;
 };
 
@@ -260,7 +263,7 @@ export const uploadPhotoFromAmazon = async (
   //get the file and send with fetch
   token,
   taskIdAndFilePath,
-  filePath
+  filePath,
 ) => {
   console.log('token', token);
   console.log('taskIdAndFilePath', taskIdAndFilePath);

@@ -8,27 +8,27 @@ import {
   SafeAreaView,
   FlatList,
 } from 'react-native';
-import React, { useState, useEffect, useMemo } from 'react';
-import { BottomMenu } from '../../components/BottomMenu';
-import { scale } from '../../common/common';
-import { ListItem } from './ListItem';
-import { ListItemTab } from './ListItemTab';
-import { useGlobal, setGlobal } from '../../global/index';
+import React, {useState, useEffect, useMemo} from 'react';
+import {BottomMenu} from '../../components/BottomMenu';
+import {scale} from '../../common/common';
+import {ListItem} from './ListItem';
+import {ListItemTab} from './ListItemTab';
+import {useGlobal, setGlobal} from '../../global/index';
 import moment from 'moment';
 import AsyncStorage from '@react-native-async-storage/async-storage';
-import { getTasksList, changeTaskStatus } from '../../api/index';
-import { useTranslation } from 'react-i18next';
-import { I18nManager } from 'react-native';
+import {getTasksList, changeTaskStatus} from '../../api/index';
+import {useTranslation} from 'react-i18next';
+import {I18nManager} from 'react-native';
 import DateTimePickerModal from 'react-native-modal-datetime-picker';
 import SearchBar from 'react-native-dynamic-search-bar';
 import 'moment/locale/he';
 import 'moment/locale/en-gb';
-import { useNavigation } from '@react-navigation/native';
-import { getSettings } from '../../api/index';
+import {useNavigation} from '@react-navigation/native';
+import {getSettings} from '../../api/index';
 import Icon from 'react-native-vector-icons/MaterialCommunityIcons';
 
 export const List = (props: any) => {
-  const { t, i18n } = useTranslation();
+  const {t, i18n} = useTranslation();
   const submitted = props?.route?.params?.submitted || false;
   const navigation = useNavigation();
 
@@ -64,11 +64,13 @@ export const List = (props: any) => {
         acc[item.key] = item;
         return acc;
       }, {}),
-    [globalDetails]
+    [globalDetails],
   );
 
   const tableHeaderSlice = tableHeaders.slice(0, 5);
-  const tableHeaderLabels = tableHeaderSlice.map(item => detailMap[item]?.label ?? item);
+  const tableHeaderLabels = tableHeaderSlice.map(
+    item => detailMap[item]?.label ?? item,
+  );
 
   const getViewMode = async () => {
     let mode = await AsyncStorage.getItem('viewMode');
@@ -113,16 +115,22 @@ export const List = (props: any) => {
     });
 
     tasksSliced.sort(function (a, b) {
-      if (!a.urgentTask && !b.urgentTask) return 0;
-      if (!a.urgentTask && b.urgentTask) return 1;
-      if (a.urgentTask && !b.urgentTask) return -1;
+      if (!a.urgentTask && !b.urgentTask) {
+        return 0;
+      }
+      if (!a.urgentTask && b.urgentTask) {
+        return 1;
+      }
+      if (a.urgentTask && !b.urgentTask) {
+        return -1;
+      }
     });
 
     return tasksSliced;
   }, [userTasks]);
 
   const statusLabels = statuses.reduce((res, item) => {
-    return { ...res, [item.Key]: item.label };
+    return {...res, [item.Key]: item.label};
   }, {});
 
   const isRtl = I18nManager.isRTL;
@@ -138,27 +146,37 @@ export const List = (props: any) => {
   }
 
   const filterBySearch = (data: any[], searchValue: string) => {
-    if (!searchValue) return data;
+    if (!searchValue) {
+      return data;
+    }
 
     const loweredSearch = searchValue.toLowerCase();
 
     return data.filter(item => {
       return item.taskDetails.some(
-        detail => detail.value && detail.value.toString().toLowerCase().includes(loweredSearch)
+        detail =>
+          detail.value &&
+          detail.value.toString().toLowerCase().includes(loweredSearch),
       );
     });
   };
 
   const filterByType = (data: any[], matchType: string) => {
-    if (!matchType) return data;
+    if (!matchType) {
+      return data;
+    }
 
     const loweredType = matchType.toLowerCase();
 
-    return data.filter(item => item.taskType.toLowerCase().includes(loweredType));
+    return data.filter(item =>
+      item.taskType.toLowerCase().includes(loweredType),
+    );
   };
 
   const filterByDate = (data: any[], matchDate: string | null) => {
-    if (matchDate == null) return data;
+    if (matchDate == null) {
+      return data;
+    }
 
     return data.filter(item => {
       const itemDateString = moment(item.executionEndDate).format('DD/MM/YYYY');
@@ -187,17 +205,17 @@ export const List = (props: any) => {
           if (curr.statusId == 'done' || curr.statusId == 'approved') {
             const getClr = statuses.find(item => item.Key === curr.statusId);
             const newColor = getClr?.color ?? colorDefault;
-            const newCurr = { ...curr, color: newColor };
+            const newCurr = {...curr, color: newColor};
             acc.done.push(newCurr);
           } else if (curr.statusId == 'Pending') {
             const getClr = statuses.find(item => item.Key === curr.statusId);
             const newColor = getClr?.color ?? colorDefault;
-            const newCurr = { ...curr, color: newColor };
+            const newCurr = {...curr, color: newColor};
             acc.pending.push(newCurr);
           } else if (curr.statusId == 'escalate') {
             const getClr = statuses.find(item => item.Key === curr.statusId);
             const newColor = getClr?.color ?? colorDefault;
-            const newCurr = { ...curr, color: newColor };
+            const newCurr = {...curr, color: newColor};
             acc.escalate.push(newCurr);
           } else if (
             curr.statusId.toLowerCase() == 'assigned' ||
@@ -205,12 +223,12 @@ export const List = (props: any) => {
           ) {
             const getClr = statuses.find(item => item.Key === curr.statusId);
             const newColor = getClr?.color ?? colorDefault;
-            const newCurr = { ...curr, color: newColor };
+            const newCurr = {...curr, color: newColor};
             acc.undone.push(newCurr);
           }
           return acc;
         },
-        { done: [], pending: [], escalate: [], undone: [] }
+        {done: [], pending: [], escalate: [], undone: []},
       );
       setTaskByStatus(res);
     } else {
@@ -267,17 +285,22 @@ export const List = (props: any) => {
             element.statusId = 'done';
             const res = await changeTaskStatus(element._id, IdToken, element);
             if (Object.keys(res).length !== 0) {
-              await AsyncStorage.getItem(`pending-${tenant}`).then(async items => {
-                if (items !== null) {
-                  const setItems = JSON.parse(items);
-                  const save = setItems.filter(function (e) {
-                    return e._id !== element._id;
-                  });
-                  await AsyncStorage.setItem(`pending-${tenant}`, JSON.stringify(save));
-                }
-              });
+              await AsyncStorage.getItem(`pending-${tenant}`).then(
+                async items => {
+                  if (items !== null) {
+                    const setItems = JSON.parse(items);
+                    const save = setItems.filter(function (e) {
+                      return e._id !== element._id;
+                    });
+                    await AsyncStorage.setItem(
+                      `pending-${tenant}`,
+                      JSON.stringify(save),
+                    );
+                  }
+                },
+              );
             }
-          })
+          }),
         );
         refreshTasks();
       }
@@ -306,7 +329,11 @@ export const List = (props: any) => {
 
   return (
     <SafeAreaView style={styles.container}>
-      <View style={[styles.pageHeader, { height: timeNow ? scale(400) : scale(390) }]}>
+      <View
+        style={[
+          styles.pageHeader,
+          {height: timeNow ? scale(400) : scale(390)},
+        ]}>
         <DateTimePickerModal
           isVisible={isDatePickerVisible}
           mode="date"
@@ -314,15 +341,21 @@ export const List = (props: any) => {
           onConfirm={handleConfirm}
           onCancel={hideDatePicker}
         />
-        <View style={{ flexDirection: 'row' }}>
+        <View style={{flexDirection: 'row'}}>
           {logo != 'no_logo' ? (
             <View style={styles.headerLogoWrapper}>
-              <Image style={styles.headerLogo} source={{ uri: logo }} resizeMode={'contain'} />
+              <Image
+                style={styles.headerLogo}
+                source={{uri: logo}}
+                resizeMode={'contain'}
+              />
             </View>
           ) : null}
           <Text
-            style={[styles.headerMainText2, { alignSelf: logo != 'no_logo' ? 'auto' : 'center' }]}
-          >
+            style={[
+              styles.headerMainText2,
+              {alignSelf: logo != 'no_logo' ? 'auto' : 'center'},
+            ]}>
             {todayDate}
           </Text>
         </View>
@@ -331,13 +364,19 @@ export const List = (props: any) => {
             style={styles.createTaskBtn}
             onPress={() => {
               navigation.navigate('CreateTask');
-            }}
-          >
-            <Image style={styles.plus} source={require('../../assets/plus.png')} />
+            }}>
+            <Image
+              style={styles.plus}
+              source={require('../../assets/plus.png')}
+            />
           </TouchableOpacity>
         ) : null}
 
-        <View style={[styles.viewOfPageWrapper, { top: viewMenu ? scale(130) : scale(170) }]}>
+        <View
+          style={[
+            styles.viewOfPageWrapper,
+            {top: viewMenu ? scale(130) : scale(170)},
+          ]}>
           <View style={styles.expandedMenu}>
             <TouchableOpacity
               onPress={async () => {
@@ -345,9 +384,11 @@ export const List = (props: any) => {
                 await AsyncStorage.setItem('viewMode', 'list').then(() => {
                   setViewMode('list');
                 });
-              }}
-            >
-              <Image style={styles.listIco} source={require('../../assets/list.png')} />
+              }}>
+              <Image
+                style={styles.listIco}
+                source={require('../../assets/list.png')}
+              />
             </TouchableOpacity>
             <TouchableOpacity
               onPress={async () => {
@@ -355,58 +396,81 @@ export const List = (props: any) => {
                 await AsyncStorage.setItem('viewMode', 'table').then(() => {
                   setViewMode('table');
                 });
-              }}
-            >
-              <Image style={styles.cellsIco} source={require('../../assets/cells.png')} />
+              }}>
+              <Image
+                style={styles.cellsIco}
+                source={require('../../assets/cells.png')}
+              />
             </TouchableOpacity>
           </View>
         </View>
 
         <View
-          style={[styles.btnsContainer, { marginTop: logo == 'no_logo' ? scale(65) : scale(110) }]}
-        >
+          style={[
+            styles.btnsContainer,
+            {marginTop: logo == 'no_logo' ? scale(65) : scale(110)},
+          ]}>
           <TouchableOpacity
-            style={[styles.allBtn, { backgroundColor: activeTab == 'notDone' ? 'black' : 'white' }]}
+            style={[
+              styles.allBtn,
+              {backgroundColor: activeTab == 'notDone' ? 'black' : 'white'},
+            ]}
             onPress={() => {
               setActiveTab('notDone');
-            }}
-          >
+            }}>
             <Text
-              style={[styles.notDoneText, { color: activeTab == 'notDone' ? 'white' : 'black' }]}
-            >
+              style={[
+                styles.notDoneText,
+                {color: activeTab == 'notDone' ? 'white' : 'black'},
+              ]}>
               {t('activeTasks')}
             </Text>
           </TouchableOpacity>
           <TouchableOpacity
-            style={[styles.allBtn, { backgroundColor: activeTab == 'done' ? 'black' : 'white' }]}
+            style={[
+              styles.allBtn,
+              {backgroundColor: activeTab == 'done' ? 'black' : 'white'},
+            ]}
             onPress={() => {
               setActiveTab('done');
-            }}
-          >
-            <Text style={[styles.doneText, { color: activeTab == 'done' ? 'white' : 'black' }]}>
+            }}>
+            <Text
+              style={[
+                styles.doneText,
+                {color: activeTab == 'done' ? 'white' : 'black'},
+              ]}>
               {t('done')}
             </Text>
           </TouchableOpacity>
           <TouchableOpacity
-            style={[styles.allBtn, { backgroundColor: activeTab == 'pending' ? 'black' : 'white' }]}
+            style={[
+              styles.allBtn,
+              {backgroundColor: activeTab == 'pending' ? 'black' : 'white'},
+            ]}
             onPress={() => {
               setActiveTab('pending');
-            }}
-          >
-            <Text style={[styles.doneText, { color: activeTab == 'pending' ? 'white' : 'black' }]}>
+            }}>
+            <Text
+              style={[
+                styles.doneText,
+                {color: activeTab == 'pending' ? 'white' : 'black'},
+              ]}>
               {t('pending')}
             </Text>
           </TouchableOpacity>
           <TouchableOpacity
             style={[
               styles.allBtn,
-              { backgroundColor: activeTab == 'escalate' ? 'black' : 'white' },
+              {backgroundColor: activeTab == 'escalate' ? 'black' : 'white'},
             ]}
             onPress={() => {
               setActiveTab('escalate');
-            }}
-          >
-            <Text style={[styles.doneText, { color: activeTab == 'escalate' ? 'white' : 'black' }]}>
+            }}>
+            <Text
+              style={[
+                styles.doneText,
+                {color: activeTab == 'escalate' ? 'white' : 'black'},
+              ]}>
               {t('escalate')}
             </Text>
           </TouchableOpacity>
@@ -418,17 +482,17 @@ export const List = (props: any) => {
               flexDirection: 'row',
               alignSelf: 'center',
               marginTop: scale(12),
-            }}
-          >
+            }}>
             <View>
-              <Text style={{ color: 'white' }}>{t('selectedDate')}: </Text>
-              <Text style={{ alignSelf: 'center', color: 'black' }}>{timePretty}</Text>
+              <Text style={{color: 'white'}}>{t('selectedDate')}: </Text>
+              <Text style={{alignSelf: 'center', color: 'black'}}>
+                {timePretty}
+              </Text>
             </View>
             <TouchableOpacity
               onPress={() => {
                 setTimeNow(null);
-              }}
-            >
+              }}>
               <Image
                 style={styles.clearImage}
                 source={require('../../assets/date-clear-ico.png')}
@@ -447,9 +511,9 @@ export const List = (props: any) => {
             }}
             height={25}
             fontSize={15}
-            textInputStyle={{ paddingBottom: scale(-5), paddingTop: scale(-5) }}
-            clearIconImageStyle={{ display: 'none' }}
-            style={{ height: '100%', backgroundColor: '#f2f0f0' }}
+            textInputStyle={{paddingBottom: scale(-5), paddingTop: scale(-5)}}
+            clearIconImageStyle={{display: 'none'}}
+            style={{height: '100%', backgroundColor: '#f2f0f0'}}
             value={searchText}
           />
         </View>
@@ -458,14 +522,18 @@ export const List = (props: any) => {
             style={styles.headerFunnel}
             onPress={() => {
               setExpanded(!expanded);
-            }}
-          >
+            }}>
             <View>
               <Icon name="filter" size={27} />
             </View>
           </TouchableOpacity>
-          <TouchableOpacity style={styles.headerCalendar} onPress={showDatePicker}>
-            <Image style={styles.calendarIcon} source={require('../../assets/calendar.png')} />
+          <TouchableOpacity
+            style={styles.headerCalendar}
+            onPress={showDatePicker}>
+            <Image
+              style={styles.calendarIcon}
+              source={require('../../assets/calendar.png')}
+            />
           </TouchableOpacity>
           <TouchableOpacity
             style={styles.headerRestore}
@@ -474,8 +542,7 @@ export const List = (props: any) => {
               setSearchText('');
               setTimeNow(null);
               setExpanded(false);
-            }}
-          >
+            }}>
             <View>
               <Icon name="restore" size={27} />
             </View>
@@ -491,9 +558,11 @@ export const List = (props: any) => {
                 onPress={() => {
                   setSelectedType(item);
                   setExpanded(false);
-                }}
-              >
-                <Text style={selectedType === item ? styles.selectedType : null}>{item}</Text>
+                }}>
+                <Text
+                  style={selectedType === item ? styles.selectedType : null}>
+                  {item}
+                </Text>
               </TouchableOpacity>
             );
           })}
@@ -524,14 +593,16 @@ export const List = (props: any) => {
                     <FlatList
                       style={styles.listItems}
                       data={taskByStatus.done}
-                      contentContainerStyle={{ flexGrow: 1 }}
+                      contentContainerStyle={{flexGrow: 1}}
                       refreshing={false}
                       onRefresh={refreshTasks}
                       renderItem={(elem, index) => {
-                        let { item } = elem;
+                        let {item} = elem;
                         return (
                           <ListItem
-                            backgroundColor={item.color != '' ? item.color : 'white'}
+                            backgroundColor={
+                              item.color != '' ? item.color : 'white'
+                            }
                             tableHeaders={tableHeaderSlice}
                             key={index}
                             statusLabels={statusLabels}
@@ -545,14 +616,16 @@ export const List = (props: any) => {
                     <FlatList
                       style={styles.listItems}
                       data={taskByStatus.undone}
-                      contentContainerStyle={{ flexGrow: 0 }}
+                      contentContainerStyle={{flexGrow: 0}}
                       refreshing={false}
                       onRefresh={refreshTasks}
                       renderItem={(elem, index) => {
-                        let { item } = elem;
+                        let {item} = elem;
                         return (
                           <ListItem
-                            backgroundColor={item.color != '' ? item.color : 'white'}
+                            backgroundColor={
+                              item.color != '' ? item.color : 'white'
+                            }
                             tableHeaders={tableHeaderSlice}
                             key={index}
                             statusLabels={statusLabels}
@@ -566,15 +639,17 @@ export const List = (props: any) => {
                     <FlatList
                       style={styles.listItems}
                       data={getPendingData}
-                      contentContainerStyle={{ flexGrow: 1 }}
+                      contentContainerStyle={{flexGrow: 1}}
                       refreshing={false}
                       onRefresh={refreshTasks}
                       renderItem={(elem, index) => {
-                        let { item } = elem;
+                        let {item} = elem;
                         return (
                           item.statusId == 'Pending' && (
                             <ListItem
-                              backgroundColor={item.color != '' ? item.color : 'white'}
+                              backgroundColor={
+                                item.color != '' ? item.color : 'white'
+                              }
                               tableHeaders={tableHeaderSlice}
                               key={index}
                               statusLabels={statusLabels}
@@ -589,14 +664,16 @@ export const List = (props: any) => {
                     <FlatList
                       style={styles.listItems}
                       data={taskByStatus.escalate}
-                      contentContainerStyle={{ flexGrow: 1 }}
+                      contentContainerStyle={{flexGrow: 1}}
                       refreshing={false}
                       onRefresh={refreshTasks}
                       renderItem={(elem, index) => {
-                        let { item } = elem;
+                        let {item} = elem;
                         return (
                           <ListItem
-                            backgroundColor={item.color != '' ? item.color : 'white'}
+                            backgroundColor={
+                              item.color != '' ? item.color : 'white'
+                            }
                             tableHeaders={tableHeaderSlice}
                             key={index}
                             statusLabels={statusLabels}
@@ -612,10 +689,14 @@ export const List = (props: any) => {
                 <View style={styles.noTasksWrapper}>
                   {activeTab == 'done' ? (
                     <View style={styles.listItems}>
-                      <Text style={styles.noTasksText}>No tasks{'\n'}Great job!</Text>
+                      <Text style={styles.noTasksText}>
+                        No tasks{'\n'}Great job!
+                      </Text>
                     </View>
                   ) : (
-                    <Text style={styles.noTasksText}>You have no available tasks</Text>
+                    <Text style={styles.noTasksText}>
+                      You have no available tasks
+                    </Text>
                   )}
                 </View>
               )}
@@ -628,14 +709,16 @@ export const List = (props: any) => {
                     <FlatList
                       style={styles.listItems}
                       data={taskByStatus.done}
-                      contentContainerStyle={{ flexGrow: 1 }}
+                      contentContainerStyle={{flexGrow: 1}}
                       refreshing={false}
                       onRefresh={refreshTasks}
                       renderItem={(elem, index) => {
-                        let { item } = elem;
+                        let {item} = elem;
                         return (
                           <ListItemTab
-                            backgroundColor={item.color != '' ? item.color : 'white'}
+                            backgroundColor={
+                              item.color != '' ? item.color : 'white'
+                            }
                             tableHeaders={tableHeaderSlice}
                             key={index}
                             statusLabels={statusLabels}
@@ -650,15 +733,17 @@ export const List = (props: any) => {
                     <FlatList
                       style={styles.listItems}
                       data={taskByStatus.undone}
-                      contentContainerStyle={{ flexGrow: 1 }}
+                      contentContainerStyle={{flexGrow: 1}}
                       refreshing={false}
                       onRefresh={refreshTasks}
                       renderItem={(elem, index) => {
-                        let { item } = elem;
+                        let {item} = elem;
 
                         return (
                           <ListItemTab
-                            backgroundColor={item.color != '' ? item.color : 'white'}
+                            backgroundColor={
+                              item.color != '' ? item.color : 'white'
+                            }
                             tableHeaders={tableHeaderSlice}
                             key={index}
                             statusLabels={statusLabels}
@@ -673,15 +758,17 @@ export const List = (props: any) => {
                     <FlatList
                       style={styles.listItems}
                       data={getPendingData}
-                      contentContainerStyle={{ flexGrow: 1 }}
+                      contentContainerStyle={{flexGrow: 1}}
                       refreshing={false}
                       onRefresh={refreshTasks}
                       renderItem={(elem, index) => {
-                        let { item } = elem;
+                        let {item} = elem;
                         return (
                           item.statusId == 'Pending' && (
                             <ListItemTab
-                              backgroundColor={item.color != '' ? item.color : 'white'}
+                              backgroundColor={
+                                item.color != '' ? item.color : 'white'
+                              }
                               tableHeaders={tableHeaderSlice}
                               key={index}
                               statusLabels={statusLabels}
@@ -697,14 +784,16 @@ export const List = (props: any) => {
                     <FlatList
                       style={styles.listItems}
                       data={taskByStatus.escalate}
-                      contentContainerStyle={{ flexGrow: 1 }}
+                      contentContainerStyle={{flexGrow: 1}}
                       refreshing={false}
                       onRefresh={refreshTasks}
                       renderItem={(elem, index) => {
-                        let { item } = elem;
+                        let {item} = elem;
                         return (
                           <ListItemTab
-                            backgroundColor={item.color != '' ? item.color : 'white'}
+                            backgroundColor={
+                              item.color != '' ? item.color : 'white'
+                            }
                             tableHeaders={tableHeaderSlice}
                             key={index}
                             statusLabels={statusLabels}
@@ -721,17 +810,21 @@ export const List = (props: any) => {
                 <View style={styles.noTasksWrapper}>
                   {activeTab == 'done' ? (
                     <View style={styles.listItems}>
-                      <Text style={styles.noTasksText}>No tasks{'\n'}Great job!</Text>
+                      <Text style={styles.noTasksText}>
+                        No tasks{'\n'}Great job!
+                      </Text>
                     </View>
                   ) : (
-                    <Text style={styles.noTasksText}>You have no available tasks</Text>
+                    <Text style={styles.noTasksText}>
+                      You have no available tasks
+                    </Text>
                   )}
                 </View>
               )}
             </>
           )}
         </View>
-        <SafeAreaView style={styles.offset}></SafeAreaView>
+        <SafeAreaView style={styles.offset} />
       </View>
       <BottomMenu fromWhere={'list'} />
     </SafeAreaView>

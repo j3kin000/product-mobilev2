@@ -7,8 +7,6 @@
  */
 import {createStackNavigator} from '@react-navigation/stack';
 import {NavigationContainer} from '@react-navigation/native';
-import messaging from '@react-native-firebase/messaging';
-import DeviceInfo from 'react-native-device-info';
 
 import React from 'react';
 import {useEffect} from 'react';
@@ -25,55 +23,12 @@ import {InfoPage} from './src/screens/Forms/InfoPage';
 import axios from 'axios';
 import {setGlobal} from './src/global';
 import {LibProvider} from './src/common/context/lib';
-import {useNavigation} from '@react-navigation/native';
 import AsyncStorage from '@react-native-async-storage/async-storage';
-// import {MessagingService} from './src/common/messaging';
-import Toast, {BaseToast, ErrorToast} from 'react-native-toast-message';
-import firebase from '@react-native-firebase/app';
-
+import {MessagingService} from './src/common/messaging';
 import './src/i18n';
-const credentials = {
-  apiKey: 'AIzaSyAg-F1cUnd8-K07j5RDp6QEba8ntVhlUt0',
-  authDomain: 'menu-3a9c9.firebaseapp.com',
-  databaseURL: 'https://menu-3a9c9-default-rtdb.firebaseio.com',
-  projectId: 'menu-3a9c9',
-  storageBucket: 'menu-3a9c9.appspot.com',
-  messagingSenderId: '888652844141',
-  appId: '1:888652844141:web:d88f0dd6ef845e09c48364',
-  measurementId: 'G-GC79VQ93WG',
-};
 
 const {Navigator, Screen} = createStackNavigator();
 const App = () => {
-  const toastConfig = {
-    success: props => (
-      <BaseToast
-        {...props}
-        style={{borderLeftColor: 'pink'}}
-        contentContainerStyle={{paddingHorizontal: 15}}
-        text1Style={{
-          fontSize: 20,
-          fontWeight: '400',
-        }}
-        text2Style={{
-          fontSize: 15,
-          fontWeight: '400',
-        }}
-      />
-    ),
-
-    error: props => (
-      <ErrorToast
-        {...props}
-        text1Style={{
-          fontSize: 17,
-        }}
-        text2Style={{
-          fontSize: 15,
-        }}
-      />
-    ),
-  };
   useEffect(() => {
     const requestIntercept = axios.interceptors.request.use(request => {
       return request;
@@ -82,14 +37,12 @@ const App = () => {
     const responseIntercept = axios.interceptors.response.use(
       response => response,
       async error => {
-        if (error?.response?.status == 401) {
+        if (error?.response?.status === 401) {
           await AsyncStorage.removeItem('IdToken');
           await AsyncStorage.removeItem('tenant');
           await AsyncStorage.removeItem('logo');
           await AsyncStorage.removeItem('viewMode');
-          await AsyncStorage.setItem('stayLoggedIn', 'false').then(() => {
-            // navigation.navigate('Login');
-          });
+          await AsyncStorage.setItem('stayLoggedIn', 'false').then(() => {});
           setGlobal({
             tableHeaders: [],
           });
@@ -103,40 +56,16 @@ const App = () => {
     };
   }, []);
 
-  // const initMessaging = async () => {
-  //   const unsubscribe = MessagingService.deviceForegroundSubscribe(
-  //     async remoteMessage => {
-  //       Toast.show({
-  //         type: 'success',
-  //         text1: 'Notification ⚠️',
-  //         text2: `${remoteMessage.data.default} 👋`,
-  //       });
-  //     },
-  //   );
-
-  //   const acceptPermission = await MessagingService.requestUserPermission();
-
-  //   if (!acceptPermission) {
-  //     return unsubscribe();
-  //   }
-  // };
-
-  // MessagingService.deviceBackgroundSubscribe(async remoteMessage => {
-  //   console.log('inBackground');
-  // });
-
   useEffect(() => {
-    try {
-      initMessaging();
-    } catch (error) {
-      console.error(error);
-    }
-  }, []);
-  // useEffect(() => {
-  //   return async () => {
-  //     await firebase.initializeApp(credentials);
-  //   };
-  // }, []);
+    const unsubscribe = MessagingService.deviceForegroundSubscribe(message => {
+      console.log('this is a foreground message', message);
+    });
+
+    MessagingService.getToken().then(console.log);
+
+    return unsubscribe;
+  });
+
   return (
     <NavigationContainer>
       <LibProvider>
@@ -160,7 +89,6 @@ const App = () => {
             options={{animationEnabled: false}}
           />
         </Navigator>
-        <Toast config={toastConfig} visibilityTime={6000} />
       </LibProvider>
     </NavigationContainer>
   );

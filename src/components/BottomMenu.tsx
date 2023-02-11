@@ -8,14 +8,14 @@ import {
   Platform,
 } from 'react-native';
 import React from 'react';
-import { scale } from '../common/common';
-import { useNavigation } from '@react-navigation/native';
-import { getTasksList } from '../api/index';
+import {scale} from '../common/common';
+import {useNavigation} from '@react-navigation/native';
+import {getTasksList} from '../api/index';
 import AsyncStorage from '@react-native-async-storage/async-storage';
-import { setGlobal } from '../global/index';
+import {setGlobal} from '../global/index';
 
 export const BottomMenu = (props: any) => {
-  const { fromWhere, isLogin } = props;
+  const {fromWhere, isLogin} = props;
 
   const navigation = useNavigation();
   const getUsersTasks = async () => {
@@ -38,15 +38,17 @@ export const BottomMenu = (props: any) => {
         style={styles.button}
         onPress={() => {
           navigation.navigate('Home');
-        }}
-      >
+        }}>
         {fromWhere == 'home' ? (
           <Image
             style={styles.icon}
             source={require('../assets/bottomMenuIcons/home-selected.png')}
           />
         ) : (
-          <Image style={styles.icon} source={require('../assets/bottomMenuIcons/home.png')} />
+          <Image
+            style={styles.icon}
+            source={require('../assets/bottomMenuIcons/home.png')}
+          />
         )}
       </TouchableOpacity>
       <TouchableOpacity
@@ -63,15 +65,17 @@ export const BottomMenu = (props: any) => {
         onPress={async () => {
           navigation.navigate('List');
           await getUsersTasks();
-        }}
-      >
+        }}>
         {fromWhere == 'list' ? (
           <Image
             style={styles.icon}
             source={require('../assets/bottomMenuIcons/list-selected.png')}
           />
         ) : (
-          <Image style={styles.icon} source={require('../assets/bottomMenuIcons/list.png')} />
+          <Image
+            style={styles.icon}
+            source={require('../assets/bottomMenuIcons/list.png')}
+          />
         )}
       </TouchableOpacity>
 
@@ -80,15 +84,17 @@ export const BottomMenu = (props: any) => {
         style={styles.button}
         onPress={() => {
           navigation.navigate('Settings');
-        }}
-      >
+        }}>
         {fromWhere == 'settings' ? (
           <Image
             style={styles.icon}
             source={require('../assets/bottomMenuIcons/settings-selected.png')}
           />
         ) : (
-          <Image style={styles.icon} source={require('../assets/bottomMenuIcons/settings.png')} />
+          <Image
+            style={styles.icon}
+            source={require('../assets/bottomMenuIcons/settings.png')}
+          />
         )}
       </TouchableOpacity>
     </SafeAreaView>

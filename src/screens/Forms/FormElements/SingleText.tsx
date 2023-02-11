@@ -1,11 +1,11 @@
-import { StyleSheet, Text, View, I18nManager, TextInput } from 'react-native';
-import React, { useState, useEffect } from 'react';
-import { scale } from '../../../common/common';
+import {StyleSheet, Text, View, I18nManager, TextInput} from 'react-native';
+import React, {useState, useEffect} from 'react';
+import {scale} from '../../../common/common';
 
 export const SingleText = React.forwardRef((props: any, ref) => {
   const [changeText, setChangeText] = useState('');
-  const { label, key } = props.itemData;
-  let { handleElementField, regex, require } = props;
+  const {label, key} = props.itemData;
+  let {handleElementField, regex, require} = props;
   const [match, setMatch] = useState(true);
   const [requiredError, setRequiredError] = useState(false);
   const isRtl = I18nManager.isRTL;
@@ -16,7 +16,9 @@ export const SingleText = React.forwardRef((props: any, ref) => {
 
   return (
     <View style={styles.container} ref={ref}>
-      <Text style={isRtl ? styles.labelRtl : styles.label}>{label ? label : null}</Text>
+      <Text style={isRtl ? styles.labelRtl : styles.label}>
+        {label ? label : null}
+      </Text>
 
       <TextInput
         ref={ref}

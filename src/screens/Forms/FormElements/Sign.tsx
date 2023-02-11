@@ -1,16 +1,16 @@
-import { StyleSheet, Text, View, Image } from 'react-native';
-import React, { useState, useRef, useEffect } from 'react';
-import { scale } from '../../../common/common';
+import {StyleSheet, Text, View, Image} from 'react-native';
+import React, {useState, useRef, useEffect} from 'react';
+import {scale} from '../../../common/common';
 import Signature from 'react-native-signature-canvas';
 import RNFS from 'react-native-fs';
-import { uploadPhotoFromAmazon } from '../../../api/index';
+import {uploadPhotoFromAmazon} from '../../../api/index';
 import AsyncStorage from '@react-native-async-storage/async-storage';
-import { PrivateValueStore, useFocusEffect } from '@react-navigation/native';
+import {PrivateValueStore, useFocusEffect} from '@react-navigation/native';
 
 export const Sign = React.forwardRef((props: any, ref) => {
-  const { key } = props?.itemData;
-  const { handleElementField, setListScrolling } = props;
-  const { taskId } = props.wholeTask;
+  const {key} = props?.itemData;
+  const {handleElementField, setListScrolling} = props;
+  const {taskId} = props.wholeTask;
   const [setFilePath] = useState('');
   const [focus, setFocus] = useState(false);
   const [signBody, setSignBody] = useState();
@@ -20,7 +20,7 @@ export const Sign = React.forwardRef((props: any, ref) => {
       return () => {
         setFocus(false);
       };
-    }, [])
+    }, []),
   );
 
   useEffect(() => {
@@ -51,7 +51,7 @@ export const Sign = React.forwardRef((props: any, ref) => {
     uploadPhotoFromAmazon(
       IdToken,
       taskId + '/image.png',
-      'file://' + imagePath
+      'file://' + imagePath,
     );
     handleElementField(key, 'file://' + imagePath);
     setListScrolling(true);
@@ -103,9 +103,9 @@ export const Sign = React.forwardRef((props: any, ref) => {
 
   return (
     <>
-      <View style={{ marginBottom: scale(50), opacity: 0.99 }} ref={ref}>
-        <Text style={{ fontWeight: 'bold', marginBottom: scale(10) }}></Text>
-        <View style={{ width: 320, height: 210 }}>
+      <View style={{marginBottom: scale(50), opacity: 0.99}} ref={ref}>
+        <Text style={{fontWeight: 'bold', marginBottom: scale(10)}} />
+        <View style={{width: 320, height: 210}}>
           <Signature
             androidHardwareAccelerationDisabled={true}
             onOK={handleOK}
@@ -125,10 +125,7 @@ export const Sign = React.forwardRef((props: any, ref) => {
         <>
           <View>
             <Text>Current Signature</Text>
-            <Image
-              source={{ uri: signBody }}
-              style={{ width: 320, height: 150 }}
-            />
+            <Image source={{uri: signBody}} style={{width: 320, height: 150}} />
           </View>
         </>
       ) : (

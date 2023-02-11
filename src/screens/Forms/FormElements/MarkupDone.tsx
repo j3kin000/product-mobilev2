@@ -1,16 +1,16 @@
-import { StyleSheet, Text, View, Image } from 'react-native';
-import React, { useContext, useState, useEffect } from 'react';
-import { scale } from '../../../common/common';
-import { doAction } from '../FormActions';
-import { FormContext } from '../FormContext';
+import {StyleSheet, Text, View, Image} from 'react-native';
+import React, {useContext, useState, useEffect} from 'react';
+import {scale} from '../../../common/common';
+import {doAction} from '../FormActions';
+import {FormContext} from '../FormContext';
 import moment from 'moment';
 
 export const MarkupDone = React.forwardRef((props: any, ref) => {
   // const customData = require('./test.json');
 
-  let { label, value, key, displayValue, defaultValue } = props.itemData;
+  let {label, value, key, displayValue, defaultValue} = props.itemData;
 
-  const { wholeTask, getUserGroup } = props;
+  const {wholeTask, getUserGroup} = props;
 
   const [getGlobalTime, setGlobalTime] = useState(new Date());
   const [getString, setString] = useState('');
@@ -22,8 +22,9 @@ export const MarkupDone = React.forwardRef((props: any, ref) => {
     results: [],
     string: '',
     getFromBetween: function (sub1, sub2) {
-      if (this.string.indexOf(sub1) < 0 || this.string.indexOf(sub2) < 0)
+      if (this.string.indexOf(sub1) < 0 || this.string.indexOf(sub2) < 0) {
         return false;
+      }
       var SP = this.string.indexOf(sub1) + sub1.length;
       var string1 = this.string.substr(0, SP);
       var string2 = this.string.substr(SP);
@@ -31,20 +32,24 @@ export const MarkupDone = React.forwardRef((props: any, ref) => {
       return this.string.substring(SP, TP);
     },
     removeFromBetween: function (sub1, sub2) {
-      if (this.string.indexOf(sub1) < 0 || this.string.indexOf(sub2) < 0)
+      if (this.string.indexOf(sub1) < 0 || this.string.indexOf(sub2) < 0) {
         return false;
+      }
       var removal = sub1 + this.getFromBetween(sub1, sub2) + sub2;
       this.string = this.string.replace(removal, '');
     },
     getAllResults: function (sub1, sub2) {
-      if (this.string.indexOf(sub1) < 0 || this.string.indexOf(sub2) < 0)
+      if (this.string.indexOf(sub1) < 0 || this.string.indexOf(sub2) < 0) {
         return;
+      }
       var result = this.getFromBetween(sub1, sub2);
       this.results.push(result);
       this.removeFromBetween(sub1, sub2);
       if (this.string.indexOf(sub1) > -1 && this.string.indexOf(sub2) > -1) {
         this.getAllResults(sub1, sub2);
-      } else return;
+      } else {
+        return;
+      }
     },
     get: function (string, sub1, sub2) {
       this.results = [];
@@ -74,29 +79,29 @@ export const MarkupDone = React.forwardRef((props: any, ref) => {
         } else {
           if (setKey == 'createdAt') {
             const createdAt = moment(wholeTask[setKey]).format(
-              'DD/MM/YYYY HH:MM'
+              'DD/MM/YYYY HH:MM',
             );
             newString = newString.replace('{{' + element + '}}', createdAt);
           } else if (setKey == 'executionEndDate') {
             const executionEndDate = moment(wholeTask[setKey]).format(
-              'DD/MM/YYYY HH:MM'
+              'DD/MM/YYYY HH:MM',
             );
             newString = newString.replace(
               '{{' + element + '}}',
-              executionEndDate
+              executionEndDate,
             );
           } else if (setKey == 'executionStartDate') {
             const executionStartDate = moment(wholeTask[setKey]).format(
-              'DD/MM/YYYY HH:MM'
+              'DD/MM/YYYY HH:MM',
             );
             newString = newString.replace(
               '{{' + element + '}}',
-              executionStartDate
+              executionStartDate,
             );
           } else {
             newString = newString.replace(
               '{{' + element + '}}',
-              wholeTask[setKey]
+              wholeTask[setKey],
             );
           }
         }
@@ -112,7 +117,7 @@ export const MarkupDone = React.forwardRef((props: any, ref) => {
                     } else {
                       newString = newString.replace(
                         '{{' + element + '}}',
-                        '' + key.value + ''
+                        '' + key.value + '',
                       );
                     }
                   }
@@ -129,11 +134,11 @@ export const MarkupDone = React.forwardRef((props: any, ref) => {
               Array.isArray(ele.value)
                 ? (newString = newString.replace(
                     '{{' + element + '}}',
-                    ele.value[0]
+                    ele.value[0],
                   ))
                 : (newString = newString.replace(
                     '{{' + element + '}}',
-                    ele.value
+                    ele.value,
                   ));
             }
           }
@@ -184,7 +189,7 @@ export const MarkupDone = React.forwardRef((props: any, ref) => {
 
   return (
     <View style={styles.container} ref={ref}>
-      <Text style={{ color: 'black' }}>{label}</Text>
+      <Text style={{color: 'black'}}>{label}</Text>
       <View>
         {displayValue != '' ? (
           logo ? (
@@ -200,7 +205,7 @@ export const MarkupDone = React.forwardRef((props: any, ref) => {
                   <Text>{splitString[0]}</Text>
                   <Image
                     style={styles.photoMinify}
-                    source={{ uri: convertImg }}
+                    source={{uri: convertImg}}
                   />
                   <Text>{getLastString}</Text>
                 </View>
@@ -214,7 +219,7 @@ export const MarkupDone = React.forwardRef((props: any, ref) => {
         ) : value != null || value != undefined ? (
           <Text>{value}</Text>
         ) : (
-          <Text></Text>
+          <Text />
         )}
       </View>
     </View>

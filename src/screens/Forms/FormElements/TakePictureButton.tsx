@@ -1,25 +1,37 @@
-import { StyleSheet, Text, View, Image, ScrollView, TouchableOpacity, Alert } from 'react-native';
-import React, { useState, useEffect } from 'react';
-import { scale } from '../../../common/common';
-import { launchCamera, launchImageLibrary } from 'react-native-image-picker';
-import { uploadPhotoFromAmazon } from '../../../api/index';
+import {
+  StyleSheet,
+  Text,
+  View,
+  Image,
+  ScrollView,
+  TouchableOpacity,
+  Alert,
+} from 'react-native';
+import React, {useState, useEffect} from 'react';
+import {scale} from '../../../common/common';
+import {launchCamera, launchImageLibrary} from 'react-native-image-picker';
+import {uploadPhotoFromAmazon} from '../../../api/index';
 import AsyncStorage from '@react-native-async-storage/async-storage';
-import { useTranslation } from 'react-i18next';
-import { getImageFromAmazon } from '../../../api/index';
+import {useTranslation} from 'react-i18next';
+import {getImageFromAmazon} from '../../../api/index';
 
 export const TakePictureButton = React.forwardRef((props: any, ref) => {
-  const { t, i18n } = useTranslation();
+  const {t, i18n} = useTranslation();
 
-  const { label, key } = props.itemData;
+  const {label, key} = props.itemData;
 
-  const { handleElementField, taskId, defaultValue, wholeTask } = props;
+  const {handleElementField, taskId, defaultValue, wholeTask} = props;
 
   const [localGallery, setLocalGallery] = useState([]);
   const [localPushGallery, setLocalPushGallery] = useState([]);
 
   const imgState = async path => {
     let smth2 = localPushGallery.slice();
-    if (defaultValue !== undefined && defaultValue.length > 0 && path === null) {
+    if (
+      defaultValue !== undefined &&
+      defaultValue.length > 0 &&
+      path === null
+    ) {
       if (localPushGallery.length === 0) {
         let picAmazon = localPushGallery.slice();
         const IdToken = await AsyncStorage.getItem('IdToken');
@@ -106,7 +118,7 @@ export const TakePictureButton = React.forwardRef((props: any, ref) => {
           setLocalGallery(smth);
           uploadPhotoFromAmazon(IdToken, `${taskId}/` + name, path);
         }
-      }
+      },
     );
   };
 
@@ -149,22 +161,26 @@ export const TakePictureButton = React.forwardRef((props: any, ref) => {
           setLocalGallery(smth);
           uploadPhotoFromAmazon(IdToken, `${taskId}/` + name, path);
         }
-      }
+      },
     );
   };
 
   const showConfirmDialog = img => {
-    return Alert.alert(t('areYouSure'), t('areYouSureYouWantToRemoveThisPhoto'), [
-      {
-        text: 'Yes',
-        onPress: () => {
-          deleteItem(img);
+    return Alert.alert(
+      t('areYouSure'),
+      t('areYouSureYouWantToRemoveThisPhoto'),
+      [
+        {
+          text: 'Yes',
+          onPress: () => {
+            deleteItem(img);
+          },
         },
-      },
-      {
-        text: 'No',
-      },
-    ]);
+        {
+          text: 'No',
+        },
+      ],
+    );
   };
   const deleteItem = name => {
     if (name != null) {
@@ -200,9 +216,11 @@ export const TakePictureButton = React.forwardRef((props: any, ref) => {
         style={styles.btn}
         onPress={() => {
           setOpened(!opened);
-        }}
-      >
-        <Image style={styles.ico} source={require('../../../assets/camera-ico.png')} />
+        }}>
+        <Image
+          style={styles.ico}
+          source={require('../../../assets/camera-ico.png')}
+        />
         <Text style={styles.text}>{label}</Text>
       </TouchableOpacity>
       {opened ? (
@@ -212,8 +230,7 @@ export const TakePictureButton = React.forwardRef((props: any, ref) => {
             onPress={() => {
               openCamera();
               setOpened(false);
-            }}
-          >
+            }}>
             <Text style={styles.pickerText}>{t('takePhoto')}</Text>
           </TouchableOpacity>
           <TouchableOpacity
@@ -221,8 +238,7 @@ export const TakePictureButton = React.forwardRef((props: any, ref) => {
             onPress={() => {
               openGallery();
               setOpened(false);
-            }}
-          >
+            }}>
             <Text style={styles.pickerText}>{t('openGallery')}</Text>
           </TouchableOpacity>
         </View>
@@ -232,8 +248,7 @@ export const TakePictureButton = React.forwardRef((props: any, ref) => {
         <ScrollView
           horizontal={true}
           style={styles.scrollView}
-          showsHorizontalScrollIndicator={false}
-        >
+          showsHorizontalScrollIndicator={false}>
           {localPushGallery.map(item => {
             //let imageUri = 'data:image/png;base64,' + item.base64
             return (
@@ -241,10 +256,12 @@ export const TakePictureButton = React.forwardRef((props: any, ref) => {
                 style={styles.minifyImageCell}
                 onPress={() => {
                   showConfirmDialog(item);
-                }}
-              >
-                <Image style={styles.cross} source={require('../../../assets/remove.png')} />
-                <Image style={styles.photoMinify} source={{ uri: item }} />
+                }}>
+                <Image
+                  style={styles.cross}
+                  source={require('../../../assets/remove.png')}
+                />
+                <Image style={styles.photoMinify} source={{uri: item}} />
               </TouchableOpacity>
             );
           })}

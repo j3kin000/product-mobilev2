@@ -1,30 +1,40 @@
-import React, { useState, createContext } from 'react';
+import React, {useState, createContext} from 'react';
 
 export const FormContext = createContext({});
 
-export const FormProvider = ({ children }) => {
+export const FormProvider = ({children}) => {
   const [open, setOpen] = useState();
   const [dateValue, setDateValue] = useState();
   const [actionsQ, setActionsQ] = useState([]);
 
   const [requiredButEmptyFields, setRequiredButEmptyFields] = useState([]);
 
-  const checkRequiredFields = (fields: any[], currentValues: Record<string, any>): string[] => {
-    const notRequired = ['markup', 'printButton', 'button', 'geo', 'autocomplete'];
+  const checkRequiredFields = (
+    fields: any[],
+    currentValues: Record<string, any>,
+  ): string[] => {
+    const notRequired = [
+      'markup',
+      'printButton',
+      'button',
+      'geo',
+      'autocomplete',
+    ];
 
     const requiredFields = fields.filter(
       item =>
         !notRequired.includes(item.inputType) &&
         item.rules?.required &&
-        Object.keys(currentValues).includes(item.key)
+        Object.keys(currentValues).includes(item.key),
     );
 
     const res = requiredFields.reduce((acc, curr) => {
-      const { key } = curr;
+      const {key} = curr;
 
       const currentValue = currentValues[key];
 
-      const isEmptyArray = Array.isArray(currentValue) && currentValue.length < 1;
+      const isEmptyArray =
+        Array.isArray(currentValue) && currentValue.length < 1;
 
       const isFalsy = currentValue === '' || currentValue == null;
 

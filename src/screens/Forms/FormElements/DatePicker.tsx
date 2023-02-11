@@ -1,9 +1,9 @@
-import { StyleSheet, Text, View, Image, TouchableOpacity } from 'react-native';
-import { scale } from '../../../common/common';
-import React, { useState, useContext, useEffect } from 'react';
+import {StyleSheet, Text, View, Image, TouchableOpacity} from 'react-native';
+import {scale} from '../../../common/common';
+import React, {useState, useContext, useEffect} from 'react';
 import DateTimePickerModal from 'react-native-modal-datetime-picker';
-import { doAction } from '../FormActions';
-import { FormContext } from '../FormContext';
+import {doAction} from '../FormActions';
+import {FormContext} from '../FormContext';
 import moment from 'moment';
 
 export const DatePicker = React.forwardRef((props: any, ref) => {
@@ -11,9 +11,9 @@ export const DatePicker = React.forwardRef((props: any, ref) => {
   const [dateNow, setDateNow] = useState(null);
   const [picked, setPicked] = useState(false);
 
-  const { handleElementField, availableActions, wholeTask } = props;
+  const {handleElementField, availableActions, wholeTask} = props;
 
-  const { label, key } = props.itemData;
+  const {label, key} = props.itemData;
 
   const showDatePicker = () => {
     setDatePickerVisibility(true);
@@ -23,7 +23,7 @@ export const DatePicker = React.forwardRef((props: any, ref) => {
     setDatePickerVisibility(false);
   };
 
-  const { setOpen, actionsQ, setActionsQ } = useContext(FormContext);
+  const {setOpen, actionsQ, setActionsQ} = useContext(FormContext);
 
   useEffect(() => {
     if (props.defaultValue) {
@@ -34,10 +34,8 @@ export const DatePicker = React.forwardRef((props: any, ref) => {
         'MM/DD/YYYY',
       ]);
       const res = moment(format).format('YYYY/MM/DD');
-      const setDefDate = momt
-        .tz(res, 'Asia/Jerusalem')
-        .format('DD/MM/YYYY');
-        setDateNow(setDefDate);
+      const setDefDate = momt.tz(res, 'Asia/Jerusalem').format('DD/MM/YYYY');
+      setDateNow(setDefDate);
     }
   }, [props.defaultValue]);
 
@@ -51,10 +49,12 @@ export const DatePicker = React.forwardRef((props: any, ref) => {
             const callback = () => {
               return date;
             };
-            doAction({ type: availableActions[actions], wholeTask, callback });
+            doAction({type: availableActions[actions], wholeTask, callback});
           };
           setActionsQ([...actionsQ, res]);
-        } else doAction({ type: availableActions[actions], wholeTask });
+        } else {
+          doAction({type: availableActions[actions], wholeTask});
+        }
       }
     }
     var momt = require('moment-timezone');
@@ -63,7 +63,7 @@ export const DatePicker = React.forwardRef((props: any, ref) => {
     const setDefDate = momt
       .tz(currentDate, 'Asia/Jerusalem')
       .format('DD/MM/YYYY');
-      setDateNow(setDefDate);
+    setDateNow(setDefDate);
 
     handleElementField(key, currentDate.toISOString());
     setPicked(true);
@@ -72,8 +72,8 @@ export const DatePicker = React.forwardRef((props: any, ref) => {
 
   return (
     <View style={styles.container} ref={ref}>
-      <View style={{ flexDirection: 'row' }}>
-        <View style={{ height: '100%', paddingTop: scale(20) }}>
+      <View style={{flexDirection: 'row'}}>
+        <View style={{height: '100%', paddingTop: scale(20)}}>
           <Text style={styles.label}>{props?.itemData.label || ''}</Text>
         </View>
         <View>
@@ -86,11 +86,11 @@ export const DatePicker = React.forwardRef((props: any, ref) => {
           </TouchableOpacity>
           {dateNow !== '' ? (
             <Text style={styles.timeText}>
-              <Text style={{ color: 'black' }}>Picked </Text> {dateNow}
+              <Text style={{color: 'black'}}>Picked </Text> {dateNow}
             </Text>
           ) : picked ? (
             <Text style={styles.timeText}>
-              <Text style={{ color: 'black' }}>Picked </Text> {dateNow}
+              <Text style={{color: 'black'}}>Picked </Text> {dateNow}
             </Text>
           ) : null}
         </View>

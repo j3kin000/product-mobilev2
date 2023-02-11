@@ -1,37 +1,55 @@
-import { StyleSheet, Text, View, TouchableOpacity, Linking, Platform, Alert } from 'react-native';
-import React, { useMemo, useContext } from 'react';
-import { scale } from '../../common/common';
-import { useNavigation } from '@react-navigation/native';
+import {
+  StyleSheet,
+  Text,
+  View,
+  TouchableOpacity,
+  Linking,
+  Platform,
+  Alert,
+} from 'react-native';
+import React, {useMemo, useContext} from 'react';
+import {scale} from '../../common/common';
+import {useNavigation} from '@react-navigation/native';
 import Icon from 'react-native-vector-icons/MaterialIcons';
 import Icon1 from 'react-native-vector-icons/MaterialCommunityIcons';
-import { LibContext } from '../../common/context/lib';
-import { cloneDeep } from 'lodash';
-import { useTranslation } from 'react-i18next';
+import {LibContext} from '../../common/context/lib';
+import {cloneDeep} from 'lodash';
+import {useTranslation} from 'react-i18next';
 
 export const ListItemTab = (props: any) => {
-  const { t, i18n } = useTranslation();
+  const {t, i18n} = useTranslation();
 
-  const { backgroundColor, statusLabels, taskDetailsIcons } = props;
+  const {backgroundColor, statusLabels, taskDetailsIcons} = props;
 
-  const { statusId } = props?.itemData;
+  const {statusId} = props?.itemData;
 
   const navigation = useNavigation();
 
-  const { parseValueForRender } = useContext(LibContext);
+  const {parseValueForRender} = useContext(LibContext);
 
   const sortedDetails = useMemo(() => {
-    const { taskDetails } = props?.itemData;
+    const {taskDetails} = props?.itemData;
 
-    if (!taskDetails) return [];
+    if (!taskDetails) {
+      return [];
+    }
 
     const clone = cloneDeep(taskDetails);
 
     clone.sort((a, b) => {
-      if (a.orderMobile === b.orderMobile) return a.label.localeCompare(b.label);
-      if (a.orderMobile == null && b.orderMobile == null) return 0;
+      if (a.orderMobile === b.orderMobile) {
+        return a.label.localeCompare(b.label);
+      }
+      if (a.orderMobile == null && b.orderMobile == null) {
+        return 0;
+      }
 
-      if (a.orderMobile == null) return 1;
-      if (b.orderMobile == null) return -1;
+      if (a.orderMobile == null) {
+        return 1;
+      }
+      if (b.orderMobile == null) {
+        return -1;
+      }
 
       return a.orderMobile < b.orderMobile ? -1 : 1;
     });
@@ -40,21 +58,29 @@ export const ListItemTab = (props: any) => {
   }, [props?.itemData]);
 
   const contactNumber: string = useMemo(() => {
-    const { taskDetails } = props?.itemData;
+    const {taskDetails} = props?.itemData;
 
-    if (!taskDetails) return '';
+    if (!taskDetails) {
+      return '';
+    }
 
-    const phoneNumberDetail = taskDetails.find(item => item.key === taskDetailsIcons?.phoneIcon);
+    const phoneNumberDetail = taskDetails.find(
+      item => item.key === taskDetailsIcons?.phoneIcon,
+    );
 
     return phoneNumberDetail?.value ?? '';
   }, [props?.itemData, taskDetailsIcons]);
 
   const addressDetails = useMemo(() => {
     let mapIconKeys = taskDetailsIcons?.mapIcon;
-    if (!mapIconKeys) return '';
+    if (!mapIconKeys) {
+      return '';
+    }
 
-    const { taskDetails } = props?.itemData;
-    if (!taskDetails) return '';
+    const {taskDetails} = props?.itemData;
+    if (!taskDetails) {
+      return '';
+    }
 
     const detailsMap = taskDetails.reduce((acc, item) => {
       acc[item.key] = item;
@@ -82,8 +108,8 @@ export const ListItemTab = (props: any) => {
       Alert.alert(
         null,
         `${t('noContactNo')}`,
-        [{ text: t('ok'), onPress: () => console.log('OK Pressed') }],
-        { cancelable: true }
+        [{text: t('ok'), onPress: () => console.log('OK Pressed')}],
+        {cancelable: true},
       );
     }
   };
@@ -107,8 +133,8 @@ export const ListItemTab = (props: any) => {
       Alert.alert(
         null,
         `${t('noMap')}`,
-        [{ text: t('ok'), onPress: () => console.log('OK Pressed') }],
-        { cancelable: true }
+        [{text: t('ok'), onPress: () => console.log('OK Pressed')}],
+        {cancelable: true},
       );
     }
   };
@@ -125,10 +151,10 @@ export const ListItemTab = (props: any) => {
             fromListItemTab: toListItemDetails,
           });
         }
-      }}
-    >
-      <View style={[styles.itemInfoWrapper, { backgroundColor: backgroundColor }]}>
-        <View style={{ flexDirection: 'row' }}>
+      }}>
+      <View
+        style={[styles.itemInfoWrapper, {backgroundColor: backgroundColor}]}>
+        <View style={{flexDirection: 'row'}}>
           <View style={styles.textWrapper}>
             {toDisplay.map((item, index) => {
               let value = item.value;
@@ -148,7 +174,9 @@ export const ListItemTab = (props: any) => {
                   <Text style={styles.label}>{item.label} </Text>
                   <Text style={styles.description}>
                     {item.key === 'urgentTask'
-                      ? value == true && <Icon1 name="exclamation" size={20} color="red" />
+                      ? value == true && (
+                          <Icon1 name="exclamation" size={20} color="red" />
+                        )
                       : parsedValue}
                   </Text>
                 </View>
@@ -159,8 +187,7 @@ export const ListItemTab = (props: any) => {
             {contactNumber != '' && (
               <TouchableOpacity
                 style={[styles.iconStyle, styles.phoneIconContainer]}
-                onPress={() => openContacts(contactNumber)}
-              >
+                onPress={() => openContacts(contactNumber)}>
                 <View>
                   <Icon style={styles.phoneIcon} name="call" size={20} />
                 </View>
@@ -169,8 +196,7 @@ export const ListItemTab = (props: any) => {
             {addressDetails != '' && (
               <TouchableOpacity
                 style={[styles.iconStyle, styles.mapIconContainer]}
-                onPress={() => openMap(addressDetails)}
-              >
+                onPress={() => openMap(addressDetails)}>
                 <View>
                   <Icon1 style={styles.mapIcon} name="map-marker" size={20} />
                 </View>
