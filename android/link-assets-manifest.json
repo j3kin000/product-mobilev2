@@ -2,6 +2,14 @@
   "migIndex": 1,
   "data": [
     {
+      "path": "src/assets/FormElements/checkbox-empty.png",
+      "sha1": "0f2ae89e7f9c616d0650e08eab35614d4cfa96c5"
+    },
+    {
+      "path": "src/assets/FormElements/checked.png",
+      "sha1": "e8f2902e70a8dc99c8049a83ba4786261dd0087d"
+    },
+    {
       "path": "src/assets/arrow-back-white.png",
       "sha1": "2b145df01ad32f112bdd12c217900efd4600730e"
     },
@@ -26,7 +34,7 @@
       "sha1": "f0aee21f99e3642e3c5d6c9b7ac29f0d2413d1e9"
     },
     {
-      "path": "src/assets/bottomMenuIcons/calendar.png",
+      "path": "src/assets/bottomMenuIcons/calendar3.png",
       "sha1": "2448b3ec31f3d4e2dd81eeb62a1088856d17ba85"
     },
     {
@@ -66,7 +74,7 @@
       "sha1": "c04244ab811dbbe60e46d3c2debb8decd131db81"
     },
     {
-      "path": "src/assets/calendar.png",
+      "path": "src/assets/calendar1.png",
       "sha1": "d82d8266e38b7b5d254c582d64a59d54432770b0"
     },
     {
@@ -106,14 +114,6 @@
       "sha1": "bcedc4b2b7d51499b885be3cbd4a2cfde3b64ad1"
     },
     {
-      "path": "src/assets/FormElements/checkbox-empty.png",
-      "sha1": "0f2ae89e7f9c616d0650e08eab35614d4cfa96c5"
-    },
-    {
-      "path": "src/assets/FormElements/checked.png",
-      "sha1": "e8f2902e70a8dc99c8049a83ba4786261dd0087d"
-    },
-    {
       "path": "src/assets/home-header-bg.png",
       "sha1": "3bf9d81cad5345e4271a16551fa9d8d0e4b07ffe"
     },
@@ -146,7 +146,7 @@
       "sha1": "adcc0cf47c4114e4bfba5f652ddb6f01f5636544"
     },
     {
-      "path": "src/assets/listIcons/calendar.png",
+      "path": "src/assets/listIcons/calendar2.png",
       "sha1": "80e6323555081361ba9c8ad3e6fed062f4d8aa69"
     },
     {

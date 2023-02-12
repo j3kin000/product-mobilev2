@@ -532,7 +532,7 @@ export const List = (props: any) => {
             onPress={showDatePicker}>
             <Image
               style={styles.calendarIcon}
-              source={require('../../assets/calendar.png')}
+              source={require('../../assets/calendar1.png')}
             />
           </TouchableOpacity>
           <TouchableOpacity
