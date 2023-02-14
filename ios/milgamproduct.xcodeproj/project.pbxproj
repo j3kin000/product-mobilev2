@@ -69,6 +69,7 @@
 		DBE755C88A724DCD9934A093 /* image2.png in Resources */ = {isa = PBXBuildFile; fileRef = 2A00A8DFED664CC2910D3F98 /* image2.png */; };
 		DD62DB572FD1431DBF427CA5 /* cells.png in Resources */ = {isa = PBXBuildFile; fileRef = 346C45D94E2C43D9B8CD02EB /* cells.png */; };
 		DE4BC128FFD64DF0AD6A7CFE /* printer.png in Resources */ = {isa = PBXBuildFile; fileRef = B9D10D74948A4EEB83021BF3 /* printer.png */; };
+		E147164C299A102A00DEF5B4 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = E147164B299A102A00DEF5B4 /* GoogleService-Info.plist */; };
 		EBA12FDBD5FA4B27AEDA969D /* settings-selected.png in Resources */ = {isa = PBXBuildFile; fileRef = 47D132EC130E498193C9B956 /* settings-selected.png */; };
 		ED3921F0DAE6424BB66CF0A8 /* user.png in Resources */ = {isa = PBXBuildFile; fileRef = 2DC0FC712AEB4148A469B11C /* user.png */; };
 		F03B336B33D24D5EBC79FC65 /* camera-blue.png in Resources */ = {isa = PBXBuildFile; fileRef = 493B3E8C7BEC4FEBB3D8D550 /* camera-blue.png */; };
@@ -76,7 +77,6 @@
 		F3D8D1C8E5C44D338F05B4C9 /* wall-clock.png in Resources */ = {isa = PBXBuildFile; fileRef = 3DE58D9966B4495384572AFA /* wall-clock.png */; };
 		F63634A559374A11AEA9BE3E /* switcher-off.png in Resources */ = {isa = PBXBuildFile; fileRef = 189751A6CDB84BA68A63AD1E /* switcher-off.png */; };
 		FAFCA830D9424529A8A0A14C /* home-header-bg2.png in Resources */ = {isa = PBXBuildFile; fileRef = DE78FF6DD2034531B06907E7 /* home-header-bg2.png */; };
-		FE7CEE732998D66500A7A886 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = FE7CEE722998D66500A7A886 /* GoogleService-Info.plist */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -164,13 +164,13 @@
 		DE5E3E74CD9B47949FA3820A /* plus.png */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = unknown; name = plus.png; path = ../src/assets/plus.png; sourceTree = "<group>"; };
 		DE78FF6DD2034531B06907E7 /* home-header-bg2.png */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = unknown; name = "home-header-bg2.png"; path = "../src/assets/home-header-bg2.png"; sourceTree = "<group>"; };
 		E09730E4AE274A73AD9699CC /* radio-button.png */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = unknown; name = "radio-button.png"; path = "../src/assets/radio-button.png"; sourceTree = "<group>"; };
+		E147164B299A102A00DEF5B4 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; name = "GoogleService-Info.plist"; path = "milgamproduct/GoogleService-Info.plist"; sourceTree = "<group>"; };
 		EB77AA8CC438686909A3444A /* libPods-milgamproduct-milgamproductTests.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-milgamproduct-milgamproductTests.a"; sourceTree = BUILT_PRODUCTS_DIR; };
 		ED297162215061F000B7C4FE /* JavaScriptCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = JavaScriptCore.framework; path = System/Library/Frameworks/JavaScriptCore.framework; sourceTree = SDKROOT; };
 		F2573DC9C912462AA08CDB2F /* new-logo.png */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = unknown; name = "new-logo.png"; path = "../src/assets/new-logo.png"; sourceTree = "<group>"; };
 		F56B02CDE21A44DF9F2288F0 /* home-header-bg.png */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = unknown; name = "home-header-bg.png"; path = "../src/assets/home-header-bg.png"; sourceTree = "<group>"; };
 		FAF3C5DC4FBB47569FD5BB27 /* attach.png */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = unknown; name = attach.png; path = ../src/assets/attach.png; sourceTree = "<group>"; };
 		FC4C35363389466CB4BF4313 /* defImage.png */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = unknown; name = defImage.png; path = ../src/assets/defImage.png; sourceTree = "<group>"; };
-		FE7CEE722998D66500A7A886 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; name = "GoogleService-Info.plist"; path = "../../../../Downloads/GoogleService-Info.plist"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -313,7 +313,7 @@
 		83CBB9F61A601CBA00E9B192 = {
 			isa = PBXGroup;
 			children = (
-				FE7CEE722998D66500A7A886 /* GoogleService-Info.plist */,
+				E147164B299A102A00DEF5B4 /* GoogleService-Info.plist */,
 				13B07FAE1A68108700A75B9A /* milgamproduct */,
 				832341AE1AAA6A7D00B99B32 /* Libraries */,
 				00E356EF1AD99517003FC87E /* milgamproductTests */,
@@ -483,6 +483,7 @@
 				57EC60B5057542F7A1F449D8 /* task-checked.png in Resources */,
 				3B97379AB98D488EACFC7548 /* task.png in Resources */,
 				7B088D032DC8423384CB1B70 /* login-bg-img.png in Resources */,
+				E147164C299A102A00DEF5B4 /* GoogleService-Info.plist in Resources */,
 				0CFAA4B4ABFA4A8F84ED408A /* logo.png in Resources */,
 				D25A1897A8AC431190B012FA /* cross.json in Resources */,
 				3608085D53284B438DC21C04 /* loader.json in Resources */,
@@ -494,7 +495,6 @@
 				DE4BC128FFD64DF0AD6A7CFE /* printer.png in Resources */,
 				9894A696D10645C1B7D52336 /* radio-button-checked.png in Resources */,
 				58397D557441484A84D11E02 /* radio-button.png in Resources */,
-				FE7CEE732998D66500A7A886 /* GoogleService-Info.plist in Resources */,
 				09853284A0664E5084A3159F /* remove.png in Resources */,
 				6AC92580C71A43A2AA228744 /* splash-shapes.png in Resources */,
 				F63634A559374A11AEA9BE3E /* switcher-off.png in Resources */,
@@ -515,7 +515,7 @@
 /* Begin PBXShellScriptBuildPhase section */
 		00689E2BEE268A496BC9791A /* [CP] Copy Pods Resources */ = {
 			isa = PBXShellScriptBuildPhase;
-			buildActionMask = 2147483647;
+			buildActionMask = 12;
 			files = (
 			);
 			inputFileListPaths = (
@@ -762,6 +762,7 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CLANG_ENABLE_MODULES = YES;
 				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = 3RA7Q66MDS;
 				ENABLE_BITCODE = NO;
 				INFOPLIST_FILE = milgamproduct/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = (
