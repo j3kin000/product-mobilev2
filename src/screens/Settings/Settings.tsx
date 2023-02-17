@@ -62,7 +62,7 @@ export const Settings = () => {
     <View style={styles.container}>
       <ScrollView style={styles.scrollViewWrapper}>
         <View style={styles.headerBlue} />
-        <Text
+        {/* <Text
           style={{
             color: 'white',
             position: 'absolute',
@@ -70,7 +70,7 @@ export const Settings = () => {
             left: scale(20),
           }}>
           {env}
-        </Text>
+        </Text> */}
         <View style={styles.whitePanel} />
         <View style={{flexDirection: 'row'}}>
           {logo != 'no_logo' ? (

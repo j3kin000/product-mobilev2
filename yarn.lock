@@ -3918,10 +3918,10 @@
     "opencollective-postinstall" "^2.0.1"
     "superstruct" "^0.6.2"
 
-"@react-native-firebase/messaging@^17.0.0":
-  "integrity" "sha512-N/1GwXodM68dK1/zFAwPBUud2SbHHtINqPYeY1rjNBDkoIcEGEGJ0+nZ8EcP2j3AlhplrML5z0cOWxpo3lrpcg=="
-  "resolved" "https://registry.npmjs.org/@react-native-firebase/messaging/-/messaging-17.0.0.tgz"
-  "version" "17.0.0"
+"@react-native-firebase/messaging@^17.1.0":
+  "integrity" "sha512-rbl3Ump2IgC6PFzm27Fd5NepbOM6yN1bqYFCEbnzckSxNmw09fglj98uhmhFbbMCugKYn0Lh2JyjOeALW3Cfjw=="
+  "resolved" "https://registry.npmjs.org/@react-native-firebase/messaging/-/messaging-17.1.0.tgz"
+  "version" "17.1.0"
 
 "@react-native-masked-view/masked-view@^0.2.8":
   "integrity" "sha512-+1holBPDF1yi/y0uc1WB6lA5tSNHhM7PpTMapT3ypvSnKQ9+C6sy/zfjxNxRA/llBQ1Ci6f94EaK56UCKs5lTA=="

@@ -18,12 +18,12 @@ const getEnv = async () => {
 
 const getUrl = async () => {
   let val = await getEnv();
-  return val === 'DEV'
-    ? 'https://saas-gw-dev.milgam.co.il:8012/'
-    : val === 'QA'
-    ? 'https://product-saas-gw-qa.milgam.co.il:8843/'
-    : 'https://miltask-gw.milgam.co.il/';
-  // return "https://miltask-gw.milgam.co.il/"
+  // return val === 'DEV'
+  //   ? 'https://saas-gw-dev.milgam.co.il:8012/'
+  //   : val === 'QA'
+  //   ? 'https://product-saas-gw-qa.milgam.co.il:8843/'
+  //   : 'https://miltask-gw.milgam.co.il/';
+  return "https://miltask-gw.milgam.co.il/"
 };
 
 export const userSignIn = async (username, password) => {

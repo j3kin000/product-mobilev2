@@ -102,7 +102,7 @@ export const Login = () => {
       <TouchableWithoutFeedback onPress={Keyboard.dismiss} accessible={false}>
         <KeyboardAvoidingView style={styles.container}>
           <SafeAreaView>
-            <TouchableOpacity
+            {/* <TouchableOpacity
               onPress={() => {
                 setEnvUiExpand(!envUiExpand);
               }}
@@ -147,7 +147,7 @@ export const Login = () => {
                   <Text style={{color: 'black'}}>PROD</Text>
                 </TouchableOpacity>
               </View>
-            ) : null}
+            ) : null} */}
 
             <ScrollView showsVerticalScrollIndicator={false}>
               <View style={styles.headerContainer}>
