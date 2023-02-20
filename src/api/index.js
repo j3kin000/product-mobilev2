@@ -23,7 +23,7 @@ const getUrl = async () => {
   //   : val === 'QA'
   //   ? 'https://product-saas-gw-qa.milgam.co.il:8843/'
   //   : 'https://miltask-gw.milgam.co.il/';
-  return "https://miltask-gw.milgam.co.il/"
+  return "https://saas-gw-dev.milgam.co.il:8012/"
 };
 
 export const userSignIn = async (username, password) => {
